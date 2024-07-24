@@ -1,0 +1,1084 @@
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cc31ktf8.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.fisrTimer,"ax",%progbits
+  20              		.align	2
+  21              		.global	fisrTimer
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	fisrTimer, %function
+  25              	fisrTimer:
+  26              	.LFB64:
+  27              		.file 1 "main.c"
+   1:main.c        **** 
+   2:main.c        **** #include "project.h"
+   3:main.c        **** 
+   4:main.c        **** CY_ISR_PROTO(fisrTimer);
+   5:main.c        **** 
+   6:main.c        **** int8 Calculos=0;
+   7:main.c        **** int8 status=1;
+   8:main.c        **** uint32 mod=16777216; // modulador de 24 bits
+   9:main.c        **** uint32 valor1=0;
+  10:main.c        **** uint32 valor2=0;
+  11:main.c        **** uint32 ovf1=0;
+  12:main.c        **** uint32 CiclosPeriodo=0;
+  13:main.c        **** uint32 Tiempo=0;
+  14:main.c        **** uint32 cont=0;
+  15:main.c        **** uint32 Mili=0;
+  16:main.c        **** 
+  17:main.c        **** int main(void)
+  18:main.c        **** {
+  19:main.c        ****     CyGlobalIntEnable; 
+  20:main.c        ****     Timer_Start();
+  21:main.c        ****     isrTimer_StartEx(fisrTimer);
+  22:main.c        **** 
+  23:main.c        ****     for(;;)
+  24:main.c        ****     {
+  25:main.c        ****         if(Calculos){
+  26:main.c        ****             CiclosPeriodo=(uint32)((uint32)(ovf1)*mod+valor1-valor2);//Se obtiene numero de conteos
+  27:main.c        ****             Tiempo = CiclosPeriodo/24;//Tiempo en us, la frecuencia de conteo está a 24MHz
+  28:main.c        ****             Mili=Tiempo/1000000;
+  29:main.c        ****             Calculos=0;
+  30:main.c        ****             ovf1=0;
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cc31ktf8.s 			page 2
+
+
+  31:main.c        ****             cont=0;
+  32:main.c        ****             CyDelay(200);
+  33:main.c        ****             Timer_Start();
+  34:main.c        ****         }
+  35:main.c        ****     }
+  36:main.c        **** }
+  37:main.c        **** 
+  38:main.c        **** CY_ISR_PROTO(fisrTimer){
+  28              		.loc 1 38 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  39:main.c        ****     status=Timer_ReadStatusRegister(); //Leer el registro de estado
+  36              		.loc 1 39 0
+  37 0002 FFF7FEFF 		bl	Timer_ReadStatusRegister
+  38              	.LVL0:
+  39 0006 134B     		ldr	r3, .L6
+  40 0008 1870     		strb	r0, [r3]
+  40:main.c        ****     if(status & Timer_STATUS_TC){
+  41              		.loc 1 40 0
+  42 000a 10F0010F 		tst	r0, #1
+  43 000e 07D0     		beq	.L2
+  41:main.c        ****         if(cont==1 ){
+  44              		.loc 1 41 0
+  45 0010 114B     		ldr	r3, .L6+4
+  46 0012 1B68     		ldr	r3, [r3]
+  47 0014 012B     		cmp	r3, #1
+  48 0016 03D1     		bne	.L2
+  42:main.c        ****             ovf1++;
+  49              		.loc 1 42 0
+  50 0018 0F4A     		ldr	r2, .L6+4
+  51 001a 5368     		ldr	r3, [r2, #4]
+  52 001c 0133     		adds	r3, r3, #1
+  53 001e 5360     		str	r3, [r2, #4]
+  54              	.L2:
+  43:main.c        ****         }
+  44:main.c        ****     }
+  45:main.c        ****     if(status & Timer_STATUS_CAPTURE){ 
+  55              		.loc 1 45 0
+  56 0020 10F0020F 		tst	r0, #2
+  57 0024 14D0     		beq	.L1
+  46:main.c        ****         if(cont==0){
+  58              		.loc 1 46 0
+  59 0026 0C4B     		ldr	r3, .L6+4
+  60 0028 1B68     		ldr	r3, [r3]
+  61 002a 3BB9     		cbnz	r3, .L4
+  47:main.c        ****             valor1=Timer_ReadCapture();//Obtiene primer valor
+  62              		.loc 1 47 0
+  63 002c FFF7FEFF 		bl	Timer_ReadCapture
+  64              	.LVL1:
+  65 0030 094B     		ldr	r3, .L6+4
+  66 0032 9860     		str	r0, [r3, #8]
+  48:main.c        ****             cont++;
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cc31ktf8.s 			page 3
+
+
+  67              		.loc 1 48 0
+  68 0034 1A68     		ldr	r2, [r3]
+  69 0036 0132     		adds	r2, r2, #1
+  70 0038 1A60     		str	r2, [r3]
+  71 003a 10BD     		pop	{r4, pc}
+  72              	.L4:
+  49:main.c        ****         }
+  50:main.c        ****     else if(cont==1){
+  73              		.loc 1 50 0
+  74 003c 012B     		cmp	r3, #1
+  75 003e 07D1     		bne	.L1
+  51:main.c        ****         valor2=Timer_ReadCapture(); //Obtiene segundo valor
+  76              		.loc 1 51 0
+  77 0040 FFF7FEFF 		bl	Timer_ReadCapture
+  78              	.LVL2:
+  79 0044 044C     		ldr	r4, .L6+4
+  80 0046 E060     		str	r0, [r4, #12]
+  52:main.c        ****         Timer_Stop(); //Detiene Timer
+  81              		.loc 1 52 0
+  82 0048 FFF7FEFF 		bl	Timer_Stop
+  83              	.LVL3:
+  53:main.c        ****         Calculos=1;
+  84              		.loc 1 53 0
+  85 004c 0123     		movs	r3, #1
+  86 004e 2374     		strb	r3, [r4, #16]
+  87              	.L1:
+  88 0050 10BD     		pop	{r4, pc}
+  89              	.L7:
+  90 0052 00BF     		.align	2
+  91              	.L6:
+  92 0054 00000000 		.word	.LANCHOR0
+  93 0058 00000000 		.word	.LANCHOR1
+  94              		.cfi_endproc
+  95              	.LFE64:
+  96              		.size	fisrTimer, .-fisrTimer
+  97              		.section	.text.main,"ax",%progbits
+  98              		.align	2
+  99              		.global	main
+ 100              		.thumb
+ 101              		.thumb_func
+ 102              		.type	main, %function
+ 103              	main:
+ 104              	.LFB63:
+  18:main.c        ****     CyGlobalIntEnable; 
+ 105              		.loc 1 18 0
+ 106              		.cfi_startproc
+ 107              		@ Volatile: function does not return.
+ 108              		@ args = 0, pretend = 0, frame = 0
+ 109              		@ frame_needed = 0, uses_anonymous_args = 0
+ 110 0000 08B5     		push	{r3, lr}
+ 111              		.cfi_def_cfa_offset 8
+ 112              		.cfi_offset 3, -8
+ 113              		.cfi_offset 14, -4
+  19:main.c        ****     Timer_Start();
+ 114              		.loc 1 19 0
+ 115              		.syntax unified
+ 116              	@ 19 "main.c" 1
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cc31ktf8.s 			page 4
+
+
+ 117 0002 62B6     		CPSIE   i
+ 118              	@ 0 "" 2
+  20:main.c        ****     isrTimer_StartEx(fisrTimer);
+ 119              		.loc 1 20 0
+ 120              		.thumb
+ 121              		.syntax unified
+ 122 0004 FFF7FEFF 		bl	Timer_Start
+ 123              	.LVL4:
+  21:main.c        **** 
+ 124              		.loc 1 21 0
+ 125 0008 1248     		ldr	r0, .L12
+ 126 000a FFF7FEFF 		bl	isrTimer_StartEx
+ 127              	.LVL5:
+ 128              	.L9:
+  25:main.c        ****             CiclosPeriodo=(uint32)((uint32)(ovf1)*mod+valor1-valor2);//Se obtiene numero de conteos
+ 129              		.loc 1 25 0
+ 130 000e 124B     		ldr	r3, .L12+4
+ 131 0010 93F91030 		ldrsb	r3, [r3, #16]
+ 132 0014 002B     		cmp	r3, #0
+ 133 0016 FAD0     		beq	.L9
+  26:main.c        ****             Tiempo = CiclosPeriodo/24;//Tiempo en us, la frecuencia de conteo está a 24MHz
+ 134              		.loc 1 26 0
+ 135 0018 0F49     		ldr	r1, .L12+4
+ 136 001a 4A68     		ldr	r2, [r1, #4]
+ 137 001c 0F4B     		ldr	r3, .L12+8
+ 138 001e 5868     		ldr	r0, [r3, #4]
+ 139 0020 8B68     		ldr	r3, [r1, #8]
+ 140 0022 00FB0232 		mla	r2, r0, r2, r3
+ 141 0026 CB68     		ldr	r3, [r1, #12]
+ 142 0028 D31A     		subs	r3, r2, r3
+ 143 002a 4B61     		str	r3, [r1, #20]
+  27:main.c        ****             Mili=Tiempo/1000000;
+ 144              		.loc 1 27 0
+ 145 002c 0C4A     		ldr	r2, .L12+12
+ 146 002e A2FB0323 		umull	r2, r3, r2, r3
+ 147 0032 1B09     		lsrs	r3, r3, #4
+ 148 0034 8B61     		str	r3, [r1, #24]
+  28:main.c        ****             Calculos=0;
+ 149              		.loc 1 28 0
+ 150 0036 0B4A     		ldr	r2, .L12+16
+ 151 0038 A2FB0323 		umull	r2, r3, r2, r3
+ 152 003c 9B0C     		lsrs	r3, r3, #18
+ 153 003e CB61     		str	r3, [r1, #28]
+  29:main.c        ****             ovf1=0;
+ 154              		.loc 1 29 0
+ 155 0040 0023     		movs	r3, #0
+ 156 0042 0B74     		strb	r3, [r1, #16]
+  30:main.c        ****             cont=0;
+ 157              		.loc 1 30 0
+ 158 0044 4B60     		str	r3, [r1, #4]
+  31:main.c        ****             CyDelay(200);
+ 159              		.loc 1 31 0
+ 160 0046 0B60     		str	r3, [r1]
+  32:main.c        ****             Timer_Start();
+ 161              		.loc 1 32 0
+ 162 0048 C820     		movs	r0, #200
+ 163 004a FFF7FEFF 		bl	CyDelay
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cc31ktf8.s 			page 5
+
+
+ 164              	.LVL6:
+  33:main.c        ****         }
+ 165              		.loc 1 33 0
+ 166 004e FFF7FEFF 		bl	Timer_Start
+ 167              	.LVL7:
+ 168 0052 DCE7     		b	.L9
+ 169              	.L13:
+ 170              		.align	2
+ 171              	.L12:
+ 172 0054 00000000 		.word	fisrTimer
+ 173 0058 00000000 		.word	.LANCHOR1
+ 174 005c 00000000 		.word	.LANCHOR0
+ 175 0060 ABAAAAAA 		.word	-1431655765
+ 176 0064 83DE1B43 		.word	1125899907
+ 177              		.cfi_endproc
+ 178              	.LFE63:
+ 179              		.size	main, .-main
+ 180              		.global	Mili
+ 181              		.global	cont
+ 182              		.global	Tiempo
+ 183              		.global	CiclosPeriodo
+ 184              		.global	ovf1
+ 185              		.global	valor2
+ 186              		.global	valor1
+ 187              		.global	mod
+ 188              		.global	status
+ 189              		.global	Calculos
+ 190              		.data
+ 191              		.align	2
+ 192              		.set	.LANCHOR0,. + 0
+ 193              		.type	status, %object
+ 194              		.size	status, 1
+ 195              	status:
+ 196 0000 01       		.byte	1
+ 197 0001 000000   		.space	3
+ 198              		.type	mod, %object
+ 199              		.size	mod, 4
+ 200              	mod:
+ 201 0004 00000001 		.word	16777216
+ 202              		.bss
+ 203              		.align	2
+ 204              		.set	.LANCHOR1,. + 0
+ 205              		.type	cont, %object
+ 206              		.size	cont, 4
+ 207              	cont:
+ 208 0000 00000000 		.space	4
+ 209              		.type	ovf1, %object
+ 210              		.size	ovf1, 4
+ 211              	ovf1:
+ 212 0004 00000000 		.space	4
+ 213              		.type	valor1, %object
+ 214              		.size	valor1, 4
+ 215              	valor1:
+ 216 0008 00000000 		.space	4
+ 217              		.type	valor2, %object
+ 218              		.size	valor2, 4
+ 219              	valor2:
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cc31ktf8.s 			page 6
+
+
+ 220 000c 00000000 		.space	4
+ 221              		.type	Calculos, %object
+ 222              		.size	Calculos, 1
+ 223              	Calculos:
+ 224 0010 00       		.space	1
+ 225 0011 000000   		.space	3
+ 226              		.type	CiclosPeriodo, %object
+ 227              		.size	CiclosPeriodo, 4
+ 228              	CiclosPeriodo:
+ 229 0014 00000000 		.space	4
+ 230              		.type	Tiempo, %object
+ 231              		.size	Tiempo, 4
+ 232              	Tiempo:
+ 233 0018 00000000 		.space	4
+ 234              		.type	Mili, %object
+ 235              		.size	Mili, 4
+ 236              	Mili:
+ 237 001c 00000000 		.space	4
+ 238              		.text
+ 239              	.Letext0:
+ 240              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 241              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 242              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 243              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 244              		.file 6 "Generated_Source\\PSoC5/Timer.h"
+ 245              		.file 7 "Generated_Source\\PSoC5/isrTimer.h"
+ 246              		.file 8 "Generated_Source\\PSoC5/CyLib.h"
+ 247              		.section	.debug_info,"",%progbits
+ 248              	.Ldebug_info0:
+ 249 0000 53020000 		.4byte	0x253
+ 250 0004 0400     		.2byte	0x4
+ 251 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 252 000a 04       		.byte	0x4
+ 253 000b 01       		.uleb128 0x1
+ 254 000c 70000000 		.4byte	.LASF35
+ 255 0010 0C       		.byte	0xc
+ 256 0011 BC010000 		.4byte	.LASF36
+ 257 0015 15020000 		.4byte	.LASF37
+ 258 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 259 001d 00000000 		.4byte	0
+ 260 0021 00000000 		.4byte	.Ldebug_line0
+ 261 0025 02       		.uleb128 0x2
+ 262 0026 01       		.byte	0x1
+ 263 0027 06       		.byte	0x6
+ 264 0028 09020000 		.4byte	.LASF0
+ 265 002c 02       		.uleb128 0x2
+ 266 002d 01       		.byte	0x1
+ 267 002e 08       		.byte	0x8
+ 268 002f 62000000 		.4byte	.LASF1
+ 269 0033 02       		.uleb128 0x2
+ 270 0034 02       		.byte	0x2
+ 271 0035 05       		.byte	0x5
+ 272 0036 D9010000 		.4byte	.LASF2
+ 273 003a 02       		.uleb128 0x2
+ 274 003b 02       		.byte	0x2
+ 275 003c 07       		.byte	0x7
+ 276 003d 1A010000 		.4byte	.LASF3
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cc31ktf8.s 			page 7
+
+
+ 277 0041 03       		.uleb128 0x3
+ 278 0042 13000000 		.4byte	.LASF9
+ 279 0046 02       		.byte	0x2
+ 280 0047 3F       		.byte	0x3f
+ 281 0048 4C000000 		.4byte	0x4c
+ 282 004c 02       		.uleb128 0x2
+ 283 004d 04       		.byte	0x4
+ 284 004e 05       		.byte	0x5
+ 285 004f FB010000 		.4byte	.LASF4
+ 286 0053 02       		.uleb128 0x2
+ 287 0054 04       		.byte	0x4
+ 288 0055 07       		.byte	0x7
+ 289 0056 08010000 		.4byte	.LASF5
+ 290 005a 02       		.uleb128 0x2
+ 291 005b 08       		.byte	0x8
+ 292 005c 05       		.byte	0x5
+ 293 005d AE010000 		.4byte	.LASF6
+ 294 0061 02       		.uleb128 0x2
+ 295 0062 08       		.byte	0x8
+ 296 0063 07       		.byte	0x7
+ 297 0064 82010000 		.4byte	.LASF7
+ 298 0068 04       		.uleb128 0x4
+ 299 0069 04       		.byte	0x4
+ 300 006a 05       		.byte	0x5
+ 301 006b 696E7400 		.ascii	"int\000"
+ 302 006f 02       		.uleb128 0x2
+ 303 0070 04       		.byte	0x4
+ 304 0071 07       		.byte	0x7
+ 305 0072 75010000 		.4byte	.LASF8
+ 306 0076 03       		.uleb128 0x3
+ 307 0077 49000000 		.4byte	.LASF10
+ 308 007b 03       		.byte	0x3
+ 309 007c 2C       		.byte	0x2c
+ 310 007d 41000000 		.4byte	0x41
+ 311 0081 05       		.uleb128 0x5
+ 312 0082 E3010000 		.4byte	.LASF11
+ 313 0086 04       		.byte	0x4
+ 314 0087 E801     		.2byte	0x1e8
+ 315 0089 2C000000 		.4byte	0x2c
+ 316 008d 05       		.uleb128 0x5
+ 317 008e 62010000 		.4byte	.LASF12
+ 318 0092 04       		.byte	0x4
+ 319 0093 EA01     		.2byte	0x1ea
+ 320 0095 53000000 		.4byte	0x53
+ 321 0099 05       		.uleb128 0x5
+ 322 009a 5D010000 		.4byte	.LASF13
+ 323 009e 04       		.byte	0x4
+ 324 009f EB01     		.2byte	0x1eb
+ 325 00a1 25000000 		.4byte	0x25
+ 326 00a5 02       		.uleb128 0x2
+ 327 00a6 04       		.byte	0x4
+ 328 00a7 04       		.byte	0x4
+ 329 00a8 5C000000 		.4byte	.LASF14
+ 330 00ac 02       		.uleb128 0x2
+ 331 00ad 08       		.byte	0x8
+ 332 00ae 04       		.byte	0x4
+ 333 00af 3A010000 		.4byte	.LASF15
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cc31ktf8.s 			page 8
+
+
+ 334 00b3 02       		.uleb128 0x2
+ 335 00b4 01       		.byte	0x1
+ 336 00b5 08       		.byte	0x8
+ 337 00b6 C3010000 		.4byte	.LASF16
+ 338 00ba 02       		.uleb128 0x2
+ 339 00bb 08       		.byte	0x8
+ 340 00bc 04       		.byte	0x4
+ 341 00bd 99010000 		.4byte	.LASF17
+ 342 00c1 02       		.uleb128 0x2
+ 343 00c2 04       		.byte	0x4
+ 344 00c3 07       		.byte	0x7
+ 345 00c4 A5010000 		.4byte	.LASF18
+ 346 00c8 06       		.uleb128 0x6
+ 347 00c9 FE000000 		.4byte	.LASF38
+ 348 00cd 01       		.byte	0x1
+ 349 00ce 26       		.byte	0x26
+ 350 00cf 00000000 		.4byte	.LFB64
+ 351 00d3 5C000000 		.4byte	.LFE64-.LFB64
+ 352 00d7 01       		.uleb128 0x1
+ 353 00d8 9C       		.byte	0x9c
+ 354 00d9 02010000 		.4byte	0x102
+ 355 00dd 07       		.uleb128 0x7
+ 356 00de 06000000 		.4byte	.LVL0
+ 357 00e2 14020000 		.4byte	0x214
+ 358 00e6 07       		.uleb128 0x7
+ 359 00e7 30000000 		.4byte	.LVL1
+ 360 00eb 1F020000 		.4byte	0x21f
+ 361 00ef 07       		.uleb128 0x7
+ 362 00f0 44000000 		.4byte	.LVL2
+ 363 00f4 1F020000 		.4byte	0x21f
+ 364 00f8 07       		.uleb128 0x7
+ 365 00f9 4C000000 		.4byte	.LVL3
+ 366 00fd 2A020000 		.4byte	0x22a
+ 367 0101 00       		.byte	0
+ 368 0102 08       		.uleb128 0x8
+ 369 0103 58010000 		.4byte	.LASF39
+ 370 0107 01       		.byte	0x1
+ 371 0108 11       		.byte	0x11
+ 372 0109 68000000 		.4byte	0x68
+ 373 010d 00000000 		.4byte	.LFB63
+ 374 0111 68000000 		.4byte	.LFE63-.LFB63
+ 375 0115 01       		.uleb128 0x1
+ 376 0116 9C       		.byte	0x9c
+ 377 0117 59010000 		.4byte	0x159
+ 378 011b 07       		.uleb128 0x7
+ 379 011c 08000000 		.4byte	.LVL4
+ 380 0120 35020000 		.4byte	0x235
+ 381 0124 09       		.uleb128 0x9
+ 382 0125 0E000000 		.4byte	.LVL5
+ 383 0129 40020000 		.4byte	0x240
+ 384 012d 3B010000 		.4byte	0x13b
+ 385 0131 0A       		.uleb128 0xa
+ 386 0132 01       		.uleb128 0x1
+ 387 0133 50       		.byte	0x50
+ 388 0134 05       		.uleb128 0x5
+ 389 0135 03       		.byte	0x3
+ 390 0136 00000000 		.4byte	fisrTimer
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cc31ktf8.s 			page 9
+
+
+ 391 013a 00       		.byte	0
+ 392 013b 09       		.uleb128 0x9
+ 393 013c 4E000000 		.4byte	.LVL6
+ 394 0140 4B020000 		.4byte	0x24b
+ 395 0144 4F010000 		.4byte	0x14f
+ 396 0148 0A       		.uleb128 0xa
+ 397 0149 01       		.uleb128 0x1
+ 398 014a 50       		.byte	0x50
+ 399 014b 02       		.uleb128 0x2
+ 400 014c 08       		.byte	0x8
+ 401 014d C8       		.byte	0xc8
+ 402 014e 00       		.byte	0
+ 403 014f 07       		.uleb128 0x7
+ 404 0150 52000000 		.4byte	.LVL7
+ 405 0154 35020000 		.4byte	0x235
+ 406 0158 00       		.byte	0
+ 407 0159 0B       		.uleb128 0xb
+ 408 015a 2D010000 		.4byte	.LASF19
+ 409 015e 05       		.byte	0x5
+ 410 015f 1207     		.2byte	0x712
+ 411 0161 65010000 		.4byte	0x165
+ 412 0165 0C       		.uleb128 0xc
+ 413 0166 76000000 		.4byte	0x76
+ 414 016a 0D       		.uleb128 0xd
+ 415 016b 4F010000 		.4byte	.LASF20
+ 416 016f 01       		.byte	0x1
+ 417 0170 06       		.byte	0x6
+ 418 0171 99000000 		.4byte	0x99
+ 419 0175 05       		.uleb128 0x5
+ 420 0176 03       		.byte	0x3
+ 421 0177 00000000 		.4byte	Calculos
+ 422 017b 0D       		.uleb128 0xd
+ 423 017c 3B000000 		.4byte	.LASF21
+ 424 0180 01       		.byte	0x1
+ 425 0181 07       		.byte	0x7
+ 426 0182 99000000 		.4byte	0x99
+ 427 0186 05       		.uleb128 0x5
+ 428 0187 03       		.byte	0x3
+ 429 0188 00000000 		.4byte	status
+ 430 018c 0E       		.uleb128 0xe
+ 431 018d 6D6F6400 		.ascii	"mod\000"
+ 432 0191 01       		.byte	0x1
+ 433 0192 08       		.byte	0x8
+ 434 0193 8D000000 		.4byte	0x8d
+ 435 0197 05       		.uleb128 0x5
+ 436 0198 03       		.byte	0x3
+ 437 0199 00000000 		.4byte	mod
+ 438 019d 0D       		.uleb128 0xd
+ 439 019e 05000000 		.4byte	.LASF22
+ 440 01a2 01       		.byte	0x1
+ 441 01a3 09       		.byte	0x9
+ 442 01a4 8D000000 		.4byte	0x8d
+ 443 01a8 05       		.uleb128 0x5
+ 444 01a9 03       		.byte	0x3
+ 445 01aa 00000000 		.4byte	valor1
+ 446 01ae 0D       		.uleb128 0xd
+ 447 01af 0C000000 		.4byte	.LASF23
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cc31ktf8.s 			page 10
+
+
+ 448 01b3 01       		.byte	0x1
+ 449 01b4 0A       		.byte	0xa
+ 450 01b5 8D000000 		.4byte	0x8d
+ 451 01b9 05       		.uleb128 0x5
+ 452 01ba 03       		.byte	0x3
+ 453 01bb 00000000 		.4byte	valor2
+ 454 01bf 0D       		.uleb128 0xd
+ 455 01c0 1D000000 		.4byte	.LASF24
+ 456 01c4 01       		.byte	0x1
+ 457 01c5 0B       		.byte	0xb
+ 458 01c6 8D000000 		.4byte	0x8d
+ 459 01ca 05       		.uleb128 0x5
+ 460 01cb 03       		.byte	0x3
+ 461 01cc 00000000 		.4byte	ovf1
+ 462 01d0 0D       		.uleb128 0xd
+ 463 01d1 41010000 		.4byte	.LASF25
+ 464 01d5 01       		.byte	0x1
+ 465 01d6 0C       		.byte	0xc
+ 466 01d7 8D000000 		.4byte	0x8d
+ 467 01db 05       		.uleb128 0x5
+ 468 01dc 03       		.byte	0x3
+ 469 01dd 00000000 		.4byte	CiclosPeriodo
+ 470 01e1 0D       		.uleb128 0xd
+ 471 01e2 42000000 		.4byte	.LASF26
+ 472 01e6 01       		.byte	0x1
+ 473 01e7 0D       		.byte	0xd
+ 474 01e8 8D000000 		.4byte	0x8d
+ 475 01ec 05       		.uleb128 0x5
+ 476 01ed 03       		.byte	0x3
+ 477 01ee 00000000 		.4byte	Tiempo
+ 478 01f2 0D       		.uleb128 0xd
+ 479 01f3 04020000 		.4byte	.LASF27
+ 480 01f7 01       		.byte	0x1
+ 481 01f8 0E       		.byte	0xe
+ 482 01f9 8D000000 		.4byte	0x8d
+ 483 01fd 05       		.uleb128 0x5
+ 484 01fe 03       		.byte	0x3
+ 485 01ff 00000000 		.4byte	cont
+ 486 0203 0D       		.uleb128 0xd
+ 487 0204 00000000 		.4byte	.LASF28
+ 488 0208 01       		.byte	0x1
+ 489 0209 0F       		.byte	0xf
+ 490 020a 8D000000 		.4byte	0x8d
+ 491 020e 05       		.uleb128 0x5
+ 492 020f 03       		.byte	0x3
+ 493 0210 00000000 		.4byte	Mili
+ 494 0214 0F       		.uleb128 0xf
+ 495 0215 22000000 		.4byte	.LASF29
+ 496 0219 22000000 		.4byte	.LASF29
+ 497 021d 06       		.byte	0x6
+ 498 021e 5E       		.byte	0x5e
+ 499 021f 0F       		.uleb128 0xf
+ 500 0220 E9010000 		.4byte	.LASF30
+ 501 0224 E9010000 		.4byte	.LASF30
+ 502 0228 06       		.byte	0x6
+ 503 0229 6B       		.byte	0x6b
+ 504 022a 0F       		.uleb128 0xf
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cc31ktf8.s 			page 11
+
+
+ 505 022b 51000000 		.4byte	.LASF31
+ 506 022f 51000000 		.4byte	.LASF31
+ 507 0233 06       		.byte	0x6
+ 508 0234 5B       		.byte	0x5b
+ 509 0235 0F       		.uleb128 0xf
+ 510 0236 69010000 		.4byte	.LASF32
+ 511 023a 69010000 		.4byte	.LASF32
+ 512 023e 06       		.byte	0x6
+ 513 023f 5A       		.byte	0x5a
+ 514 0240 0F       		.uleb128 0xf
+ 515 0241 C8010000 		.4byte	.LASF33
+ 516 0245 C8010000 		.4byte	.LASF33
+ 517 0249 07       		.byte	0x7
+ 518 024a 18       		.byte	0x18
+ 519 024b 0F       		.uleb128 0xf
+ 520 024c 56020000 		.4byte	.LASF34
+ 521 0250 56020000 		.4byte	.LASF34
+ 522 0254 08       		.byte	0x8
+ 523 0255 76       		.byte	0x76
+ 524 0256 00       		.byte	0
+ 525              		.section	.debug_abbrev,"",%progbits
+ 526              	.Ldebug_abbrev0:
+ 527 0000 01       		.uleb128 0x1
+ 528 0001 11       		.uleb128 0x11
+ 529 0002 01       		.byte	0x1
+ 530 0003 25       		.uleb128 0x25
+ 531 0004 0E       		.uleb128 0xe
+ 532 0005 13       		.uleb128 0x13
+ 533 0006 0B       		.uleb128 0xb
+ 534 0007 03       		.uleb128 0x3
+ 535 0008 0E       		.uleb128 0xe
+ 536 0009 1B       		.uleb128 0x1b
+ 537 000a 0E       		.uleb128 0xe
+ 538 000b 55       		.uleb128 0x55
+ 539 000c 17       		.uleb128 0x17
+ 540 000d 11       		.uleb128 0x11
+ 541 000e 01       		.uleb128 0x1
+ 542 000f 10       		.uleb128 0x10
+ 543 0010 17       		.uleb128 0x17
+ 544 0011 00       		.byte	0
+ 545 0012 00       		.byte	0
+ 546 0013 02       		.uleb128 0x2
+ 547 0014 24       		.uleb128 0x24
+ 548 0015 00       		.byte	0
+ 549 0016 0B       		.uleb128 0xb
+ 550 0017 0B       		.uleb128 0xb
+ 551 0018 3E       		.uleb128 0x3e
+ 552 0019 0B       		.uleb128 0xb
+ 553 001a 03       		.uleb128 0x3
+ 554 001b 0E       		.uleb128 0xe
+ 555 001c 00       		.byte	0
+ 556 001d 00       		.byte	0
+ 557 001e 03       		.uleb128 0x3
+ 558 001f 16       		.uleb128 0x16
+ 559 0020 00       		.byte	0
+ 560 0021 03       		.uleb128 0x3
+ 561 0022 0E       		.uleb128 0xe
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cc31ktf8.s 			page 12
+
+
+ 562 0023 3A       		.uleb128 0x3a
+ 563 0024 0B       		.uleb128 0xb
+ 564 0025 3B       		.uleb128 0x3b
+ 565 0026 0B       		.uleb128 0xb
+ 566 0027 49       		.uleb128 0x49
+ 567 0028 13       		.uleb128 0x13
+ 568 0029 00       		.byte	0
+ 569 002a 00       		.byte	0
+ 570 002b 04       		.uleb128 0x4
+ 571 002c 24       		.uleb128 0x24
+ 572 002d 00       		.byte	0
+ 573 002e 0B       		.uleb128 0xb
+ 574 002f 0B       		.uleb128 0xb
+ 575 0030 3E       		.uleb128 0x3e
+ 576 0031 0B       		.uleb128 0xb
+ 577 0032 03       		.uleb128 0x3
+ 578 0033 08       		.uleb128 0x8
+ 579 0034 00       		.byte	0
+ 580 0035 00       		.byte	0
+ 581 0036 05       		.uleb128 0x5
+ 582 0037 16       		.uleb128 0x16
+ 583 0038 00       		.byte	0
+ 584 0039 03       		.uleb128 0x3
+ 585 003a 0E       		.uleb128 0xe
+ 586 003b 3A       		.uleb128 0x3a
+ 587 003c 0B       		.uleb128 0xb
+ 588 003d 3B       		.uleb128 0x3b
+ 589 003e 05       		.uleb128 0x5
+ 590 003f 49       		.uleb128 0x49
+ 591 0040 13       		.uleb128 0x13
+ 592 0041 00       		.byte	0
+ 593 0042 00       		.byte	0
+ 594 0043 06       		.uleb128 0x6
+ 595 0044 2E       		.uleb128 0x2e
+ 596 0045 01       		.byte	0x1
+ 597 0046 3F       		.uleb128 0x3f
+ 598 0047 19       		.uleb128 0x19
+ 599 0048 03       		.uleb128 0x3
+ 600 0049 0E       		.uleb128 0xe
+ 601 004a 3A       		.uleb128 0x3a
+ 602 004b 0B       		.uleb128 0xb
+ 603 004c 3B       		.uleb128 0x3b
+ 604 004d 0B       		.uleb128 0xb
+ 605 004e 27       		.uleb128 0x27
+ 606 004f 19       		.uleb128 0x19
+ 607 0050 11       		.uleb128 0x11
+ 608 0051 01       		.uleb128 0x1
+ 609 0052 12       		.uleb128 0x12
+ 610 0053 06       		.uleb128 0x6
+ 611 0054 40       		.uleb128 0x40
+ 612 0055 18       		.uleb128 0x18
+ 613 0056 9742     		.uleb128 0x2117
+ 614 0058 19       		.uleb128 0x19
+ 615 0059 01       		.uleb128 0x1
+ 616 005a 13       		.uleb128 0x13
+ 617 005b 00       		.byte	0
+ 618 005c 00       		.byte	0
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cc31ktf8.s 			page 13
+
+
+ 619 005d 07       		.uleb128 0x7
+ 620 005e 898201   		.uleb128 0x4109
+ 621 0061 00       		.byte	0
+ 622 0062 11       		.uleb128 0x11
+ 623 0063 01       		.uleb128 0x1
+ 624 0064 31       		.uleb128 0x31
+ 625 0065 13       		.uleb128 0x13
+ 626 0066 00       		.byte	0
+ 627 0067 00       		.byte	0
+ 628 0068 08       		.uleb128 0x8
+ 629 0069 2E       		.uleb128 0x2e
+ 630 006a 01       		.byte	0x1
+ 631 006b 3F       		.uleb128 0x3f
+ 632 006c 19       		.uleb128 0x19
+ 633 006d 03       		.uleb128 0x3
+ 634 006e 0E       		.uleb128 0xe
+ 635 006f 3A       		.uleb128 0x3a
+ 636 0070 0B       		.uleb128 0xb
+ 637 0071 3B       		.uleb128 0x3b
+ 638 0072 0B       		.uleb128 0xb
+ 639 0073 27       		.uleb128 0x27
+ 640 0074 19       		.uleb128 0x19
+ 641 0075 49       		.uleb128 0x49
+ 642 0076 13       		.uleb128 0x13
+ 643 0077 8701     		.uleb128 0x87
+ 644 0079 19       		.uleb128 0x19
+ 645 007a 11       		.uleb128 0x11
+ 646 007b 01       		.uleb128 0x1
+ 647 007c 12       		.uleb128 0x12
+ 648 007d 06       		.uleb128 0x6
+ 649 007e 40       		.uleb128 0x40
+ 650 007f 18       		.uleb128 0x18
+ 651 0080 9742     		.uleb128 0x2117
+ 652 0082 19       		.uleb128 0x19
+ 653 0083 01       		.uleb128 0x1
+ 654 0084 13       		.uleb128 0x13
+ 655 0085 00       		.byte	0
+ 656 0086 00       		.byte	0
+ 657 0087 09       		.uleb128 0x9
+ 658 0088 898201   		.uleb128 0x4109
+ 659 008b 01       		.byte	0x1
+ 660 008c 11       		.uleb128 0x11
+ 661 008d 01       		.uleb128 0x1
+ 662 008e 31       		.uleb128 0x31
+ 663 008f 13       		.uleb128 0x13
+ 664 0090 01       		.uleb128 0x1
+ 665 0091 13       		.uleb128 0x13
+ 666 0092 00       		.byte	0
+ 667 0093 00       		.byte	0
+ 668 0094 0A       		.uleb128 0xa
+ 669 0095 8A8201   		.uleb128 0x410a
+ 670 0098 00       		.byte	0
+ 671 0099 02       		.uleb128 0x2
+ 672 009a 18       		.uleb128 0x18
+ 673 009b 9142     		.uleb128 0x2111
+ 674 009d 18       		.uleb128 0x18
+ 675 009e 00       		.byte	0
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cc31ktf8.s 			page 14
+
+
+ 676 009f 00       		.byte	0
+ 677 00a0 0B       		.uleb128 0xb
+ 678 00a1 34       		.uleb128 0x34
+ 679 00a2 00       		.byte	0
+ 680 00a3 03       		.uleb128 0x3
+ 681 00a4 0E       		.uleb128 0xe
+ 682 00a5 3A       		.uleb128 0x3a
+ 683 00a6 0B       		.uleb128 0xb
+ 684 00a7 3B       		.uleb128 0x3b
+ 685 00a8 05       		.uleb128 0x5
+ 686 00a9 49       		.uleb128 0x49
+ 687 00aa 13       		.uleb128 0x13
+ 688 00ab 3F       		.uleb128 0x3f
+ 689 00ac 19       		.uleb128 0x19
+ 690 00ad 3C       		.uleb128 0x3c
+ 691 00ae 19       		.uleb128 0x19
+ 692 00af 00       		.byte	0
+ 693 00b0 00       		.byte	0
+ 694 00b1 0C       		.uleb128 0xc
+ 695 00b2 35       		.uleb128 0x35
+ 696 00b3 00       		.byte	0
+ 697 00b4 49       		.uleb128 0x49
+ 698 00b5 13       		.uleb128 0x13
+ 699 00b6 00       		.byte	0
+ 700 00b7 00       		.byte	0
+ 701 00b8 0D       		.uleb128 0xd
+ 702 00b9 34       		.uleb128 0x34
+ 703 00ba 00       		.byte	0
+ 704 00bb 03       		.uleb128 0x3
+ 705 00bc 0E       		.uleb128 0xe
+ 706 00bd 3A       		.uleb128 0x3a
+ 707 00be 0B       		.uleb128 0xb
+ 708 00bf 3B       		.uleb128 0x3b
+ 709 00c0 0B       		.uleb128 0xb
+ 710 00c1 49       		.uleb128 0x49
+ 711 00c2 13       		.uleb128 0x13
+ 712 00c3 3F       		.uleb128 0x3f
+ 713 00c4 19       		.uleb128 0x19
+ 714 00c5 02       		.uleb128 0x2
+ 715 00c6 18       		.uleb128 0x18
+ 716 00c7 00       		.byte	0
+ 717 00c8 00       		.byte	0
+ 718 00c9 0E       		.uleb128 0xe
+ 719 00ca 34       		.uleb128 0x34
+ 720 00cb 00       		.byte	0
+ 721 00cc 03       		.uleb128 0x3
+ 722 00cd 08       		.uleb128 0x8
+ 723 00ce 3A       		.uleb128 0x3a
+ 724 00cf 0B       		.uleb128 0xb
+ 725 00d0 3B       		.uleb128 0x3b
+ 726 00d1 0B       		.uleb128 0xb
+ 727 00d2 49       		.uleb128 0x49
+ 728 00d3 13       		.uleb128 0x13
+ 729 00d4 3F       		.uleb128 0x3f
+ 730 00d5 19       		.uleb128 0x19
+ 731 00d6 02       		.uleb128 0x2
+ 732 00d7 18       		.uleb128 0x18
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cc31ktf8.s 			page 15
+
+
+ 733 00d8 00       		.byte	0
+ 734 00d9 00       		.byte	0
+ 735 00da 0F       		.uleb128 0xf
+ 736 00db 2E       		.uleb128 0x2e
+ 737 00dc 00       		.byte	0
+ 738 00dd 3F       		.uleb128 0x3f
+ 739 00de 19       		.uleb128 0x19
+ 740 00df 3C       		.uleb128 0x3c
+ 741 00e0 19       		.uleb128 0x19
+ 742 00e1 6E       		.uleb128 0x6e
+ 743 00e2 0E       		.uleb128 0xe
+ 744 00e3 03       		.uleb128 0x3
+ 745 00e4 0E       		.uleb128 0xe
+ 746 00e5 3A       		.uleb128 0x3a
+ 747 00e6 0B       		.uleb128 0xb
+ 748 00e7 3B       		.uleb128 0x3b
+ 749 00e8 0B       		.uleb128 0xb
+ 750 00e9 00       		.byte	0
+ 751 00ea 00       		.byte	0
+ 752 00eb 00       		.byte	0
+ 753              		.section	.debug_aranges,"",%progbits
+ 754 0000 24000000 		.4byte	0x24
+ 755 0004 0200     		.2byte	0x2
+ 756 0006 00000000 		.4byte	.Ldebug_info0
+ 757 000a 04       		.byte	0x4
+ 758 000b 00       		.byte	0
+ 759 000c 0000     		.2byte	0
+ 760 000e 0000     		.2byte	0
+ 761 0010 00000000 		.4byte	.LFB64
+ 762 0014 5C000000 		.4byte	.LFE64-.LFB64
+ 763 0018 00000000 		.4byte	.LFB63
+ 764 001c 68000000 		.4byte	.LFE63-.LFB63
+ 765 0020 00000000 		.4byte	0
+ 766 0024 00000000 		.4byte	0
+ 767              		.section	.debug_ranges,"",%progbits
+ 768              	.Ldebug_ranges0:
+ 769 0000 00000000 		.4byte	.LFB64
+ 770 0004 5C000000 		.4byte	.LFE64
+ 771 0008 00000000 		.4byte	.LFB63
+ 772 000c 68000000 		.4byte	.LFE63
+ 773 0010 00000000 		.4byte	0
+ 774 0014 00000000 		.4byte	0
+ 775              		.section	.debug_line,"",%progbits
+ 776              	.Ldebug_line0:
+ 777 0000 AC010000 		.section	.debug_str,"MS",%progbits,1
+ 777      02007001 
+ 777      00000201 
+ 777      FB0E0D00 
+ 777      01010101 
+ 778              	.LASF28:
+ 779 0000 4D696C69 		.ascii	"Mili\000"
+ 779      00
+ 780              	.LASF22:
+ 781 0005 76616C6F 		.ascii	"valor1\000"
+ 781      723100
+ 782              	.LASF23:
+ 783 000c 76616C6F 		.ascii	"valor2\000"
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cc31ktf8.s 			page 16
+
+
+ 783      723200
+ 784              	.LASF9:
+ 785 0013 5F5F696E 		.ascii	"__int32_t\000"
+ 785      7433325F 
+ 785      7400
+ 786              	.LASF24:
+ 787 001d 6F766631 		.ascii	"ovf1\000"
+ 787      00
+ 788              	.LASF29:
+ 789 0022 54696D65 		.ascii	"Timer_ReadStatusRegister\000"
+ 789      725F5265 
+ 789      61645374 
+ 789      61747573 
+ 789      52656769 
+ 790              	.LASF21:
+ 791 003b 73746174 		.ascii	"status\000"
+ 791      757300
+ 792              	.LASF26:
+ 793 0042 5469656D 		.ascii	"Tiempo\000"
+ 793      706F00
+ 794              	.LASF10:
+ 795 0049 696E7433 		.ascii	"int32_t\000"
+ 795      325F7400 
+ 796              	.LASF31:
+ 797 0051 54696D65 		.ascii	"Timer_Stop\000"
+ 797      725F5374 
+ 797      6F7000
+ 798              	.LASF14:
+ 799 005c 666C6F61 		.ascii	"float\000"
+ 799      7400
+ 800              	.LASF1:
+ 801 0062 756E7369 		.ascii	"unsigned char\000"
+ 801      676E6564 
+ 801      20636861 
+ 801      7200
+ 802              	.LASF35:
+ 803 0070 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 803      43313120 
+ 803      352E342E 
+ 803      31203230 
+ 803      31363036 
+ 804 00a3 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 804      20726576 
+ 804      6973696F 
+ 804      6E203233 
+ 804      37373135 
+ 805 00d6 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 805      66756E63 
+ 805      74696F6E 
+ 805      2D736563 
+ 805      74696F6E 
+ 806              	.LASF38:
+ 807 00fe 66697372 		.ascii	"fisrTimer\000"
+ 807      54696D65 
+ 807      7200
+ 808              	.LASF5:
+ 809 0108 6C6F6E67 		.ascii	"long unsigned int\000"
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cc31ktf8.s 			page 17
+
+
+ 809      20756E73 
+ 809      69676E65 
+ 809      6420696E 
+ 809      7400
+ 810              	.LASF3:
+ 811 011a 73686F72 		.ascii	"short unsigned int\000"
+ 811      7420756E 
+ 811      7369676E 
+ 811      65642069 
+ 811      6E7400
+ 812              	.LASF19:
+ 813 012d 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 813      52784275 
+ 813      66666572 
+ 813      00
+ 814              	.LASF15:
+ 815 013a 646F7562 		.ascii	"double\000"
+ 815      6C6500
+ 816              	.LASF25:
+ 817 0141 4369636C 		.ascii	"CiclosPeriodo\000"
+ 817      6F735065 
+ 817      72696F64 
+ 817      6F00
+ 818              	.LASF20:
+ 819 014f 43616C63 		.ascii	"Calculos\000"
+ 819      756C6F73 
+ 819      00
+ 820              	.LASF39:
+ 821 0158 6D61696E 		.ascii	"main\000"
+ 821      00
+ 822              	.LASF13:
+ 823 015d 696E7438 		.ascii	"int8\000"
+ 823      00
+ 824              	.LASF12:
+ 825 0162 75696E74 		.ascii	"uint32\000"
+ 825      333200
+ 826              	.LASF32:
+ 827 0169 54696D65 		.ascii	"Timer_Start\000"
+ 827      725F5374 
+ 827      61727400 
+ 828              	.LASF8:
+ 829 0175 756E7369 		.ascii	"unsigned int\000"
+ 829      676E6564 
+ 829      20696E74 
+ 829      00
+ 830              	.LASF7:
+ 831 0182 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 831      206C6F6E 
+ 831      6720756E 
+ 831      7369676E 
+ 831      65642069 
+ 832              	.LASF17:
+ 833 0199 6C6F6E67 		.ascii	"long double\000"
+ 833      20646F75 
+ 833      626C6500 
+ 834              	.LASF18:
+ 835 01a5 73697A65 		.ascii	"sizetype\000"
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cc31ktf8.s 			page 18
+
+
+ 835      74797065 
+ 835      00
+ 836              	.LASF6:
+ 837 01ae 6C6F6E67 		.ascii	"long long int\000"
+ 837      206C6F6E 
+ 837      6720696E 
+ 837      7400
+ 838              	.LASF36:
+ 839 01bc 6D61696E 		.ascii	"main.c\000"
+ 839      2E6300
+ 840              	.LASF16:
+ 841 01c3 63686172 		.ascii	"char\000"
+ 841      00
+ 842              	.LASF33:
+ 843 01c8 69737254 		.ascii	"isrTimer_StartEx\000"
+ 843      696D6572 
+ 843      5F537461 
+ 843      72744578 
+ 843      00
+ 844              	.LASF2:
+ 845 01d9 73686F72 		.ascii	"short int\000"
+ 845      7420696E 
+ 845      7400
+ 846              	.LASF11:
+ 847 01e3 75696E74 		.ascii	"uint8\000"
+ 847      3800
+ 848              	.LASF30:
+ 849 01e9 54696D65 		.ascii	"Timer_ReadCapture\000"
+ 849      725F5265 
+ 849      61644361 
+ 849      70747572 
+ 849      6500
+ 850              	.LASF4:
+ 851 01fb 6C6F6E67 		.ascii	"long int\000"
+ 851      20696E74 
+ 851      00
+ 852              	.LASF27:
+ 853 0204 636F6E74 		.ascii	"cont\000"
+ 853      00
+ 854              	.LASF0:
+ 855 0209 7369676E 		.ascii	"signed char\000"
+ 855      65642063 
+ 855      68617200 
+ 856              	.LASF37:
+ 857 0215 433A5C55 		.ascii	"C:\\Users\\PYBL\\Documents\\PSoC Creator\\Pruebas\\"
+ 857      73657273 
+ 857      5C505942 
+ 857      4C5C446F 
+ 857      63756D65 
+ 858 0242 494E5055 		.ascii	"INPUT_CAPTURE.cydsn\000"
+ 858      545F4341 
+ 858      50545552 
+ 858      452E6379 
+ 858      64736E00 
+ 859              	.LASF34:
+ 860 0256 43794465 		.ascii	"CyDelay\000"
+ 860      6C617900 
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cc31ktf8.s 			page 19
+
+
+ 861              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

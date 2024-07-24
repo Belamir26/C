@@ -1,0 +1,1187 @@
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccUH34tC.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	__aeabi_f2d
+  20              		.section	.text.main,"ax",%progbits
+  21              		.align	2
+  22              		.global	main
+  23              		.thumb
+  24              		.thumb_func
+  25              		.type	main, %function
+  26              	main:
+  27              	.LFB64:
+  28              		.file 1 "main.c"
+   1:main.c        **** 
+   2:main.c        **** #include "project.h"
+   3:main.c        **** #include "stdio.h"
+   4:main.c        **** 
+   5:main.c        **** char buff[30];
+   6:main.c        **** 
+   7:main.c        **** 
+   8:main.c        **** uint16 temperatura=0;
+   9:main.c        **** uint16 peso=0;
+  10:main.c        **** uint8 decimaltemp=0;
+  11:main.c        **** uint8 decimalpeso=0;
+  12:main.c        **** uint8 valortemp=0;
+  13:main.c        **** uint8 valorpeso=0;
+  14:main.c        **** 
+  15:main.c        **** float temp=0;
+  16:main.c        **** float pes=0;
+  17:main.c        **** 
+  18:main.c        **** int main(void)
+  19:main.c        **** {
+  29              		.loc 1 19 0
+  30              		.cfi_startproc
+  31              		@ Volatile: function does not return.
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34 0000 08B5     		push	{r3, lr}
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+  20:main.c        ****     CyGlobalIntEnable; 
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccUH34tC.s 			page 2
+
+
+  38              		.loc 1 20 0
+  39              		.syntax unified
+  40              	@ 20 "main.c" 1
+  41 0002 62B6     		CPSIE   i
+  42              	@ 0 "" 2
+  21:main.c        ****     LCD_Start();
+  43              		.loc 1 21 0
+  44              		.thumb
+  45              		.syntax unified
+  46 0004 FFF7FEFF 		bl	LCD_Start
+  47              	.LVL0:
+  22:main.c        ****     
+  23:main.c        ****     temperatura= 298;
+  48              		.loc 1 23 0
+  49 0008 304B     		ldr	r3, .L4
+  50 000a 4FF49572 		mov	r2, #298
+  51 000e 1A80     		strh	r2, [r3]	@ movhi
+  24:main.c        ****     peso= 7895;
+  52              		.loc 1 24 0
+  53 0010 41F6D762 		movw	r2, #7895
+  54 0014 5A80     		strh	r2, [r3, #2]	@ movhi
+  25:main.c        ****     
+  26:main.c        ****     temp = 29.8;
+  55              		.loc 1 26 0
+  56 0016 2E4A     		ldr	r2, .L4+4
+  57 0018 5A60     		str	r2, [r3, #4]	@ float
+  27:main.c        ****     pes= 78.95;
+  58              		.loc 1 27 0
+  59 001a 2E4A     		ldr	r2, .L4+8
+  60 001c 9A60     		str	r2, [r3, #8]	@ float
+  61              	.L2:
+  28:main.c        ****     
+  29:main.c        ****     
+  30:main.c        ****     for(;;)
+  31:main.c        ****     {
+  32:main.c        ****         
+  33:main.c        ****         
+  34:main.c        ****         
+  35:main.c        ****         sprintf(buff, "temp_float: %.1f",temp );
+  62              		.loc 1 35 0 discriminator 1
+  63 001e 2B4D     		ldr	r5, .L4
+  64 0020 6868     		ldr	r0, [r5, #4]	@ float
+  65 0022 FFF7FEFF 		bl	__aeabi_f2d
+  66              	.LVL1:
+  67 0026 2C4C     		ldr	r4, .L4+12
+  68 0028 0246     		mov	r2, r0
+  69 002a 0B46     		mov	r3, r1
+  70 002c 2B49     		ldr	r1, .L4+16
+  71 002e 2046     		mov	r0, r4
+  72 0030 FFF7FEFF 		bl	sprintf
+  73              	.LVL2:
+  36:main.c        ****         LCD_Position(0,0);
+  74              		.loc 1 36 0 discriminator 1
+  75 0034 0021     		movs	r1, #0
+  76 0036 0846     		mov	r0, r1
+  77 0038 FFF7FEFF 		bl	LCD_Position
+  78              	.LVL3:
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccUH34tC.s 			page 3
+
+
+  37:main.c        ****         LCD_PrintString(buff);
+  79              		.loc 1 37 0 discriminator 1
+  80 003c 2046     		mov	r0, r4
+  81 003e FFF7FEFF 		bl	LCD_PrintString
+  82              	.LVL4:
+  38:main.c        ****         sprintf(buff,"pes_floar: %.2f", pes);
+  83              		.loc 1 38 0 discriminator 1
+  84 0042 A868     		ldr	r0, [r5, #8]	@ float
+  85 0044 FFF7FEFF 		bl	__aeabi_f2d
+  86              	.LVL5:
+  87 0048 0246     		mov	r2, r0
+  88 004a 0B46     		mov	r3, r1
+  89 004c 2449     		ldr	r1, .L4+20
+  90 004e 2046     		mov	r0, r4
+  91 0050 FFF7FEFF 		bl	sprintf
+  92              	.LVL6:
+  39:main.c        ****         LCD_Position(1,0);
+  93              		.loc 1 39 0 discriminator 1
+  94 0054 0021     		movs	r1, #0
+  95 0056 0120     		movs	r0, #1
+  96 0058 FFF7FEFF 		bl	LCD_Position
+  97              	.LVL7:
+  40:main.c        ****         LCD_PrintString(buff);
+  98              		.loc 1 40 0 discriminator 1
+  99 005c 2046     		mov	r0, r4
+ 100 005e FFF7FEFF 		bl	LCD_PrintString
+ 101              	.LVL8:
+  41:main.c        ****      
+  42:main.c        ****         
+  43:main.c        ****         decimaltemp= temperatura %10;
+ 102              		.loc 1 43 0 discriminator 1
+ 103 0062 2B88     		ldrh	r3, [r5]
+ 104 0064 1F4A     		ldr	r2, .L4+24
+ 105 0066 A2FB0312 		umull	r1, r2, r2, r3
+ 106 006a D208     		lsrs	r2, r2, #3
+ 107 006c 02EB8200 		add	r0, r2, r2, lsl #2
+ 108 0070 4100     		lsls	r1, r0, #1
+ 109 0072 5B1A     		subs	r3, r3, r1
+ 110 0074 DBB2     		uxtb	r3, r3
+ 111 0076 2B73     		strb	r3, [r5, #12]
+  44:main.c        ****         valortemp = temperatura/10;
+ 112              		.loc 1 44 0 discriminator 1
+ 113 0078 D2B2     		uxtb	r2, r2
+ 114 007a 6A73     		strb	r2, [r5, #13]
+  45:main.c        ****         sprintf(buff, "temp: %u.%u  ",valortemp,decimaltemp);
+ 115              		.loc 1 45 0 discriminator 1
+ 116 007c 1A49     		ldr	r1, .L4+28
+ 117 007e 2046     		mov	r0, r4
+ 118 0080 FFF7FEFF 		bl	sprintf
+ 119              	.LVL9:
+  46:main.c        ****         LCD_Position(2,0);
+ 120              		.loc 1 46 0 discriminator 1
+ 121 0084 0021     		movs	r1, #0
+ 122 0086 0220     		movs	r0, #2
+ 123 0088 FFF7FEFF 		bl	LCD_Position
+ 124              	.LVL10:
+  47:main.c        ****         LCD_PrintString(buff);
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccUH34tC.s 			page 4
+
+
+ 125              		.loc 1 47 0 discriminator 1
+ 126 008c 2046     		mov	r0, r4
+ 127 008e FFF7FEFF 		bl	LCD_PrintString
+ 128              	.LVL11:
+  48:main.c        ****         
+  49:main.c        ****         
+  50:main.c        ****         decimalpeso = peso % 100;
+ 129              		.loc 1 50 0 discriminator 1
+ 130 0092 6988     		ldrh	r1, [r5, #2]
+ 131 0094 154A     		ldr	r2, .L4+32
+ 132 0096 A2FB0132 		umull	r3, r2, r2, r1
+ 133 009a 5209     		lsrs	r2, r2, #5
+ 134 009c 6423     		movs	r3, #100
+ 135 009e 03FB1213 		mls	r3, r3, r2, r1
+ 136 00a2 DBB2     		uxtb	r3, r3
+ 137 00a4 AB73     		strb	r3, [r5, #14]
+  51:main.c        ****         valorpeso = peso/100;
+ 138              		.loc 1 51 0 discriminator 1
+ 139 00a6 D2B2     		uxtb	r2, r2
+ 140 00a8 EA73     		strb	r2, [r5, #15]
+  52:main.c        ****         sprintf(buff, "peso: %u.%u", valorpeso, decimalpeso);
+ 141              		.loc 1 52 0 discriminator 1
+ 142 00aa 1149     		ldr	r1, .L4+36
+ 143 00ac 2046     		mov	r0, r4
+ 144 00ae FFF7FEFF 		bl	sprintf
+ 145              	.LVL12:
+  53:main.c        ****         CyDelay(1000);
+ 146              		.loc 1 53 0 discriminator 1
+ 147 00b2 4FF47A70 		mov	r0, #1000
+ 148 00b6 FFF7FEFF 		bl	CyDelay
+ 149              	.LVL13:
+  54:main.c        ****         LCD_Position(3,0);
+ 150              		.loc 1 54 0 discriminator 1
+ 151 00ba 0021     		movs	r1, #0
+ 152 00bc 0320     		movs	r0, #3
+ 153 00be FFF7FEFF 		bl	LCD_Position
+ 154              	.LVL14:
+  55:main.c        ****         LCD_PrintString(buff);
+ 155              		.loc 1 55 0 discriminator 1
+ 156 00c2 2046     		mov	r0, r4
+ 157 00c4 FFF7FEFF 		bl	LCD_PrintString
+ 158              	.LVL15:
+ 159 00c8 A9E7     		b	.L2
+ 160              	.L5:
+ 161 00ca 00BF     		.align	2
+ 162              	.L4:
+ 163 00cc 00000000 		.word	.LANCHOR0
+ 164 00d0 6666EE41 		.word	1106142822
+ 165 00d4 66E69D42 		.word	1117644390
+ 166 00d8 00000000 		.word	buff
+ 167 00dc 00000000 		.word	.LC0
+ 168 00e0 14000000 		.word	.LC1
+ 169 00e4 CDCCCCCC 		.word	-858993459
+ 170 00e8 24000000 		.word	.LC2
+ 171 00ec 1F85EB51 		.word	1374389535
+ 172 00f0 34000000 		.word	.LC3
+ 173              		.cfi_endproc
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccUH34tC.s 			page 5
+
+
+ 174              	.LFE64:
+ 175              		.size	main, .-main
+ 176              		.global	pes
+ 177              		.global	temp
+ 178              		.global	valorpeso
+ 179              		.global	valortemp
+ 180              		.global	decimalpeso
+ 181              		.global	decimaltemp
+ 182              		.global	peso
+ 183              		.global	temperatura
+ 184              		.comm	buff,30,4
+ 185              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 186              		.align	2
+ 187              	.LC0:
+ 188 0000 74656D70 		.ascii	"temp_float: %.1f\000"
+ 188      5F666C6F 
+ 188      61743A20 
+ 188      252E3166 
+ 188      00
+ 189 0011 000000   		.space	3
+ 190              	.LC1:
+ 191 0014 7065735F 		.ascii	"pes_floar: %.2f\000"
+ 191      666C6F61 
+ 191      723A2025 
+ 191      2E326600 
+ 192              	.LC2:
+ 193 0024 74656D70 		.ascii	"temp: %u.%u  \000"
+ 193      3A202575 
+ 193      2E257520 
+ 193      2000
+ 194 0032 0000     		.space	2
+ 195              	.LC3:
+ 196 0034 7065736F 		.ascii	"peso: %u.%u\000"
+ 196      3A202575 
+ 196      2E257500 
+ 197              		.bss
+ 198              		.align	2
+ 199              		.set	.LANCHOR0,. + 0
+ 200              		.type	temperatura, %object
+ 201              		.size	temperatura, 2
+ 202              	temperatura:
+ 203 0000 0000     		.space	2
+ 204              		.type	peso, %object
+ 205              		.size	peso, 2
+ 206              	peso:
+ 207 0002 0000     		.space	2
+ 208              		.type	temp, %object
+ 209              		.size	temp, 4
+ 210              	temp:
+ 211 0004 00000000 		.space	4
+ 212              		.type	pes, %object
+ 213              		.size	pes, 4
+ 214              	pes:
+ 215 0008 00000000 		.space	4
+ 216              		.type	decimaltemp, %object
+ 217              		.size	decimaltemp, 1
+ 218              	decimaltemp:
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccUH34tC.s 			page 6
+
+
+ 219 000c 00       		.space	1
+ 220              		.type	valortemp, %object
+ 221              		.size	valortemp, 1
+ 222              	valortemp:
+ 223 000d 00       		.space	1
+ 224              		.type	decimalpeso, %object
+ 225              		.size	decimalpeso, 1
+ 226              	decimalpeso:
+ 227 000e 00       		.space	1
+ 228              		.type	valorpeso, %object
+ 229              		.size	valorpeso, 1
+ 230              	valorpeso:
+ 231 000f 00       		.space	1
+ 232              		.text
+ 233              	.Letext0:
+ 234              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 235              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 236              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 237              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 238              		.file 6 "Generated_Source\\PSoC5/LCD.h"
+ 239              		.file 7 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 240              		.file 8 "Generated_Source\\PSoC5/CyLib.h"
+ 241              		.section	.debug_info,"",%progbits
+ 242              	.Ldebug_info0:
+ 243 0000 02030000 		.4byte	0x302
+ 244 0004 0400     		.2byte	0x4
+ 245 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 246 000a 04       		.byte	0x4
+ 247 000b 01       		.uleb128 0x1
+ 248 000c 49000000 		.4byte	.LASF32
+ 249 0010 0C       		.byte	0xc
+ 250 0011 7F010000 		.4byte	.LASF33
+ 251 0015 A5010000 		.4byte	.LASF34
+ 252 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 253 001d 00000000 		.4byte	0
+ 254 0021 00000000 		.4byte	.Ldebug_line0
+ 255 0025 02       		.uleb128 0x2
+ 256 0026 01       		.byte	0x1
+ 257 0027 06       		.byte	0x6
+ 258 0028 FC010000 		.4byte	.LASF0
+ 259 002c 02       		.uleb128 0x2
+ 260 002d 01       		.byte	0x1
+ 261 002e 08       		.byte	0x8
+ 262 002f 3B000000 		.4byte	.LASF1
+ 263 0033 02       		.uleb128 0x2
+ 264 0034 02       		.byte	0x2
+ 265 0035 05       		.byte	0x5
+ 266 0036 8B010000 		.4byte	.LASF2
+ 267 003a 02       		.uleb128 0x2
+ 268 003b 02       		.byte	0x2
+ 269 003c 07       		.byte	0x7
+ 270 003d EE000000 		.4byte	.LASF3
+ 271 0041 03       		.uleb128 0x3
+ 272 0042 00000000 		.4byte	.LASF9
+ 273 0046 02       		.byte	0x2
+ 274 0047 3F       		.byte	0x3f
+ 275 0048 4C000000 		.4byte	0x4c
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccUH34tC.s 			page 7
+
+
+ 276 004c 02       		.uleb128 0x2
+ 277 004d 04       		.byte	0x4
+ 278 004e 05       		.byte	0x5
+ 279 004f E7010000 		.4byte	.LASF4
+ 280 0053 02       		.uleb128 0x2
+ 281 0054 04       		.byte	0x4
+ 282 0055 07       		.byte	0x7
+ 283 0056 D7000000 		.4byte	.LASF5
+ 284 005a 02       		.uleb128 0x2
+ 285 005b 08       		.byte	0x8
+ 286 005c 05       		.byte	0x5
+ 287 005d 71010000 		.4byte	.LASF6
+ 288 0061 02       		.uleb128 0x2
+ 289 0062 08       		.byte	0x8
+ 290 0063 07       		.byte	0x7
+ 291 0064 3D010000 		.4byte	.LASF7
+ 292 0068 04       		.uleb128 0x4
+ 293 0069 04       		.byte	0x4
+ 294 006a 05       		.byte	0x5
+ 295 006b 696E7400 		.ascii	"int\000"
+ 296 006f 02       		.uleb128 0x2
+ 297 0070 04       		.byte	0x4
+ 298 0071 07       		.byte	0x7
+ 299 0072 30010000 		.4byte	.LASF8
+ 300 0076 03       		.uleb128 0x3
+ 301 0077 60010000 		.4byte	.LASF10
+ 302 007b 03       		.byte	0x3
+ 303 007c 2C       		.byte	0x2c
+ 304 007d 41000000 		.4byte	0x41
+ 305 0081 05       		.uleb128 0x5
+ 306 0082 9F010000 		.4byte	.LASF11
+ 307 0086 04       		.byte	0x4
+ 308 0087 E801     		.2byte	0x1e8
+ 309 0089 2C000000 		.4byte	0x2c
+ 310 008d 05       		.uleb128 0x5
+ 311 008e 29010000 		.4byte	.LASF12
+ 312 0092 04       		.byte	0x4
+ 313 0093 E901     		.2byte	0x1e9
+ 314 0095 3A000000 		.4byte	0x3a
+ 315 0099 02       		.uleb128 0x2
+ 316 009a 04       		.byte	0x4
+ 317 009b 04       		.byte	0x4
+ 318 009c 1B000000 		.4byte	.LASF13
+ 319 00a0 02       		.uleb128 0x2
+ 320 00a1 08       		.byte	0x8
+ 321 00a2 04       		.byte	0x4
+ 322 00a3 13010000 		.4byte	.LASF14
+ 323 00a7 02       		.uleb128 0x2
+ 324 00a8 01       		.byte	0x1
+ 325 00a9 08       		.byte	0x8
+ 326 00aa 86010000 		.4byte	.LASF15
+ 327 00ae 02       		.uleb128 0x2
+ 328 00af 04       		.byte	0x4
+ 329 00b0 07       		.byte	0x7
+ 330 00b1 68010000 		.4byte	.LASF16
+ 331 00b5 02       		.uleb128 0x2
+ 332 00b6 08       		.byte	0x8
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccUH34tC.s 			page 8
+
+
+ 333 00b7 04       		.byte	0x4
+ 334 00b8 F0010000 		.4byte	.LASF17
+ 335 00bc 06       		.uleb128 0x6
+ 336 00bd 1A010000 		.4byte	.LASF35
+ 337 00c1 01       		.byte	0x1
+ 338 00c2 12       		.byte	0x12
+ 339 00c3 68000000 		.4byte	0x68
+ 340 00c7 00000000 		.4byte	.LFB64
+ 341 00cb F4000000 		.4byte	.LFE64-.LFB64
+ 342 00cf 01       		.uleb128 0x1
+ 343 00d0 9C       		.byte	0x9c
+ 344 00d1 14020000 		.4byte	0x214
+ 345 00d5 07       		.uleb128 0x7
+ 346 00d6 08000000 		.4byte	.LVL0
+ 347 00da CE020000 		.4byte	0x2ce
+ 348 00de 08       		.uleb128 0x8
+ 349 00df 34000000 		.4byte	.LVL2
+ 350 00e3 D9020000 		.4byte	0x2d9
+ 351 00e7 FB000000 		.4byte	0xfb
+ 352 00eb 09       		.uleb128 0x9
+ 353 00ec 01       		.uleb128 0x1
+ 354 00ed 50       		.byte	0x50
+ 355 00ee 02       		.uleb128 0x2
+ 356 00ef 74       		.byte	0x74
+ 357 00f0 00       		.sleb128 0
+ 358 00f1 09       		.uleb128 0x9
+ 359 00f2 01       		.uleb128 0x1
+ 360 00f3 51       		.byte	0x51
+ 361 00f4 05       		.uleb128 0x5
+ 362 00f5 03       		.byte	0x3
+ 363 00f6 00000000 		.4byte	.LC0
+ 364 00fa 00       		.byte	0
+ 365 00fb 08       		.uleb128 0x8
+ 366 00fc 3C000000 		.4byte	.LVL3
+ 367 0100 E4020000 		.4byte	0x2e4
+ 368 0104 13010000 		.4byte	0x113
+ 369 0108 09       		.uleb128 0x9
+ 370 0109 01       		.uleb128 0x1
+ 371 010a 50       		.byte	0x50
+ 372 010b 01       		.uleb128 0x1
+ 373 010c 30       		.byte	0x30
+ 374 010d 09       		.uleb128 0x9
+ 375 010e 01       		.uleb128 0x1
+ 376 010f 51       		.byte	0x51
+ 377 0110 01       		.uleb128 0x1
+ 378 0111 30       		.byte	0x30
+ 379 0112 00       		.byte	0
+ 380 0113 08       		.uleb128 0x8
+ 381 0114 42000000 		.4byte	.LVL4
+ 382 0118 EF020000 		.4byte	0x2ef
+ 383 011c 27010000 		.4byte	0x127
+ 384 0120 09       		.uleb128 0x9
+ 385 0121 01       		.uleb128 0x1
+ 386 0122 50       		.byte	0x50
+ 387 0123 02       		.uleb128 0x2
+ 388 0124 74       		.byte	0x74
+ 389 0125 00       		.sleb128 0
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccUH34tC.s 			page 9
+
+
+ 390 0126 00       		.byte	0
+ 391 0127 08       		.uleb128 0x8
+ 392 0128 54000000 		.4byte	.LVL6
+ 393 012c D9020000 		.4byte	0x2d9
+ 394 0130 44010000 		.4byte	0x144
+ 395 0134 09       		.uleb128 0x9
+ 396 0135 01       		.uleb128 0x1
+ 397 0136 50       		.byte	0x50
+ 398 0137 02       		.uleb128 0x2
+ 399 0138 74       		.byte	0x74
+ 400 0139 00       		.sleb128 0
+ 401 013a 09       		.uleb128 0x9
+ 402 013b 01       		.uleb128 0x1
+ 403 013c 51       		.byte	0x51
+ 404 013d 05       		.uleb128 0x5
+ 405 013e 03       		.byte	0x3
+ 406 013f 14000000 		.4byte	.LC1
+ 407 0143 00       		.byte	0
+ 408 0144 08       		.uleb128 0x8
+ 409 0145 5C000000 		.4byte	.LVL7
+ 410 0149 E4020000 		.4byte	0x2e4
+ 411 014d 5C010000 		.4byte	0x15c
+ 412 0151 09       		.uleb128 0x9
+ 413 0152 01       		.uleb128 0x1
+ 414 0153 50       		.byte	0x50
+ 415 0154 01       		.uleb128 0x1
+ 416 0155 31       		.byte	0x31
+ 417 0156 09       		.uleb128 0x9
+ 418 0157 01       		.uleb128 0x1
+ 419 0158 51       		.byte	0x51
+ 420 0159 01       		.uleb128 0x1
+ 421 015a 30       		.byte	0x30
+ 422 015b 00       		.byte	0
+ 423 015c 08       		.uleb128 0x8
+ 424 015d 62000000 		.4byte	.LVL8
+ 425 0161 EF020000 		.4byte	0x2ef
+ 426 0165 70010000 		.4byte	0x170
+ 427 0169 09       		.uleb128 0x9
+ 428 016a 01       		.uleb128 0x1
+ 429 016b 50       		.byte	0x50
+ 430 016c 02       		.uleb128 0x2
+ 431 016d 74       		.byte	0x74
+ 432 016e 00       		.sleb128 0
+ 433 016f 00       		.byte	0
+ 434 0170 08       		.uleb128 0x8
+ 435 0171 84000000 		.4byte	.LVL9
+ 436 0175 D9020000 		.4byte	0x2d9
+ 437 0179 8D010000 		.4byte	0x18d
+ 438 017d 09       		.uleb128 0x9
+ 439 017e 01       		.uleb128 0x1
+ 440 017f 50       		.byte	0x50
+ 441 0180 02       		.uleb128 0x2
+ 442 0181 74       		.byte	0x74
+ 443 0182 00       		.sleb128 0
+ 444 0183 09       		.uleb128 0x9
+ 445 0184 01       		.uleb128 0x1
+ 446 0185 51       		.byte	0x51
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccUH34tC.s 			page 10
+
+
+ 447 0186 05       		.uleb128 0x5
+ 448 0187 03       		.byte	0x3
+ 449 0188 24000000 		.4byte	.LC2
+ 450 018c 00       		.byte	0
+ 451 018d 08       		.uleb128 0x8
+ 452 018e 8C000000 		.4byte	.LVL10
+ 453 0192 E4020000 		.4byte	0x2e4
+ 454 0196 A5010000 		.4byte	0x1a5
+ 455 019a 09       		.uleb128 0x9
+ 456 019b 01       		.uleb128 0x1
+ 457 019c 50       		.byte	0x50
+ 458 019d 01       		.uleb128 0x1
+ 459 019e 32       		.byte	0x32
+ 460 019f 09       		.uleb128 0x9
+ 461 01a0 01       		.uleb128 0x1
+ 462 01a1 51       		.byte	0x51
+ 463 01a2 01       		.uleb128 0x1
+ 464 01a3 30       		.byte	0x30
+ 465 01a4 00       		.byte	0
+ 466 01a5 08       		.uleb128 0x8
+ 467 01a6 92000000 		.4byte	.LVL11
+ 468 01aa EF020000 		.4byte	0x2ef
+ 469 01ae B9010000 		.4byte	0x1b9
+ 470 01b2 09       		.uleb128 0x9
+ 471 01b3 01       		.uleb128 0x1
+ 472 01b4 50       		.byte	0x50
+ 473 01b5 02       		.uleb128 0x2
+ 474 01b6 74       		.byte	0x74
+ 475 01b7 00       		.sleb128 0
+ 476 01b8 00       		.byte	0
+ 477 01b9 08       		.uleb128 0x8
+ 478 01ba B2000000 		.4byte	.LVL12
+ 479 01be D9020000 		.4byte	0x2d9
+ 480 01c2 D6010000 		.4byte	0x1d6
+ 481 01c6 09       		.uleb128 0x9
+ 482 01c7 01       		.uleb128 0x1
+ 483 01c8 50       		.byte	0x50
+ 484 01c9 02       		.uleb128 0x2
+ 485 01ca 74       		.byte	0x74
+ 486 01cb 00       		.sleb128 0
+ 487 01cc 09       		.uleb128 0x9
+ 488 01cd 01       		.uleb128 0x1
+ 489 01ce 51       		.byte	0x51
+ 490 01cf 05       		.uleb128 0x5
+ 491 01d0 03       		.byte	0x3
+ 492 01d1 34000000 		.4byte	.LC3
+ 493 01d5 00       		.byte	0
+ 494 01d6 08       		.uleb128 0x8
+ 495 01d7 BA000000 		.4byte	.LVL13
+ 496 01db FA020000 		.4byte	0x2fa
+ 497 01df EB010000 		.4byte	0x1eb
+ 498 01e3 09       		.uleb128 0x9
+ 499 01e4 01       		.uleb128 0x1
+ 500 01e5 50       		.byte	0x50
+ 501 01e6 03       		.uleb128 0x3
+ 502 01e7 0A       		.byte	0xa
+ 503 01e8 E803     		.2byte	0x3e8
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccUH34tC.s 			page 11
+
+
+ 504 01ea 00       		.byte	0
+ 505 01eb 08       		.uleb128 0x8
+ 506 01ec C2000000 		.4byte	.LVL14
+ 507 01f0 E4020000 		.4byte	0x2e4
+ 508 01f4 03020000 		.4byte	0x203
+ 509 01f8 09       		.uleb128 0x9
+ 510 01f9 01       		.uleb128 0x1
+ 511 01fa 50       		.byte	0x50
+ 512 01fb 01       		.uleb128 0x1
+ 513 01fc 33       		.byte	0x33
+ 514 01fd 09       		.uleb128 0x9
+ 515 01fe 01       		.uleb128 0x1
+ 516 01ff 51       		.byte	0x51
+ 517 0200 01       		.uleb128 0x1
+ 518 0201 30       		.byte	0x30
+ 519 0202 00       		.byte	0
+ 520 0203 0A       		.uleb128 0xa
+ 521 0204 C8000000 		.4byte	.LVL15
+ 522 0208 EF020000 		.4byte	0x2ef
+ 523 020c 09       		.uleb128 0x9
+ 524 020d 01       		.uleb128 0x1
+ 525 020e 50       		.byte	0x50
+ 526 020f 02       		.uleb128 0x2
+ 527 0210 74       		.byte	0x74
+ 528 0211 00       		.sleb128 0
+ 529 0212 00       		.byte	0
+ 530 0213 00       		.byte	0
+ 531 0214 0B       		.uleb128 0xb
+ 532 0215 01010000 		.4byte	.LASF18
+ 533 0219 05       		.byte	0x5
+ 534 021a 1207     		.2byte	0x712
+ 535 021c 20020000 		.4byte	0x220
+ 536 0220 0C       		.uleb128 0xc
+ 537 0221 76000000 		.4byte	0x76
+ 538 0225 0D       		.uleb128 0xd
+ 539 0226 A7000000 		.4byte	0xa7
+ 540 022a 35020000 		.4byte	0x235
+ 541 022e 0E       		.uleb128 0xe
+ 542 022f AE000000 		.4byte	0xae
+ 543 0233 1D       		.byte	0x1d
+ 544 0234 00       		.byte	0
+ 545 0235 0F       		.uleb128 0xf
+ 546 0236 0E010000 		.4byte	.LASF19
+ 547 023a 01       		.byte	0x1
+ 548 023b 05       		.byte	0x5
+ 549 023c 25020000 		.4byte	0x225
+ 550 0240 05       		.uleb128 0x5
+ 551 0241 03       		.byte	0x3
+ 552 0242 00000000 		.4byte	buff
+ 553 0246 0F       		.uleb128 0xf
+ 554 0247 0F000000 		.4byte	.LASF20
+ 555 024b 01       		.byte	0x1
+ 556 024c 08       		.byte	0x8
+ 557 024d 8D000000 		.4byte	0x8d
+ 558 0251 05       		.uleb128 0x5
+ 559 0252 03       		.byte	0x3
+ 560 0253 00000000 		.4byte	temperatura
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccUH34tC.s 			page 12
+
+
+ 561 0257 0F       		.uleb128 0xf
+ 562 0258 0A000000 		.4byte	.LASF21
+ 563 025c 01       		.byte	0x1
+ 564 025d 09       		.byte	0x9
+ 565 025e 8D000000 		.4byte	0x8d
+ 566 0262 05       		.uleb128 0x5
+ 567 0263 03       		.byte	0x3
+ 568 0264 00000000 		.4byte	peso
+ 569 0268 0F       		.uleb128 0xf
+ 570 0269 54010000 		.4byte	.LASF22
+ 571 026d 01       		.byte	0x1
+ 572 026e 0A       		.byte	0xa
+ 573 026f 81000000 		.4byte	0x81
+ 574 0273 05       		.uleb128 0x5
+ 575 0274 03       		.byte	0x3
+ 576 0275 00000000 		.4byte	decimaltemp
+ 577 0279 0F       		.uleb128 0xf
+ 578 027a 08020000 		.4byte	.LASF23
+ 579 027e 01       		.byte	0x1
+ 580 027f 0B       		.byte	0xb
+ 581 0280 81000000 		.4byte	0x81
+ 582 0284 05       		.uleb128 0x5
+ 583 0285 03       		.byte	0x3
+ 584 0286 00000000 		.4byte	decimalpeso
+ 585 028a 0F       		.uleb128 0xf
+ 586 028b 1F010000 		.4byte	.LASF24
+ 587 028f 01       		.byte	0x1
+ 588 0290 0C       		.byte	0xc
+ 589 0291 81000000 		.4byte	0x81
+ 590 0295 05       		.uleb128 0x5
+ 591 0296 03       		.byte	0x3
+ 592 0297 00000000 		.4byte	valortemp
+ 593 029b 0F       		.uleb128 0xf
+ 594 029c 95010000 		.4byte	.LASF25
+ 595 02a0 01       		.byte	0x1
+ 596 02a1 0D       		.byte	0xd
+ 597 02a2 81000000 		.4byte	0x81
+ 598 02a6 05       		.uleb128 0x5
+ 599 02a7 03       		.byte	0x3
+ 600 02a8 00000000 		.4byte	valorpeso
+ 601 02ac 0F       		.uleb128 0xf
+ 602 02ad E9000000 		.4byte	.LASF26
+ 603 02b1 01       		.byte	0x1
+ 604 02b2 0F       		.byte	0xf
+ 605 02b3 99000000 		.4byte	0x99
+ 606 02b7 05       		.uleb128 0x5
+ 607 02b8 03       		.byte	0x3
+ 608 02b9 00000000 		.4byte	temp
+ 609 02bd 10       		.uleb128 0x10
+ 610 02be 70657300 		.ascii	"pes\000"
+ 611 02c2 01       		.byte	0x1
+ 612 02c3 10       		.byte	0x10
+ 613 02c4 99000000 		.4byte	0x99
+ 614 02c8 05       		.uleb128 0x5
+ 615 02c9 03       		.byte	0x3
+ 616 02ca 00000000 		.4byte	pes
+ 617 02ce 11       		.uleb128 0x11
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccUH34tC.s 			page 13
+
+
+ 618 02cf 21000000 		.4byte	.LASF27
+ 619 02d3 21000000 		.4byte	.LASF27
+ 620 02d7 06       		.byte	0x6
+ 621 02d8 38       		.byte	0x38
+ 622 02d9 11       		.uleb128 0x11
+ 623 02da 21020000 		.4byte	.LASF28
+ 624 02de 21020000 		.4byte	.LASF28
+ 625 02e2 07       		.byte	0x7
+ 626 02e3 E7       		.byte	0xe7
+ 627 02e4 11       		.uleb128 0x11
+ 628 02e5 14020000 		.4byte	.LASF29
+ 629 02e9 14020000 		.4byte	.LASF29
+ 630 02ed 06       		.byte	0x6
+ 631 02ee 3D       		.byte	0x3d
+ 632 02ef 11       		.uleb128 0x11
+ 633 02f0 2B000000 		.4byte	.LASF30
+ 634 02f4 2B000000 		.4byte	.LASF30
+ 635 02f8 06       		.byte	0x6
+ 636 02f9 3C       		.byte	0x3c
+ 637 02fa 11       		.uleb128 0x11
+ 638 02fb 29020000 		.4byte	.LASF31
+ 639 02ff 29020000 		.4byte	.LASF31
+ 640 0303 08       		.byte	0x8
+ 641 0304 76       		.byte	0x76
+ 642 0305 00       		.byte	0
+ 643              		.section	.debug_abbrev,"",%progbits
+ 644              	.Ldebug_abbrev0:
+ 645 0000 01       		.uleb128 0x1
+ 646 0001 11       		.uleb128 0x11
+ 647 0002 01       		.byte	0x1
+ 648 0003 25       		.uleb128 0x25
+ 649 0004 0E       		.uleb128 0xe
+ 650 0005 13       		.uleb128 0x13
+ 651 0006 0B       		.uleb128 0xb
+ 652 0007 03       		.uleb128 0x3
+ 653 0008 0E       		.uleb128 0xe
+ 654 0009 1B       		.uleb128 0x1b
+ 655 000a 0E       		.uleb128 0xe
+ 656 000b 55       		.uleb128 0x55
+ 657 000c 17       		.uleb128 0x17
+ 658 000d 11       		.uleb128 0x11
+ 659 000e 01       		.uleb128 0x1
+ 660 000f 10       		.uleb128 0x10
+ 661 0010 17       		.uleb128 0x17
+ 662 0011 00       		.byte	0
+ 663 0012 00       		.byte	0
+ 664 0013 02       		.uleb128 0x2
+ 665 0014 24       		.uleb128 0x24
+ 666 0015 00       		.byte	0
+ 667 0016 0B       		.uleb128 0xb
+ 668 0017 0B       		.uleb128 0xb
+ 669 0018 3E       		.uleb128 0x3e
+ 670 0019 0B       		.uleb128 0xb
+ 671 001a 03       		.uleb128 0x3
+ 672 001b 0E       		.uleb128 0xe
+ 673 001c 00       		.byte	0
+ 674 001d 00       		.byte	0
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccUH34tC.s 			page 14
+
+
+ 675 001e 03       		.uleb128 0x3
+ 676 001f 16       		.uleb128 0x16
+ 677 0020 00       		.byte	0
+ 678 0021 03       		.uleb128 0x3
+ 679 0022 0E       		.uleb128 0xe
+ 680 0023 3A       		.uleb128 0x3a
+ 681 0024 0B       		.uleb128 0xb
+ 682 0025 3B       		.uleb128 0x3b
+ 683 0026 0B       		.uleb128 0xb
+ 684 0027 49       		.uleb128 0x49
+ 685 0028 13       		.uleb128 0x13
+ 686 0029 00       		.byte	0
+ 687 002a 00       		.byte	0
+ 688 002b 04       		.uleb128 0x4
+ 689 002c 24       		.uleb128 0x24
+ 690 002d 00       		.byte	0
+ 691 002e 0B       		.uleb128 0xb
+ 692 002f 0B       		.uleb128 0xb
+ 693 0030 3E       		.uleb128 0x3e
+ 694 0031 0B       		.uleb128 0xb
+ 695 0032 03       		.uleb128 0x3
+ 696 0033 08       		.uleb128 0x8
+ 697 0034 00       		.byte	0
+ 698 0035 00       		.byte	0
+ 699 0036 05       		.uleb128 0x5
+ 700 0037 16       		.uleb128 0x16
+ 701 0038 00       		.byte	0
+ 702 0039 03       		.uleb128 0x3
+ 703 003a 0E       		.uleb128 0xe
+ 704 003b 3A       		.uleb128 0x3a
+ 705 003c 0B       		.uleb128 0xb
+ 706 003d 3B       		.uleb128 0x3b
+ 707 003e 05       		.uleb128 0x5
+ 708 003f 49       		.uleb128 0x49
+ 709 0040 13       		.uleb128 0x13
+ 710 0041 00       		.byte	0
+ 711 0042 00       		.byte	0
+ 712 0043 06       		.uleb128 0x6
+ 713 0044 2E       		.uleb128 0x2e
+ 714 0045 01       		.byte	0x1
+ 715 0046 3F       		.uleb128 0x3f
+ 716 0047 19       		.uleb128 0x19
+ 717 0048 03       		.uleb128 0x3
+ 718 0049 0E       		.uleb128 0xe
+ 719 004a 3A       		.uleb128 0x3a
+ 720 004b 0B       		.uleb128 0xb
+ 721 004c 3B       		.uleb128 0x3b
+ 722 004d 0B       		.uleb128 0xb
+ 723 004e 27       		.uleb128 0x27
+ 724 004f 19       		.uleb128 0x19
+ 725 0050 49       		.uleb128 0x49
+ 726 0051 13       		.uleb128 0x13
+ 727 0052 8701     		.uleb128 0x87
+ 728 0054 19       		.uleb128 0x19
+ 729 0055 11       		.uleb128 0x11
+ 730 0056 01       		.uleb128 0x1
+ 731 0057 12       		.uleb128 0x12
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccUH34tC.s 			page 15
+
+
+ 732 0058 06       		.uleb128 0x6
+ 733 0059 40       		.uleb128 0x40
+ 734 005a 18       		.uleb128 0x18
+ 735 005b 9642     		.uleb128 0x2116
+ 736 005d 19       		.uleb128 0x19
+ 737 005e 01       		.uleb128 0x1
+ 738 005f 13       		.uleb128 0x13
+ 739 0060 00       		.byte	0
+ 740 0061 00       		.byte	0
+ 741 0062 07       		.uleb128 0x7
+ 742 0063 898201   		.uleb128 0x4109
+ 743 0066 00       		.byte	0
+ 744 0067 11       		.uleb128 0x11
+ 745 0068 01       		.uleb128 0x1
+ 746 0069 31       		.uleb128 0x31
+ 747 006a 13       		.uleb128 0x13
+ 748 006b 00       		.byte	0
+ 749 006c 00       		.byte	0
+ 750 006d 08       		.uleb128 0x8
+ 751 006e 898201   		.uleb128 0x4109
+ 752 0071 01       		.byte	0x1
+ 753 0072 11       		.uleb128 0x11
+ 754 0073 01       		.uleb128 0x1
+ 755 0074 31       		.uleb128 0x31
+ 756 0075 13       		.uleb128 0x13
+ 757 0076 01       		.uleb128 0x1
+ 758 0077 13       		.uleb128 0x13
+ 759 0078 00       		.byte	0
+ 760 0079 00       		.byte	0
+ 761 007a 09       		.uleb128 0x9
+ 762 007b 8A8201   		.uleb128 0x410a
+ 763 007e 00       		.byte	0
+ 764 007f 02       		.uleb128 0x2
+ 765 0080 18       		.uleb128 0x18
+ 766 0081 9142     		.uleb128 0x2111
+ 767 0083 18       		.uleb128 0x18
+ 768 0084 00       		.byte	0
+ 769 0085 00       		.byte	0
+ 770 0086 0A       		.uleb128 0xa
+ 771 0087 898201   		.uleb128 0x4109
+ 772 008a 01       		.byte	0x1
+ 773 008b 11       		.uleb128 0x11
+ 774 008c 01       		.uleb128 0x1
+ 775 008d 31       		.uleb128 0x31
+ 776 008e 13       		.uleb128 0x13
+ 777 008f 00       		.byte	0
+ 778 0090 00       		.byte	0
+ 779 0091 0B       		.uleb128 0xb
+ 780 0092 34       		.uleb128 0x34
+ 781 0093 00       		.byte	0
+ 782 0094 03       		.uleb128 0x3
+ 783 0095 0E       		.uleb128 0xe
+ 784 0096 3A       		.uleb128 0x3a
+ 785 0097 0B       		.uleb128 0xb
+ 786 0098 3B       		.uleb128 0x3b
+ 787 0099 05       		.uleb128 0x5
+ 788 009a 49       		.uleb128 0x49
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccUH34tC.s 			page 16
+
+
+ 789 009b 13       		.uleb128 0x13
+ 790 009c 3F       		.uleb128 0x3f
+ 791 009d 19       		.uleb128 0x19
+ 792 009e 3C       		.uleb128 0x3c
+ 793 009f 19       		.uleb128 0x19
+ 794 00a0 00       		.byte	0
+ 795 00a1 00       		.byte	0
+ 796 00a2 0C       		.uleb128 0xc
+ 797 00a3 35       		.uleb128 0x35
+ 798 00a4 00       		.byte	0
+ 799 00a5 49       		.uleb128 0x49
+ 800 00a6 13       		.uleb128 0x13
+ 801 00a7 00       		.byte	0
+ 802 00a8 00       		.byte	0
+ 803 00a9 0D       		.uleb128 0xd
+ 804 00aa 01       		.uleb128 0x1
+ 805 00ab 01       		.byte	0x1
+ 806 00ac 49       		.uleb128 0x49
+ 807 00ad 13       		.uleb128 0x13
+ 808 00ae 01       		.uleb128 0x1
+ 809 00af 13       		.uleb128 0x13
+ 810 00b0 00       		.byte	0
+ 811 00b1 00       		.byte	0
+ 812 00b2 0E       		.uleb128 0xe
+ 813 00b3 21       		.uleb128 0x21
+ 814 00b4 00       		.byte	0
+ 815 00b5 49       		.uleb128 0x49
+ 816 00b6 13       		.uleb128 0x13
+ 817 00b7 2F       		.uleb128 0x2f
+ 818 00b8 0B       		.uleb128 0xb
+ 819 00b9 00       		.byte	0
+ 820 00ba 00       		.byte	0
+ 821 00bb 0F       		.uleb128 0xf
+ 822 00bc 34       		.uleb128 0x34
+ 823 00bd 00       		.byte	0
+ 824 00be 03       		.uleb128 0x3
+ 825 00bf 0E       		.uleb128 0xe
+ 826 00c0 3A       		.uleb128 0x3a
+ 827 00c1 0B       		.uleb128 0xb
+ 828 00c2 3B       		.uleb128 0x3b
+ 829 00c3 0B       		.uleb128 0xb
+ 830 00c4 49       		.uleb128 0x49
+ 831 00c5 13       		.uleb128 0x13
+ 832 00c6 3F       		.uleb128 0x3f
+ 833 00c7 19       		.uleb128 0x19
+ 834 00c8 02       		.uleb128 0x2
+ 835 00c9 18       		.uleb128 0x18
+ 836 00ca 00       		.byte	0
+ 837 00cb 00       		.byte	0
+ 838 00cc 10       		.uleb128 0x10
+ 839 00cd 34       		.uleb128 0x34
+ 840 00ce 00       		.byte	0
+ 841 00cf 03       		.uleb128 0x3
+ 842 00d0 08       		.uleb128 0x8
+ 843 00d1 3A       		.uleb128 0x3a
+ 844 00d2 0B       		.uleb128 0xb
+ 845 00d3 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccUH34tC.s 			page 17
+
+
+ 846 00d4 0B       		.uleb128 0xb
+ 847 00d5 49       		.uleb128 0x49
+ 848 00d6 13       		.uleb128 0x13
+ 849 00d7 3F       		.uleb128 0x3f
+ 850 00d8 19       		.uleb128 0x19
+ 851 00d9 02       		.uleb128 0x2
+ 852 00da 18       		.uleb128 0x18
+ 853 00db 00       		.byte	0
+ 854 00dc 00       		.byte	0
+ 855 00dd 11       		.uleb128 0x11
+ 856 00de 2E       		.uleb128 0x2e
+ 857 00df 00       		.byte	0
+ 858 00e0 3F       		.uleb128 0x3f
+ 859 00e1 19       		.uleb128 0x19
+ 860 00e2 3C       		.uleb128 0x3c
+ 861 00e3 19       		.uleb128 0x19
+ 862 00e4 6E       		.uleb128 0x6e
+ 863 00e5 0E       		.uleb128 0xe
+ 864 00e6 03       		.uleb128 0x3
+ 865 00e7 0E       		.uleb128 0xe
+ 866 00e8 3A       		.uleb128 0x3a
+ 867 00e9 0B       		.uleb128 0xb
+ 868 00ea 3B       		.uleb128 0x3b
+ 869 00eb 0B       		.uleb128 0xb
+ 870 00ec 00       		.byte	0
+ 871 00ed 00       		.byte	0
+ 872 00ee 00       		.byte	0
+ 873              		.section	.debug_aranges,"",%progbits
+ 874 0000 1C000000 		.4byte	0x1c
+ 875 0004 0200     		.2byte	0x2
+ 876 0006 00000000 		.4byte	.Ldebug_info0
+ 877 000a 04       		.byte	0x4
+ 878 000b 00       		.byte	0
+ 879 000c 0000     		.2byte	0
+ 880 000e 0000     		.2byte	0
+ 881 0010 00000000 		.4byte	.LFB64
+ 882 0014 F4000000 		.4byte	.LFE64-.LFB64
+ 883 0018 00000000 		.4byte	0
+ 884 001c 00000000 		.4byte	0
+ 885              		.section	.debug_ranges,"",%progbits
+ 886              	.Ldebug_ranges0:
+ 887 0000 00000000 		.4byte	.LFB64
+ 888 0004 F4000000 		.4byte	.LFE64
+ 889 0008 00000000 		.4byte	0
+ 890 000c 00000000 		.4byte	0
+ 891              		.section	.debug_line,"",%progbits
+ 892              	.Ldebug_line0:
+ 893 0000 43020000 		.section	.debug_str,"MS",%progbits,1
+ 893      0200D301 
+ 893      00000201 
+ 893      FB0E0D00 
+ 893      01010101 
+ 894              	.LASF9:
+ 895 0000 5F5F696E 		.ascii	"__int32_t\000"
+ 895      7433325F 
+ 895      7400
+ 896              	.LASF21:
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccUH34tC.s 			page 18
+
+
+ 897 000a 7065736F 		.ascii	"peso\000"
+ 897      00
+ 898              	.LASF20:
+ 899 000f 74656D70 		.ascii	"temperatura\000"
+ 899      65726174 
+ 899      75726100 
+ 900              	.LASF13:
+ 901 001b 666C6F61 		.ascii	"float\000"
+ 901      7400
+ 902              	.LASF27:
+ 903 0021 4C43445F 		.ascii	"LCD_Start\000"
+ 903      53746172 
+ 903      7400
+ 904              	.LASF30:
+ 905 002b 4C43445F 		.ascii	"LCD_PrintString\000"
+ 905      5072696E 
+ 905      74537472 
+ 905      696E6700 
+ 906              	.LASF1:
+ 907 003b 756E7369 		.ascii	"unsigned char\000"
+ 907      676E6564 
+ 907      20636861 
+ 907      7200
+ 908              	.LASF32:
+ 909 0049 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 909      43313120 
+ 909      352E342E 
+ 909      31203230 
+ 909      31363036 
+ 910 007c 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 910      20726576 
+ 910      6973696F 
+ 910      6E203233 
+ 910      37373135 
+ 911 00af 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 911      66756E63 
+ 911      74696F6E 
+ 911      2D736563 
+ 911      74696F6E 
+ 912              	.LASF5:
+ 913 00d7 6C6F6E67 		.ascii	"long unsigned int\000"
+ 913      20756E73 
+ 913      69676E65 
+ 913      6420696E 
+ 913      7400
+ 914              	.LASF26:
+ 915 00e9 74656D70 		.ascii	"temp\000"
+ 915      00
+ 916              	.LASF3:
+ 917 00ee 73686F72 		.ascii	"short unsigned int\000"
+ 917      7420756E 
+ 917      7369676E 
+ 917      65642069 
+ 917      6E7400
+ 918              	.LASF18:
+ 919 0101 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 919      52784275 
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccUH34tC.s 			page 19
+
+
+ 919      66666572 
+ 919      00
+ 920              	.LASF19:
+ 921 010e 62756666 		.ascii	"buff\000"
+ 921      00
+ 922              	.LASF14:
+ 923 0113 646F7562 		.ascii	"double\000"
+ 923      6C6500
+ 924              	.LASF35:
+ 925 011a 6D61696E 		.ascii	"main\000"
+ 925      00
+ 926              	.LASF24:
+ 927 011f 76616C6F 		.ascii	"valortemp\000"
+ 927      7274656D 
+ 927      7000
+ 928              	.LASF12:
+ 929 0129 75696E74 		.ascii	"uint16\000"
+ 929      313600
+ 930              	.LASF8:
+ 931 0130 756E7369 		.ascii	"unsigned int\000"
+ 931      676E6564 
+ 931      20696E74 
+ 931      00
+ 932              	.LASF7:
+ 933 013d 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 933      206C6F6E 
+ 933      6720756E 
+ 933      7369676E 
+ 933      65642069 
+ 934              	.LASF22:
+ 935 0154 64656369 		.ascii	"decimaltemp\000"
+ 935      6D616C74 
+ 935      656D7000 
+ 936              	.LASF10:
+ 937 0160 696E7433 		.ascii	"int32_t\000"
+ 937      325F7400 
+ 938              	.LASF16:
+ 939 0168 73697A65 		.ascii	"sizetype\000"
+ 939      74797065 
+ 939      00
+ 940              	.LASF6:
+ 941 0171 6C6F6E67 		.ascii	"long long int\000"
+ 941      206C6F6E 
+ 941      6720696E 
+ 941      7400
+ 942              	.LASF33:
+ 943 017f 6D61696E 		.ascii	"main.c\000"
+ 943      2E6300
+ 944              	.LASF15:
+ 945 0186 63686172 		.ascii	"char\000"
+ 945      00
+ 946              	.LASF2:
+ 947 018b 73686F72 		.ascii	"short int\000"
+ 947      7420696E 
+ 947      7400
+ 948              	.LASF25:
+ 949 0195 76616C6F 		.ascii	"valorpeso\000"
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccUH34tC.s 			page 20
+
+
+ 949      72706573 
+ 949      6F00
+ 950              	.LASF11:
+ 951 019f 75696E74 		.ascii	"uint8\000"
+ 951      3800
+ 952              	.LASF34:
+ 953 01a5 433A5C55 		.ascii	"C:\\Users\\PYBL\\Documents\\PSoC Creator\\Pruebas\\"
+ 953      73657273 
+ 953      5C505942 
+ 953      4C5C446F 
+ 953      63756D65 
+ 954 01d2 50756E74 		.ascii	"Punto_Flotante.cydsn\000"
+ 954      6F5F466C 
+ 954      6F74616E 
+ 954      74652E63 
+ 954      7964736E 
+ 955              	.LASF4:
+ 956 01e7 6C6F6E67 		.ascii	"long int\000"
+ 956      20696E74 
+ 956      00
+ 957              	.LASF17:
+ 958 01f0 6C6F6E67 		.ascii	"long double\000"
+ 958      20646F75 
+ 958      626C6500 
+ 959              	.LASF0:
+ 960 01fc 7369676E 		.ascii	"signed char\000"
+ 960      65642063 
+ 960      68617200 
+ 961              	.LASF23:
+ 962 0208 64656369 		.ascii	"decimalpeso\000"
+ 962      6D616C70 
+ 962      65736F00 
+ 963              	.LASF29:
+ 964 0214 4C43445F 		.ascii	"LCD_Position\000"
+ 964      506F7369 
+ 964      74696F6E 
+ 964      00
+ 965              	.LASF28:
+ 966 0221 73707269 		.ascii	"sprintf\000"
+ 966      6E746600 
+ 967              	.LASF31:
+ 968 0229 43794465 		.ascii	"CyDelay\000"
+ 968      6C617900 
+ 969              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

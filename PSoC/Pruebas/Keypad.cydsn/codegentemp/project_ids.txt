@@ -1,0 +1,7 @@
+C:\Users\PYBL\Documents\PSoC Creator\Pruebas\Punto_Flotante.cydsn\Punto_Flotante.cyprj|89952b6b-bd4c-4ecc-b9ab-f765164f4553
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|13fa8923-7f45-4721-89d0-c71d00f0f56f
+C:\Users\PYBL\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|98e5ae3f-52af-4151-9f36-62a0aa6e7bca
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|8d453601-d181-407e-b799-6d477473f86f
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|ecc27476-2de4-45e0-96eb-ebec5091c166
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|5d2d9850-578f-4646-9439-e9fa6eea69a4
+C:\Users\PYBL\Documents\PSoC Creator\Pruebas\Keypad.cydsn\Keypad.cyprj|84f6cf73-c9c8-4635-b955-b2a0c6e90658

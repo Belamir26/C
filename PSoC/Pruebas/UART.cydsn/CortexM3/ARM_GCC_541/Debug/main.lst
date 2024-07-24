@@ -1,0 +1,758 @@
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccuIB0iz.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	2
+  21              		.global	main
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	main, %function
+  25              	main:
+  26              	.LFB63:
+  27              		.file 1 "main.c"
+   1:main.c        **** 
+   2:main.c        **** #include "project.h"
+   3:main.c        **** #include <stdlib.h>
+   4:main.c        **** 
+   5:main.c        **** 
+   6:main.c        **** 
+   7:main.c        **** 
+   8:main.c        **** 
+   9:main.c        **** char* uno = "1";
+  10:main.c        **** char* dos = "2";
+  11:main.c        **** char* tres = "5";
+  12:main.c        **** 
+  13:main.c        **** uint8 angulouno;
+  14:main.c        **** uint8 angulodos;
+  15:main.c        **** uint8 angulotres;
+  16:main.c        **** uint16 ANG;
+  17:main.c        **** uint8 bandera=1;
+  18:main.c        **** 
+  19:main.c        **** int main(void)
+  20:main.c        **** {
+  28              		.loc 1 20 0
+  29              		.cfi_startproc
+  30              		@ Volatile: function does not return.
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
+  21:main.c        ****     CyGlobalIntEnable;
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccuIB0iz.s 			page 2
+
+
+  37              		.loc 1 21 0
+  38              		.syntax unified
+  39              	@ 21 "main.c" 1
+  40 0002 62B6     		CPSIE   i
+  41              	@ 0 "" 2
+  42              		.thumb
+  43              		.syntax unified
+  44              	.L2:
+  22:main.c        **** 
+  23:main.c        ****     for(;;)
+  24:main.c        ****     {
+  25:main.c        ****         
+  26:main.c        ****         
+  27:main.c        ****         if(bandera){
+  45              		.loc 1 27 0
+  46 0004 124B     		ldr	r3, .L5
+  47 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  48 0008 002B     		cmp	r3, #0
+  49 000a FBD0     		beq	.L2
+  28:main.c        ****             angulouno = atoi(uno);
+  50              		.loc 1 28 0
+  51 000c 104C     		ldr	r4, .L5
+  52 000e 6068     		ldr	r0, [r4, #4]
+  53 0010 FFF7FEFF 		bl	atoi
+  54              	.LVL0:
+  55 0014 0F4E     		ldr	r6, .L5+4
+  56 0016 3070     		strb	r0, [r6]
+  29:main.c        ****             angulodos = atoi(dos);
+  57              		.loc 1 29 0
+  58 0018 A068     		ldr	r0, [r4, #8]
+  59 001a FFF7FEFF 		bl	atoi
+  60              	.LVL1:
+  61 001e 0E4D     		ldr	r5, .L5+8
+  62 0020 2870     		strb	r0, [r5]
+  30:main.c        ****             angulotres = atoi(tres);
+  63              		.loc 1 30 0
+  64 0022 E068     		ldr	r0, [r4, #12]
+  65 0024 FFF7FEFF 		bl	atoi
+  66              	.LVL2:
+  67 0028 C0B2     		uxtb	r0, r0
+  68 002a 0C4B     		ldr	r3, .L5+12
+  69 002c 1870     		strb	r0, [r3]
+  31:main.c        ****             
+  32:main.c        ****             ANG= angulouno*100 + angulodos*10 + angulotres;
+  70              		.loc 1 32 0
+  71 002e 3378     		ldrb	r3, [r6]	@ zero_extendqisi2
+  72 0030 03EB8303 		add	r3, r3, r3, lsl #2
+  73 0034 03EB8303 		add	r3, r3, r3, lsl #2
+  74 0038 9900     		lsls	r1, r3, #2
+  75 003a 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+  76 003c 03EB8303 		add	r3, r3, r3, lsl #2
+  77 0040 5A00     		lsls	r2, r3, #1
+  78 0042 0A44     		add	r2, r2, r1
+  79 0044 1044     		add	r0, r0, r2
+  80 0046 064B     		ldr	r3, .L5+16
+  81 0048 1880     		strh	r0, [r3]	@ movhi
+  33:main.c        ****            
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccuIB0iz.s 			page 3
+
+
+  34:main.c        ****             bandera=0;
+  82              		.loc 1 34 0
+  83 004a 0023     		movs	r3, #0
+  84 004c 2370     		strb	r3, [r4]
+  85 004e D9E7     		b	.L2
+  86              	.L6:
+  87              		.align	2
+  88              	.L5:
+  89 0050 00000000 		.word	.LANCHOR0
+  90 0054 00000000 		.word	angulouno
+  91 0058 00000000 		.word	angulodos
+  92 005c 00000000 		.word	angulotres
+  93 0060 00000000 		.word	ANG
+  94              		.cfi_endproc
+  95              	.LFE63:
+  96              		.size	main, .-main
+  97              		.global	bandera
+  98              		.comm	ANG,2,2
+  99              		.comm	angulotres,1,1
+ 100              		.comm	angulodos,1,1
+ 101              		.comm	angulouno,1,1
+ 102              		.global	tres
+ 103              		.global	dos
+ 104              		.global	uno
+ 105              		.data
+ 106              		.align	2
+ 107              		.set	.LANCHOR0,. + 0
+ 108              		.type	bandera, %object
+ 109              		.size	bandera, 1
+ 110              	bandera:
+ 111 0000 01       		.byte	1
+ 112 0001 000000   		.space	3
+ 113              		.type	uno, %object
+ 114              		.size	uno, 4
+ 115              	uno:
+ 116 0004 08000000 		.word	.LC2
+ 117              		.type	dos, %object
+ 118              		.size	dos, 4
+ 119              	dos:
+ 120 0008 04000000 		.word	.LC1
+ 121              		.type	tres, %object
+ 122              		.size	tres, 4
+ 123              	tres:
+ 124 000c 00000000 		.word	.LC0
+ 125              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 126              		.align	2
+ 127              	.LC0:
+ 128 0000 3500     		.ascii	"5\000"
+ 129 0002 0000     		.space	2
+ 130              	.LC1:
+ 131 0004 3200     		.ascii	"2\000"
+ 132 0006 0000     		.space	2
+ 133              	.LC2:
+ 134 0008 3100     		.ascii	"1\000"
+ 135              		.text
+ 136              	.Letext0:
+ 137              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccuIB0iz.s 			page 4
+
+
+ 138              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 139              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 140              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 141              		.file 6 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 142              		.section	.debug_info,"",%progbits
+ 143              	.Ldebug_info0:
+ 144 0000 98010000 		.4byte	0x198
+ 145 0004 0400     		.2byte	0x4
+ 146 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 147 000a 04       		.byte	0x4
+ 148 000b 01       		.uleb128 0x1
+ 149 000c 29000000 		.4byte	.LASF24
+ 150 0010 0C       		.byte	0xc
+ 151 0011 93010000 		.4byte	.LASF25
+ 152 0015 C9000000 		.4byte	.LASF26
+ 153 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 154 001d 00000000 		.4byte	0
+ 155 0021 00000000 		.4byte	.Ldebug_line0
+ 156 0025 02       		.uleb128 0x2
+ 157 0026 01       		.byte	0x1
+ 158 0027 06       		.byte	0x6
+ 159 0028 C4010000 		.4byte	.LASF0
+ 160 002c 02       		.uleb128 0x2
+ 161 002d 01       		.byte	0x1
+ 162 002e 08       		.byte	0x8
+ 163 002f 1B000000 		.4byte	.LASF1
+ 164 0033 02       		.uleb128 0x2
+ 165 0034 02       		.byte	0x2
+ 166 0035 05       		.byte	0x5
+ 167 0036 9F010000 		.4byte	.LASF2
+ 168 003a 02       		.uleb128 0x2
+ 169 003b 02       		.byte	0x2
+ 170 003c 07       		.byte	0x7
+ 171 003d 01010000 		.4byte	.LASF3
+ 172 0041 03       		.uleb128 0x3
+ 173 0042 0B000000 		.4byte	.LASF9
+ 174 0046 02       		.byte	0x2
+ 175 0047 3F       		.byte	0x3f
+ 176 0048 4C000000 		.4byte	0x4c
+ 177 004c 02       		.uleb128 0x2
+ 178 004d 04       		.byte	0x4
+ 179 004e 05       		.byte	0x5
+ 180 004f AF010000 		.4byte	.LASF4
+ 181 0053 02       		.uleb128 0x2
+ 182 0054 04       		.byte	0x4
+ 183 0055 07       		.byte	0x7
+ 184 0056 B7000000 		.4byte	.LASF5
+ 185 005a 02       		.uleb128 0x2
+ 186 005b 08       		.byte	0x8
+ 187 005c 05       		.byte	0x5
+ 188 005d 85010000 		.4byte	.LASF6
+ 189 0061 02       		.uleb128 0x2
+ 190 0062 08       		.byte	0x8
+ 191 0063 07       		.byte	0x7
+ 192 0064 49010000 		.4byte	.LASF7
+ 193 0068 04       		.uleb128 0x4
+ 194 0069 04       		.byte	0x4
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccuIB0iz.s 			page 5
+
+
+ 195 006a 05       		.byte	0x5
+ 196 006b 696E7400 		.ascii	"int\000"
+ 197 006f 02       		.uleb128 0x2
+ 198 0070 04       		.byte	0x4
+ 199 0071 07       		.byte	0x7
+ 200 0072 3C010000 		.4byte	.LASF8
+ 201 0076 03       		.uleb128 0x3
+ 202 0077 74010000 		.4byte	.LASF10
+ 203 007b 03       		.byte	0x3
+ 204 007c 2C       		.byte	0x2c
+ 205 007d 41000000 		.4byte	0x41
+ 206 0081 05       		.uleb128 0x5
+ 207 0082 A9010000 		.4byte	.LASF11
+ 208 0086 04       		.byte	0x4
+ 209 0087 E801     		.2byte	0x1e8
+ 210 0089 2C000000 		.4byte	0x2c
+ 211 008d 05       		.uleb128 0x5
+ 212 008e 35010000 		.4byte	.LASF12
+ 213 0092 04       		.byte	0x4
+ 214 0093 E901     		.2byte	0x1e9
+ 215 0095 3A000000 		.4byte	0x3a
+ 216 0099 02       		.uleb128 0x2
+ 217 009a 04       		.byte	0x4
+ 218 009b 04       		.byte	0x4
+ 219 009c 15000000 		.4byte	.LASF13
+ 220 00a0 02       		.uleb128 0x2
+ 221 00a1 08       		.byte	0x8
+ 222 00a2 04       		.byte	0x4
+ 223 00a3 29010000 		.4byte	.LASF14
+ 224 00a7 02       		.uleb128 0x2
+ 225 00a8 01       		.byte	0x1
+ 226 00a9 08       		.byte	0x8
+ 227 00aa 9A010000 		.4byte	.LASF15
+ 228 00ae 02       		.uleb128 0x2
+ 229 00af 08       		.byte	0x8
+ 230 00b0 04       		.byte	0x4
+ 231 00b1 B8010000 		.4byte	.LASF16
+ 232 00b5 02       		.uleb128 0x2
+ 233 00b6 04       		.byte	0x4
+ 234 00b7 07       		.byte	0x7
+ 235 00b8 7C010000 		.4byte	.LASF17
+ 236 00bc 06       		.uleb128 0x6
+ 237 00bd 04       		.byte	0x4
+ 238 00be A7000000 		.4byte	0xa7
+ 239 00c2 07       		.uleb128 0x7
+ 240 00c3 30010000 		.4byte	.LASF27
+ 241 00c7 01       		.byte	0x1
+ 242 00c8 13       		.byte	0x13
+ 243 00c9 68000000 		.4byte	0x68
+ 244 00cd 00000000 		.4byte	.LFB63
+ 245 00d1 64000000 		.4byte	.LFE63-.LFB63
+ 246 00d5 01       		.uleb128 0x1
+ 247 00d6 9C       		.byte	0x9c
+ 248 00d7 F7000000 		.4byte	0xf7
+ 249 00db 08       		.uleb128 0x8
+ 250 00dc 14000000 		.4byte	.LVL0
+ 251 00e0 90010000 		.4byte	0x190
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccuIB0iz.s 			page 6
+
+
+ 252 00e4 08       		.uleb128 0x8
+ 253 00e5 1E000000 		.4byte	.LVL1
+ 254 00e9 90010000 		.4byte	0x190
+ 255 00ed 08       		.uleb128 0x8
+ 256 00ee 28000000 		.4byte	.LVL2
+ 257 00f2 90010000 		.4byte	0x190
+ 258 00f6 00       		.byte	0
+ 259 00f7 09       		.uleb128 0x9
+ 260 00f8 14010000 		.4byte	.LASF18
+ 261 00fc 05       		.byte	0x5
+ 262 00fd 1207     		.2byte	0x712
+ 263 00ff 03010000 		.4byte	0x103
+ 264 0103 0A       		.uleb128 0xa
+ 265 0104 76000000 		.4byte	0x76
+ 266 0108 0B       		.uleb128 0xb
+ 267 0109 756E6F00 		.ascii	"uno\000"
+ 268 010d 01       		.byte	0x1
+ 269 010e 09       		.byte	0x9
+ 270 010f BC000000 		.4byte	0xbc
+ 271 0113 05       		.uleb128 0x5
+ 272 0114 03       		.byte	0x3
+ 273 0115 00000000 		.4byte	uno
+ 274 0119 0B       		.uleb128 0xb
+ 275 011a 646F7300 		.ascii	"dos\000"
+ 276 011e 01       		.byte	0x1
+ 277 011f 0A       		.byte	0xa
+ 278 0120 BC000000 		.4byte	0xbc
+ 279 0124 05       		.uleb128 0x5
+ 280 0125 03       		.byte	0x3
+ 281 0126 00000000 		.4byte	dos
+ 282 012a 0C       		.uleb128 0xc
+ 283 012b 6F010000 		.4byte	.LASF19
+ 284 012f 01       		.byte	0x1
+ 285 0130 0B       		.byte	0xb
+ 286 0131 BC000000 		.4byte	0xbc
+ 287 0135 05       		.uleb128 0x5
+ 288 0136 03       		.byte	0x3
+ 289 0137 00000000 		.4byte	tres
+ 290 013b 0C       		.uleb128 0xc
+ 291 013c D0010000 		.4byte	.LASF20
+ 292 0140 01       		.byte	0x1
+ 293 0141 0D       		.byte	0xd
+ 294 0142 81000000 		.4byte	0x81
+ 295 0146 05       		.uleb128 0x5
+ 296 0147 03       		.byte	0x3
+ 297 0148 00000000 		.4byte	angulouno
+ 298 014c 0C       		.uleb128 0xc
+ 299 014d 60010000 		.4byte	.LASF21
+ 300 0151 01       		.byte	0x1
+ 301 0152 0E       		.byte	0xe
+ 302 0153 81000000 		.4byte	0x81
+ 303 0157 05       		.uleb128 0x5
+ 304 0158 03       		.byte	0x3
+ 305 0159 00000000 		.4byte	angulodos
+ 306 015d 0C       		.uleb128 0xc
+ 307 015e 00000000 		.4byte	.LASF22
+ 308 0162 01       		.byte	0x1
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccuIB0iz.s 			page 7
+
+
+ 309 0163 0F       		.byte	0xf
+ 310 0164 81000000 		.4byte	0x81
+ 311 0168 05       		.uleb128 0x5
+ 312 0169 03       		.byte	0x3
+ 313 016a 00000000 		.4byte	angulotres
+ 314 016e 0B       		.uleb128 0xb
+ 315 016f 414E4700 		.ascii	"ANG\000"
+ 316 0173 01       		.byte	0x1
+ 317 0174 10       		.byte	0x10
+ 318 0175 8D000000 		.4byte	0x8d
+ 319 0179 05       		.uleb128 0x5
+ 320 017a 03       		.byte	0x3
+ 321 017b 00000000 		.4byte	ANG
+ 322 017f 0C       		.uleb128 0xc
+ 323 0180 21010000 		.4byte	.LASF23
+ 324 0184 01       		.byte	0x1
+ 325 0185 11       		.byte	0x11
+ 326 0186 81000000 		.4byte	0x81
+ 327 018a 05       		.uleb128 0x5
+ 328 018b 03       		.byte	0x3
+ 329 018c 00000000 		.4byte	bandera
+ 330 0190 0D       		.uleb128 0xd
+ 331 0191 6A010000 		.4byte	.LASF28
+ 332 0195 6A010000 		.4byte	.LASF28
+ 333 0199 06       		.byte	0x6
+ 334 019a 4D       		.byte	0x4d
+ 335 019b 00       		.byte	0
+ 336              		.section	.debug_abbrev,"",%progbits
+ 337              	.Ldebug_abbrev0:
+ 338 0000 01       		.uleb128 0x1
+ 339 0001 11       		.uleb128 0x11
+ 340 0002 01       		.byte	0x1
+ 341 0003 25       		.uleb128 0x25
+ 342 0004 0E       		.uleb128 0xe
+ 343 0005 13       		.uleb128 0x13
+ 344 0006 0B       		.uleb128 0xb
+ 345 0007 03       		.uleb128 0x3
+ 346 0008 0E       		.uleb128 0xe
+ 347 0009 1B       		.uleb128 0x1b
+ 348 000a 0E       		.uleb128 0xe
+ 349 000b 55       		.uleb128 0x55
+ 350 000c 17       		.uleb128 0x17
+ 351 000d 11       		.uleb128 0x11
+ 352 000e 01       		.uleb128 0x1
+ 353 000f 10       		.uleb128 0x10
+ 354 0010 17       		.uleb128 0x17
+ 355 0011 00       		.byte	0
+ 356 0012 00       		.byte	0
+ 357 0013 02       		.uleb128 0x2
+ 358 0014 24       		.uleb128 0x24
+ 359 0015 00       		.byte	0
+ 360 0016 0B       		.uleb128 0xb
+ 361 0017 0B       		.uleb128 0xb
+ 362 0018 3E       		.uleb128 0x3e
+ 363 0019 0B       		.uleb128 0xb
+ 364 001a 03       		.uleb128 0x3
+ 365 001b 0E       		.uleb128 0xe
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccuIB0iz.s 			page 8
+
+
+ 366 001c 00       		.byte	0
+ 367 001d 00       		.byte	0
+ 368 001e 03       		.uleb128 0x3
+ 369 001f 16       		.uleb128 0x16
+ 370 0020 00       		.byte	0
+ 371 0021 03       		.uleb128 0x3
+ 372 0022 0E       		.uleb128 0xe
+ 373 0023 3A       		.uleb128 0x3a
+ 374 0024 0B       		.uleb128 0xb
+ 375 0025 3B       		.uleb128 0x3b
+ 376 0026 0B       		.uleb128 0xb
+ 377 0027 49       		.uleb128 0x49
+ 378 0028 13       		.uleb128 0x13
+ 379 0029 00       		.byte	0
+ 380 002a 00       		.byte	0
+ 381 002b 04       		.uleb128 0x4
+ 382 002c 24       		.uleb128 0x24
+ 383 002d 00       		.byte	0
+ 384 002e 0B       		.uleb128 0xb
+ 385 002f 0B       		.uleb128 0xb
+ 386 0030 3E       		.uleb128 0x3e
+ 387 0031 0B       		.uleb128 0xb
+ 388 0032 03       		.uleb128 0x3
+ 389 0033 08       		.uleb128 0x8
+ 390 0034 00       		.byte	0
+ 391 0035 00       		.byte	0
+ 392 0036 05       		.uleb128 0x5
+ 393 0037 16       		.uleb128 0x16
+ 394 0038 00       		.byte	0
+ 395 0039 03       		.uleb128 0x3
+ 396 003a 0E       		.uleb128 0xe
+ 397 003b 3A       		.uleb128 0x3a
+ 398 003c 0B       		.uleb128 0xb
+ 399 003d 3B       		.uleb128 0x3b
+ 400 003e 05       		.uleb128 0x5
+ 401 003f 49       		.uleb128 0x49
+ 402 0040 13       		.uleb128 0x13
+ 403 0041 00       		.byte	0
+ 404 0042 00       		.byte	0
+ 405 0043 06       		.uleb128 0x6
+ 406 0044 0F       		.uleb128 0xf
+ 407 0045 00       		.byte	0
+ 408 0046 0B       		.uleb128 0xb
+ 409 0047 0B       		.uleb128 0xb
+ 410 0048 49       		.uleb128 0x49
+ 411 0049 13       		.uleb128 0x13
+ 412 004a 00       		.byte	0
+ 413 004b 00       		.byte	0
+ 414 004c 07       		.uleb128 0x7
+ 415 004d 2E       		.uleb128 0x2e
+ 416 004e 01       		.byte	0x1
+ 417 004f 3F       		.uleb128 0x3f
+ 418 0050 19       		.uleb128 0x19
+ 419 0051 03       		.uleb128 0x3
+ 420 0052 0E       		.uleb128 0xe
+ 421 0053 3A       		.uleb128 0x3a
+ 422 0054 0B       		.uleb128 0xb
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccuIB0iz.s 			page 9
+
+
+ 423 0055 3B       		.uleb128 0x3b
+ 424 0056 0B       		.uleb128 0xb
+ 425 0057 27       		.uleb128 0x27
+ 426 0058 19       		.uleb128 0x19
+ 427 0059 49       		.uleb128 0x49
+ 428 005a 13       		.uleb128 0x13
+ 429 005b 8701     		.uleb128 0x87
+ 430 005d 19       		.uleb128 0x19
+ 431 005e 11       		.uleb128 0x11
+ 432 005f 01       		.uleb128 0x1
+ 433 0060 12       		.uleb128 0x12
+ 434 0061 06       		.uleb128 0x6
+ 435 0062 40       		.uleb128 0x40
+ 436 0063 18       		.uleb128 0x18
+ 437 0064 9742     		.uleb128 0x2117
+ 438 0066 19       		.uleb128 0x19
+ 439 0067 01       		.uleb128 0x1
+ 440 0068 13       		.uleb128 0x13
+ 441 0069 00       		.byte	0
+ 442 006a 00       		.byte	0
+ 443 006b 08       		.uleb128 0x8
+ 444 006c 898201   		.uleb128 0x4109
+ 445 006f 00       		.byte	0
+ 446 0070 11       		.uleb128 0x11
+ 447 0071 01       		.uleb128 0x1
+ 448 0072 31       		.uleb128 0x31
+ 449 0073 13       		.uleb128 0x13
+ 450 0074 00       		.byte	0
+ 451 0075 00       		.byte	0
+ 452 0076 09       		.uleb128 0x9
+ 453 0077 34       		.uleb128 0x34
+ 454 0078 00       		.byte	0
+ 455 0079 03       		.uleb128 0x3
+ 456 007a 0E       		.uleb128 0xe
+ 457 007b 3A       		.uleb128 0x3a
+ 458 007c 0B       		.uleb128 0xb
+ 459 007d 3B       		.uleb128 0x3b
+ 460 007e 05       		.uleb128 0x5
+ 461 007f 49       		.uleb128 0x49
+ 462 0080 13       		.uleb128 0x13
+ 463 0081 3F       		.uleb128 0x3f
+ 464 0082 19       		.uleb128 0x19
+ 465 0083 3C       		.uleb128 0x3c
+ 466 0084 19       		.uleb128 0x19
+ 467 0085 00       		.byte	0
+ 468 0086 00       		.byte	0
+ 469 0087 0A       		.uleb128 0xa
+ 470 0088 35       		.uleb128 0x35
+ 471 0089 00       		.byte	0
+ 472 008a 49       		.uleb128 0x49
+ 473 008b 13       		.uleb128 0x13
+ 474 008c 00       		.byte	0
+ 475 008d 00       		.byte	0
+ 476 008e 0B       		.uleb128 0xb
+ 477 008f 34       		.uleb128 0x34
+ 478 0090 00       		.byte	0
+ 479 0091 03       		.uleb128 0x3
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccuIB0iz.s 			page 10
+
+
+ 480 0092 08       		.uleb128 0x8
+ 481 0093 3A       		.uleb128 0x3a
+ 482 0094 0B       		.uleb128 0xb
+ 483 0095 3B       		.uleb128 0x3b
+ 484 0096 0B       		.uleb128 0xb
+ 485 0097 49       		.uleb128 0x49
+ 486 0098 13       		.uleb128 0x13
+ 487 0099 3F       		.uleb128 0x3f
+ 488 009a 19       		.uleb128 0x19
+ 489 009b 02       		.uleb128 0x2
+ 490 009c 18       		.uleb128 0x18
+ 491 009d 00       		.byte	0
+ 492 009e 00       		.byte	0
+ 493 009f 0C       		.uleb128 0xc
+ 494 00a0 34       		.uleb128 0x34
+ 495 00a1 00       		.byte	0
+ 496 00a2 03       		.uleb128 0x3
+ 497 00a3 0E       		.uleb128 0xe
+ 498 00a4 3A       		.uleb128 0x3a
+ 499 00a5 0B       		.uleb128 0xb
+ 500 00a6 3B       		.uleb128 0x3b
+ 501 00a7 0B       		.uleb128 0xb
+ 502 00a8 49       		.uleb128 0x49
+ 503 00a9 13       		.uleb128 0x13
+ 504 00aa 3F       		.uleb128 0x3f
+ 505 00ab 19       		.uleb128 0x19
+ 506 00ac 02       		.uleb128 0x2
+ 507 00ad 18       		.uleb128 0x18
+ 508 00ae 00       		.byte	0
+ 509 00af 00       		.byte	0
+ 510 00b0 0D       		.uleb128 0xd
+ 511 00b1 2E       		.uleb128 0x2e
+ 512 00b2 00       		.byte	0
+ 513 00b3 3F       		.uleb128 0x3f
+ 514 00b4 19       		.uleb128 0x19
+ 515 00b5 3C       		.uleb128 0x3c
+ 516 00b6 19       		.uleb128 0x19
+ 517 00b7 6E       		.uleb128 0x6e
+ 518 00b8 0E       		.uleb128 0xe
+ 519 00b9 03       		.uleb128 0x3
+ 520 00ba 0E       		.uleb128 0xe
+ 521 00bb 3A       		.uleb128 0x3a
+ 522 00bc 0B       		.uleb128 0xb
+ 523 00bd 3B       		.uleb128 0x3b
+ 524 00be 0B       		.uleb128 0xb
+ 525 00bf 00       		.byte	0
+ 526 00c0 00       		.byte	0
+ 527 00c1 00       		.byte	0
+ 528              		.section	.debug_aranges,"",%progbits
+ 529 0000 1C000000 		.4byte	0x1c
+ 530 0004 0200     		.2byte	0x2
+ 531 0006 00000000 		.4byte	.Ldebug_info0
+ 532 000a 04       		.byte	0x4
+ 533 000b 00       		.byte	0
+ 534 000c 0000     		.2byte	0
+ 535 000e 0000     		.2byte	0
+ 536 0010 00000000 		.4byte	.LFB63
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccuIB0iz.s 			page 11
+
+
+ 537 0014 64000000 		.4byte	.LFE63-.LFB63
+ 538 0018 00000000 		.4byte	0
+ 539 001c 00000000 		.4byte	0
+ 540              		.section	.debug_ranges,"",%progbits
+ 541              	.Ldebug_ranges0:
+ 542 0000 00000000 		.4byte	.LFB63
+ 543 0004 64000000 		.4byte	.LFE63
+ 544 0008 00000000 		.4byte	0
+ 545 000c 00000000 		.4byte	0
+ 546              		.section	.debug_line,"",%progbits
+ 547              	.Ldebug_line0:
+ 548 0000 DC010000 		.section	.debug_str,"MS",%progbits,1
+ 548      0200C001 
+ 548      00000201 
+ 548      FB0E0D00 
+ 548      01010101 
+ 549              	.LASF22:
+ 550 0000 616E6775 		.ascii	"angulotres\000"
+ 550      6C6F7472 
+ 550      657300
+ 551              	.LASF9:
+ 552 000b 5F5F696E 		.ascii	"__int32_t\000"
+ 552      7433325F 
+ 552      7400
+ 553              	.LASF13:
+ 554 0015 666C6F61 		.ascii	"float\000"
+ 554      7400
+ 555              	.LASF1:
+ 556 001b 756E7369 		.ascii	"unsigned char\000"
+ 556      676E6564 
+ 556      20636861 
+ 556      7200
+ 557              	.LASF24:
+ 558 0029 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 558      43313120 
+ 558      352E342E 
+ 558      31203230 
+ 558      31363036 
+ 559 005c 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 559      20726576 
+ 559      6973696F 
+ 559      6E203233 
+ 559      37373135 
+ 560 008f 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 560      66756E63 
+ 560      74696F6E 
+ 560      2D736563 
+ 560      74696F6E 
+ 561              	.LASF5:
+ 562 00b7 6C6F6E67 		.ascii	"long unsigned int\000"
+ 562      20756E73 
+ 562      69676E65 
+ 562      6420696E 
+ 562      7400
+ 563              	.LASF26:
+ 564 00c9 433A5C55 		.ascii	"C:\\Users\\PYBL\\Documents\\PSoC Creator\\Pruebas\\"
+ 564      73657273 
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccuIB0iz.s 			page 12
+
+
+ 564      5C505942 
+ 564      4C5C446F 
+ 564      63756D65 
+ 565 00f6 55415254 		.ascii	"UART.cydsn\000"
+ 565      2E637964 
+ 565      736E00
+ 566              	.LASF3:
+ 567 0101 73686F72 		.ascii	"short unsigned int\000"
+ 567      7420756E 
+ 567      7369676E 
+ 567      65642069 
+ 567      6E7400
+ 568              	.LASF18:
+ 569 0114 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 569      52784275 
+ 569      66666572 
+ 569      00
+ 570              	.LASF23:
+ 571 0121 62616E64 		.ascii	"bandera\000"
+ 571      65726100 
+ 572              	.LASF14:
+ 573 0129 646F7562 		.ascii	"double\000"
+ 573      6C6500
+ 574              	.LASF27:
+ 575 0130 6D61696E 		.ascii	"main\000"
+ 575      00
+ 576              	.LASF12:
+ 577 0135 75696E74 		.ascii	"uint16\000"
+ 577      313600
+ 578              	.LASF8:
+ 579 013c 756E7369 		.ascii	"unsigned int\000"
+ 579      676E6564 
+ 579      20696E74 
+ 579      00
+ 580              	.LASF7:
+ 581 0149 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 581      206C6F6E 
+ 581      6720756E 
+ 581      7369676E 
+ 581      65642069 
+ 582              	.LASF21:
+ 583 0160 616E6775 		.ascii	"angulodos\000"
+ 583      6C6F646F 
+ 583      7300
+ 584              	.LASF28:
+ 585 016a 61746F69 		.ascii	"atoi\000"
+ 585      00
+ 586              	.LASF19:
+ 587 016f 74726573 		.ascii	"tres\000"
+ 587      00
+ 588              	.LASF10:
+ 589 0174 696E7433 		.ascii	"int32_t\000"
+ 589      325F7400 
+ 590              	.LASF17:
+ 591 017c 73697A65 		.ascii	"sizetype\000"
+ 591      74797065 
+ 591      00
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\ccuIB0iz.s 			page 13
+
+
+ 592              	.LASF6:
+ 593 0185 6C6F6E67 		.ascii	"long long int\000"
+ 593      206C6F6E 
+ 593      6720696E 
+ 593      7400
+ 594              	.LASF25:
+ 595 0193 6D61696E 		.ascii	"main.c\000"
+ 595      2E6300
+ 596              	.LASF15:
+ 597 019a 63686172 		.ascii	"char\000"
+ 597      00
+ 598              	.LASF2:
+ 599 019f 73686F72 		.ascii	"short int\000"
+ 599      7420696E 
+ 599      7400
+ 600              	.LASF11:
+ 601 01a9 75696E74 		.ascii	"uint8\000"
+ 601      3800
+ 602              	.LASF4:
+ 603 01af 6C6F6E67 		.ascii	"long int\000"
+ 603      20696E74 
+ 603      00
+ 604              	.LASF16:
+ 605 01b8 6C6F6E67 		.ascii	"long double\000"
+ 605      20646F75 
+ 605      626C6500 
+ 606              	.LASF0:
+ 607 01c4 7369676E 		.ascii	"signed char\000"
+ 607      65642063 
+ 607      68617200 
+ 608              	.LASF20:
+ 609 01d0 616E6775 		.ascii	"angulouno\000"
+ 609      6C6F756E 
+ 609      6F00
+ 610              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

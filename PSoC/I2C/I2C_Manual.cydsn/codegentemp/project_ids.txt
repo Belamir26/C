@@ -1,0 +1,9 @@
+C:\Users\PYBL\Documents\PSoC Creator\Entregas_I2C\LCD_I2C.cydsn\LCD_I2C.cyprj|aec68772-5e42-453e-aacd-6a41e0435abb
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|e458ed7f-bd87-4df9-9b16-f7f57bf41ed1
+C:\Users\PYBL\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|67f28c01-e4ec-4fcf-9b2b-ba8d077f12cb
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|5852f836-61ad-45bf-8fef-15f45ea2facb
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|7ea2e149-3848-4600-8003-b07689cde72e
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|d6c49b3b-aae3-4dbf-97b6-dab7d45c0320
+C:\Users\PYBL\Documents\PSoC Creator\Entregas_I2C\MCP3421.cydsn\MCP3421.cyprj|2a233240-389b-4309-9f5e-79cf4afaa3a9
+C:\Users\PYBL\Documents\PSoC Creator\Entregas_I2C\LM75BD.cydsn\LM75BD.cyprj|89d5fb92-f13f-419b-8616-cdfbe540789d
+C:\Users\PYBL\Documents\PSoC Creator\Entregas_I2C\I2C_Manual.cydsn\I2C_Manual.cyprj|27bcb63f-4d2a-49e0-8e7a-5c6129b9523d

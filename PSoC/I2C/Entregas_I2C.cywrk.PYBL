@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Entregas_I2C\MCP3421">
+<ExpandedNodeIds>
+<v>Entregas_I2C</v>
+<v>Entregas_I2C\I2C_Manual\TopDesign</v>
+<v>Entregas_I2C\I2C_Manual\I2C_Manual.cydwr</v>
+<v>Entregas_I2C\I2C_Manual\I2C_Manual.cydwr\Pins</v>
+<v>Entregas_I2C\I2C_Manual\I2C_Manual.cydwr\Analog</v>
+<v>Entregas_I2C\I2C_Manual\I2C_Manual.cydwr\Clocks</v>
+<v>Entregas_I2C\I2C_Manual\I2C_Manual.cydwr\Interrupts</v>
+<v>Entregas_I2C\I2C_Manual\I2C_Manual.cydwr\DMA</v>
+<v>Entregas_I2C\I2C_Manual\I2C_Manual.cydwr\System</v>
+<v>Entregas_I2C\I2C_Manual\I2C_Manual.cydwr\Directives</v>
+<v>Entregas_I2C\I2C_Manual\I2C_Manual.cydwr\Flash Security</v>
+<v>Entregas_I2C\I2C_Manual\I2C_Manual.cydwr\EEPROM</v>
+<v>Entregas_I2C\I2C_Manual\Header Files</v>
+<v>Entregas_I2C\I2C_Manual\Header Files\cyapicallbacks.h</v>
+<v>Entregas_I2C\I2C_Manual\Source Files</v>
+<v>Entregas_I2C\I2C_Manual\Source Files\main.c</v>
+<v>Entregas_I2C\I2C_Manual\Generated_Source</v>
+<v>Entregas_I2C\I2C_Manual\Generated_Source\PSoC5</v>
+<v>Entregas_I2C\LCD_I2C\TopDesign</v>
+<v>Entregas_I2C\LCD_I2C\LCD_I2C.cydwr</v>
+<v>Entregas_I2C\LCD_I2C\LCD_I2C.cydwr\Pins</v>
+<v>Entregas_I2C\LCD_I2C\LCD_I2C.cydwr\Analog</v>
+<v>Entregas_I2C\LCD_I2C\LCD_I2C.cydwr\Clocks</v>
+<v>Entregas_I2C\LCD_I2C\LCD_I2C.cydwr\Interrupts</v>
+<v>Entregas_I2C\LCD_I2C\LCD_I2C.cydwr\DMA</v>
+<v>Entregas_I2C\LCD_I2C\LCD_I2C.cydwr\System</v>
+<v>Entregas_I2C\LCD_I2C\LCD_I2C.cydwr\Directives</v>
+<v>Entregas_I2C\LCD_I2C\LCD_I2C.cydwr\Flash Security</v>
+<v>Entregas_I2C\LCD_I2C\LCD_I2C.cydwr\EEPROM</v>
+<v>Entregas_I2C\LCD_I2C\Header Files</v>
+<v>Entregas_I2C\LCD_I2C\Header Files\cyapicallbacks.h</v>
+<v>Entregas_I2C\LCD_I2C\Header Files\LXD.h</v>
+<v>Entregas_I2C\LCD_I2C\Source Files</v>
+<v>Entregas_I2C\LCD_I2C\Source Files\LXD.c</v>
+<v>Entregas_I2C\LCD_I2C\Source Files\main.c</v>
+<v>Entregas_I2C\LCD_I2C\Generated_Source</v>
+<v>Entregas_I2C\LCD_I2C\Generated_Source\PSoC5</v>
+<v>Entregas_I2C\LM75BD\TopDesign</v>
+<v>Entregas_I2C\LM75BD\LM75BD.cydwr</v>
+<v>Entregas_I2C\LM75BD\LM75BD.cydwr\Pins</v>
+<v>Entregas_I2C\LM75BD\LM75BD.cydwr\Analog</v>
+<v>Entregas_I2C\LM75BD\LM75BD.cydwr\Clocks</v>
+<v>Entregas_I2C\LM75BD\LM75BD.cydwr\Interrupts</v>
+<v>Entregas_I2C\LM75BD\LM75BD.cydwr\DMA</v>
+<v>Entregas_I2C\LM75BD\LM75BD.cydwr\System</v>
+<v>Entregas_I2C\LM75BD\LM75BD.cydwr\Directives</v>
+<v>Entregas_I2C\LM75BD\LM75BD.cydwr\Flash Security</v>
+<v>Entregas_I2C\LM75BD\LM75BD.cydwr\EEPROM</v>
+<v>Entregas_I2C\LM75BD\Header Files</v>
+<v>Entregas_I2C\LM75BD\Header Files\cyapicallbacks.h</v>
+<v>Entregas_I2C\LM75BD\Source Files</v>
+<v>Entregas_I2C\LM75BD\Source Files\main.c</v>
+<v>Entregas_I2C\LM75BD\Generated_Source</v>
+<v>Entregas_I2C\LM75BD\Generated_Source\PSoC5</v>
+<v>Entregas_I2C\MCP3421</v>
+<v>Entregas_I2C\MCP3421\TopDesign</v>
+<v>Entregas_I2C\MCP3421\MCP3421.cydwr</v>
+<v>Entregas_I2C\MCP3421\MCP3421.cydwr\Pins</v>
+<v>Entregas_I2C\MCP3421\MCP3421.cydwr\Analog</v>
+<v>Entregas_I2C\MCP3421\MCP3421.cydwr\Clocks</v>
+<v>Entregas_I2C\MCP3421\MCP3421.cydwr\Interrupts</v>
+<v>Entregas_I2C\MCP3421\MCP3421.cydwr\DMA</v>
+<v>Entregas_I2C\MCP3421\MCP3421.cydwr\System</v>
+<v>Entregas_I2C\MCP3421\MCP3421.cydwr\Directives</v>
+<v>Entregas_I2C\MCP3421\MCP3421.cydwr\Flash Security</v>
+<v>Entregas_I2C\MCP3421\MCP3421.cydwr\EEPROM</v>
+<v>Entregas_I2C\MCP3421\Header Files</v>
+<v>Entregas_I2C\MCP3421\Header Files\cyapicallbacks.h</v>
+<v>Entregas_I2C\MCP3421\Source Files</v>
+<v>Entregas_I2C\MCP3421\Source Files\main.c</v>
+<v>Entregas_I2C\MCP3421\Generated_Source</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Entregas_I2C</v>
+<v>Entregas_I2C\I2C_Manual</v>
+<v>Entregas_I2C\LCD_I2C</v>
+<v>Entregas_I2C\LM75BD</v>
+<v>Entregas_I2C\MCP3421</v>
+<v>Entregas_I2C\MCP3421\TopDesign</v>
+<v>Entregas_I2C\MCP3421\MCP3421.cydwr</v>
+<v>Entregas_I2C\MCP3421\MCP3421.cydwr\Pins</v>
+<v>Entregas_I2C\MCP3421\MCP3421.cydwr\Analog</v>
+<v>Entregas_I2C\MCP3421\MCP3421.cydwr\Clocks</v>
+<v>Entregas_I2C\MCP3421\MCP3421.cydwr\Interrupts</v>
+<v>Entregas_I2C\MCP3421\MCP3421.cydwr\DMA</v>
+<v>Entregas_I2C\MCP3421\MCP3421.cydwr\System</v>
+<v>Entregas_I2C\MCP3421\MCP3421.cydwr\Directives</v>
+<v>Entregas_I2C\MCP3421\MCP3421.cydwr\Flash Security</v>
+<v>Entregas_I2C\MCP3421\MCP3421.cydwr\EEPROM</v>
+<v>Entregas_I2C\MCP3421\Header Files</v>
+<v>Entregas_I2C\MCP3421\Header Files\cyapicallbacks.h</v>
+<v>Entregas_I2C\MCP3421\Source Files</v>
+<v>Entregas_I2C\MCP3421\Source Files\main.c</v>
+<v>Entregas_I2C\MCP3421\Generated_Source</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\cy_boot</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\Em_EEPROM_Dynamic</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\I2C</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\SCL_1</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\SDA_1</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\cycodeshareexport.ld</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\cycodeshareimport.ld</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\cycodeshareimport.scat</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\cydevice.h</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\cydevice_trm.h</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\cydevicegnu.inc</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\cydevicegnu_trm.inc</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\cydeviceiar.inc</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\cydeviceiar_trm.inc</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\cydevicerv.inc</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\cydevicerv_trm.inc</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\cydisabledsheets.h</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\cyfitter.h</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\cyfitter_cfg.c</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\cyfitter_cfg.h</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\cyfittergnu.inc</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\cyfitteriar.inc</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\cyfitterrv.inc</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\cymetadata.c</v>
+<v>Entregas_I2C\MCP3421\Generated_Source\PSoC5\project.h</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Entregas_I2C</v>
+<v>Entregas_I2C\I2C_Manual</v>
+<v>Entregas_I2C\I2C_Manual\TopDesign</v>
+<v>Entregas_I2C\I2C_Manual\TopDesign\TopDesign.cysch</v>
+<v>Entregas_I2C\LCD_I2C</v>
+<v>Entregas_I2C\LCD_I2C\TopDesign</v>
+<v>Entregas_I2C\LCD_I2C\TopDesign\TopDesign.cysch</v>
+<v>Entregas_I2C\LM75BD</v>
+<v>Entregas_I2C\LM75BD\TopDesign</v>
+<v>Entregas_I2C\LM75BD\TopDesign\TopDesign.cysch</v>
+<v>Entregas_I2C\MCP3421</v>
+<v>Entregas_I2C\MCP3421\TopDesign</v>
+<v>Entregas_I2C\MCP3421\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Entregas_I2C</v>
+<v>Entregas_I2C\I2C_Manual</v>
+<v>Entregas_I2C\I2C_Manual\TopDesign</v>
+<v>Entregas_I2C\I2C_Manual\TopDesign\TopDesign.cysch</v>
+<v>Entregas_I2C\LCD_I2C</v>
+<v>Entregas_I2C\LCD_I2C\TopDesign</v>
+<v>Entregas_I2C\LCD_I2C\TopDesign\TopDesign.cysch</v>
+<v>Entregas_I2C\LM75BD</v>
+<v>Entregas_I2C\LM75BD\TopDesign</v>
+<v>Entregas_I2C\LM75BD\TopDesign\TopDesign.cysch</v>
+<v>Entregas_I2C\MCP3421</v>
+<v>Entregas_I2C\MCP3421\TopDesign</v>
+<v>Entregas_I2C\MCP3421\TopDesign\TopDesign.cysch</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Entregas_I2C</v>
+<v>Entregas_I2C\I2C_Manual</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_BOOT.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_INT.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_MASTER.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_PM.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_SLAVE.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\SCL_1.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\SDA_1.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\I2C_Manual.elf</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\I2C_Manual.hex</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\I2C_Manual.map</v>
+<v>Entregas_I2C\I2C_Manual\I2C_Manual.gpdsc</v>
+<v>Entregas_I2C\I2C_Manual\I2C_Manual.rpt</v>
+<v>Entregas_I2C\I2C_Manual\I2C_Manual_timing.html</v>
+<v>Entregas_I2C\LCD_I2C</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_BOOT.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_INT.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_MASTER.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_PM.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_SLAVE.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\LXD.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\SCL_1.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\SDA_1.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\LCD_I2C.elf</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\LCD_I2C.hex</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\LCD_I2C.map</v>
+<v>Entregas_I2C\LCD_I2C\LCD_I2C.gpdsc</v>
+<v>Entregas_I2C\LCD_I2C\LCD_I2C.rpt</v>
+<v>Entregas_I2C\LCD_I2C\LCD_I2C_timing.html</v>
+<v>Entregas_I2C\LM75BD</v>
+<v>Entregas_I2C\LM75BD\CortexM3</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C.lst</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_BOOT.lst</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_INT.lst</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_MASTER.lst</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_PM.lst</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_SLAVE.lst</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug\Listing Files\SCL_1.lst</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug\Listing Files\SDA_1.lst</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug\LM75BD.elf</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug\LM75BD.hex</v>
+<v>Entregas_I2C\LM75BD\CortexM3\ARM_GCC_541\Debug\LM75BD.map</v>
+<v>Entregas_I2C\LM75BD\LM75BD.gpdsc</v>
+<v>Entregas_I2C\LM75BD\LM75BD.rpt</v>
+<v>Entregas_I2C\LM75BD\LM75BD_timing.html</v>
+<v>Entregas_I2C\MCP3421</v>
+<v>Entregas_I2C\MCP3421\CortexM3</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C.lst</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_BOOT.lst</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_INT.lst</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_MASTER.lst</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_PM.lst</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_SLAVE.lst</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug\Listing Files\SCL_1.lst</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug\Listing Files\SDA_1.lst</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug\MCP3421.elf</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug\MCP3421.hex</v>
+<v>Entregas_I2C\MCP3421\CortexM3\ARM_GCC_541\Debug\MCP3421.map</v>
+<v>Entregas_I2C\MCP3421\MCP3421.gpdsc</v>
+<v>Entregas_I2C\MCP3421\MCP3421.rpt</v>
+<v>Entregas_I2C\MCP3421\MCP3421_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Entregas_I2C</v>
+<v>Entregas_I2C\I2C_Manual</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_BOOT.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_INT.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_MASTER.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_PM.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_SLAVE.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\SCL_1.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\Listing Files\SDA_1.lst</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\I2C_Manual.elf</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\I2C_Manual.hex</v>
+<v>Entregas_I2C\I2C_Manual\CortexM3\ARM_GCC_541\Debug\I2C_Manual.map</v>
+<v>Entregas_I2C\I2C_Manual\I2C_Manual.gpdsc</v>
+<v>Entregas_I2C\I2C_Manual\I2C_Manual.rpt</v>
+<v>Entregas_I2C\I2C_Manual\I2C_Manual_timing.html</v>
+<v>Entregas_I2C\LCD_I2C</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>Entregas_I2C\LCD_I2C\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Entregas_I2C</v>
+<v>Entregas_I2C\I2C_Manual</v>
+<v>Entregas_I2C\I2C_Manual\PSoC 5LP Architecture TRM</v>
+<v>Entregas_I2C\I2C_Manual\CY8C58LP Family Datasheet</v>
+<v>Entregas_I2C\I2C_Manual\System Reference Guides</v>
+<v>Entregas_I2C\I2C_Manual\System Reference Guides\cy_boot_v6_0</v>
+<v>Entregas_I2C\I2C_Manual\cy_pins_v2_20</v>
+<v>Entregas_I2C\I2C_Manual\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>Entregas_I2C\I2C_Manual\I2C_v3_50.pdf</v>
+<v>Entregas_I2C\LCD_I2C</v>
+<v>Entregas_I2C\LCD_I2C\PSoC 5LP Architecture TRM</v>
+<v>Entregas_I2C\LCD_I2C\CY8C58LP Family Datasheet</v>
+<v>Entregas_I2C\LCD_I2C\System Reference Guides</v>
+<v>Entregas_I2C\LCD_I2C\System Reference Guides\cy_boot_v6_0</v>
+<v>Entregas_I2C\LCD_I2C\cy_pins_v2_20</v>
+<v>Entregas_I2C\LCD_I2C\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>Entregas_I2C\LCD_I2C\I2C_v3_50.pdf</v>
+<v>Entregas_I2C\LM75BD</v>
+<v>Entregas_I2C\LM75BD\PSoC 5LP Architecture TRM</v>
+<v>Entregas_I2C\LM75BD\CY8C58LP Family Datasheet</v>
+<v>Entregas_I2C\LM75BD\System Reference Guides</v>
+<v>Entregas_I2C\LM75BD\System Reference Guides\cy_boot_v6_0</v>
+<v>Entregas_I2C\LM75BD\cy_pins_v2_20</v>
+<v>Entregas_I2C\LM75BD\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>Entregas_I2C\LM75BD\I2C_v3_50.pdf</v>
+<v>Entregas_I2C\MCP3421</v>
+<v>Entregas_I2C\MCP3421\PSoC 5LP Architecture TRM</v>
+<v>Entregas_I2C\MCP3421\CY8C58LP Family Datasheet</v>
+<v>Entregas_I2C\MCP3421\System Reference Guides</v>
+<v>Entregas_I2C\MCP3421\System Reference Guides\cy_boot_v6_0</v>
+<v>Entregas_I2C\MCP3421\cy_pins_v2_20</v>
+<v>Entregas_I2C\MCP3421\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>Entregas_I2C\MCP3421\I2C_v3_50.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Entregas_I2C</v>
+<v>Entregas_I2C\I2C_Manual</v>
+<v>Entregas_I2C\I2C_Manual\PSoC 5LP Architecture TRM</v>
+<v>Entregas_I2C\I2C_Manual\CY8C58LP Family Datasheet</v>
+<v>Entregas_I2C\I2C_Manual\System Reference Guides</v>
+<v>Entregas_I2C\I2C_Manual\System Reference Guides\cy_boot_v6_0</v>
+<v>Entregas_I2C\I2C_Manual\cy_pins_v2_20</v>
+<v>Entregas_I2C\I2C_Manual\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>Entregas_I2C\I2C_Manual\I2C_v3_50.pdf</v>
+<v>Entregas_I2C\LCD_I2C</v>
+<v>Entregas_I2C\LCD_I2C\PSoC 5LP Architecture TRM</v>
+<v>Entregas_I2C\LCD_I2C\CY8C58LP Family Datasheet</v>
+<v>Entregas_I2C\LCD_I2C\System Reference Guides</v>
+<v>Entregas_I2C\LCD_I2C\System Reference Guides\cy_boot_v6_0</v>
+<v>Entregas_I2C\LCD_I2C\cy_pins_v2_20</v>
+<v>Entregas_I2C\LCD_I2C\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>Entregas_I2C\LCD_I2C\I2C_v3_50.pdf</v>
+<v>Entregas_I2C\LM75BD</v>
+<v>Entregas_I2C\LM75BD\PSoC 5LP Architecture TRM</v>
+<v>Entregas_I2C\LM75BD\CY8C58LP Family Datasheet</v>
+<v>Entregas_I2C\LM75BD\System Reference Guides</v>
+<v>Entregas_I2C\LM75BD\System Reference Guides\cy_boot_v6_0</v>
+<v>Entregas_I2C\LM75BD\cy_pins_v2_20</v>
+<v>Entregas_I2C\LM75BD\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>Entregas_I2C\LM75BD\I2C_v3_50.pdf</v>
+<v>Entregas_I2C\MCP3421</v>
+<v>Entregas_I2C\MCP3421\PSoC 5LP Architecture TRM</v>
+<v>Entregas_I2C\MCP3421\CY8C58LP Family Datasheet</v>
+<v>Entregas_I2C\MCP3421\System Reference Guides</v>
+<v>Entregas_I2C\MCP3421\System Reference Guides\cy_boot_v6_0</v>
+<v>Entregas_I2C\MCP3421\cy_pins_v2_20</v>
+<v>Entregas_I2C\MCP3421\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>Entregas_I2C\MCP3421\I2C_v3_50.pdf</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+<dataGuid v="5f2be1a5-0687-4501-bb8c-cf21cb8211bf">
+<CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf type_name="CyDesigner.Common.ProjMgmt.GUI.CyBookmarkData" version="1">
+<indicators />
+</CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs>
+<name v=".\LM75BD.cydsn\main.c" />
+<name v=".\I2C_Manual.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\I2C_Manual.cydsn\main.c" />
+<name v=".\I2C_Manual.cydsn\I2C_Manual.cydwr" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Vertical"><TabbedMdiContainer Size="912, 875" SelectedTabbedMdiWindow="ff59584d-05fb-44d3-92df-52f67bc97606"><DocumentWindow Key="C:\Users\PYBL\Documents\PSoC Creator\Entregas_I2C\LM75BD.cydsn\main.c" Guid="ff59584d-05fb-44d3-92df-52f67bc97606" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="fb2e1fc2-15bd-452c-bc53-f7643f94f6ce" /><DocumentWindow Key="C:\Users\PYBL\Documents\PSoC Creator\Entregas_I2C\I2C_Manual.cydsn\TopDesign\TopDesign.cysch" Guid="bd6742d5-d9d8-4027-9c78-510b04d98962" /><DocumentWindow Key="C:\Users\PYBL\Documents\PSoC Creator\Entregas_I2C\I2C_Manual.cydsn\main.c" Guid="4932e509-818a-413f-94a2-bbad806a2806" /><DocumentWindow Key="C:\Users\PYBL\Documents\PSoC Creator\Entregas_I2C\I2C_Manual.cydsn\I2C_Manual.cydwr" Guid="24f3d7b8-ecd2-4077-bbf5-bf0b69af595c" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>

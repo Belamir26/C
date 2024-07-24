@@ -1,0 +1,14 @@
+C:\Users\PYBL\Documents\PSoC Creator\Pruebas\Punto_Flotante.cydsn\Punto_Flotante.cyprj|e464b0a4-f7d1-41c5-a02b-cdd3d24fab8b
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|eeabf2a6-29c9-4265-995e-eed5ffd171d3
+C:\Users\PYBL\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|45f6b431-eac6-473e-9caa-bdc69eac8aa8
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|95c4d8bd-2235-422e-b424-0ae6744c2d8d
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|d9329e99-07b6-4568-94a2-0dcb8d3e63c9
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|f3a38efe-aa7b-4c4d-b188-8f67a1857a38
+C:\Users\PYBL\Documents\PSoC Creator\Pruebas\Keypad.cydsn\Keypad.cyprj|caf025af-6a64-41d2-bcb5-25880611c2e6
+C:\Users\PYBL\Documents\PSoC Creator\Pruebas\INPUT_CAPTURE.cydsn\INPUT_CAPTURE.cyprj|11c8a277-3fdf-4082-a54b-3723a5e20216
+C:\Users\PYBL\Documents\PSoC Creator\Pruebas\UART.cydsn\UART.cyprj|a2b46c98-a9c2-464b-9d0c-3f6960f9ca47
+C:\Users\PYBL\Documents\PSoC Creator\Pruebas\DesdeAbajo.cydsn\DesdeAbajo.cyprj|692168ea-789d-4c24-8223-262cb1b111fa
+C:\Users\PYBL\Documents\PSoC Creator\Pruebas\FinalDepurado.cydsn\FinalDepurado.cyprj|0b0d02b6-8104-418d-a87a-72f70bf6538b
+C:\Users\PYBL\Documents\PSoC Creator\Pruebas\I2C_TEMP.cydsn\I2C_TEMP.cyprj|dc29d966-c9bf-428e-88ca-fa178c414c05
+C:\Users\PYBL\Documents\PSoC Creator\Pruebas\I2C_GENERALIZADO.cydsn\I2C_GENERALIZADO.cyprj|b1ba729b-f07b-4fc8-96c7-e3e5a0f48870
+C:\Users\PYBL\Documents\PSoC Creator\Pruebas\MCP3421.cydsn\MCP3421.cyprj|2f47c9f6-ebea-408a-ac5e-a171a19f418d

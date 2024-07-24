@@ -1,0 +1,1068 @@
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cchN8wde.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	2
+  21              		.global	main
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	main, %function
+  25              	main:
+  26              	.LFB63:
+  27              		.file 1 "main.c"
+   1:main.c        **** 
+   2:main.c        **** #include "project.h"
+   3:main.c        **** 
+   4:main.c        **** 
+   5:main.c        **** /*
+   6:main.c        **** 
+   7:main.c        **** ESTE CODIGO NO ESTA PROBADO, ES DIRECTAMENTE LO QUE DICE EL DATASHEET
+   8:main.c        **** Y DEBE DE SER MODIFICADO POR CADA DIPOSITIVO I2C, ES DECIR:
+   9:main.c        **** QUE LA LECTURA Y ESCRITURA SEA INDEPENDIENTE
+  10:main.c        **** 
+  11:main.c        **** POR LO CUAL ESTO ES TEORICO, PARA DISPOSITIVOS I2C AVANZADOS, 
+  12:main.c        **** IMUS, ACCEL, MAGNETO (Con muchos registros)
+  13:main.c        **** */
+  14:main.c        **** 
+  15:main.c        **** 
+  16:main.c        **** /* lectura de registros*/
+  17:main.c        **** void lecturaRegistros(uint8 addr_slave, uint8 reg, uint8 cadena, uint8* retorno);
+  18:main.c        **** 
+  19:main.c        **** 
+  20:main.c        **** int main(void)
+  21:main.c        **** {
+  28              		.loc 1 21 0
+  29              		.cfi_startproc
+  30              		@ Volatile: function does not return.
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  22:main.c        ****     CyGlobalIntEnable; 
+  34              		.loc 1 22 0
+  35              		.syntax unified
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cchN8wde.s 			page 2
+
+
+  36              	@ 22 "main.c" 1
+  37 0000 62B6     		CPSIE   i
+  38              	@ 0 "" 2
+  39              		.thumb
+  40              		.syntax unified
+  41              	.L2:
+  42 0002 FEE7     		b	.L2
+  43              		.cfi_endproc
+  44              	.LFE63:
+  45              		.size	main, .-main
+  46              		.section	.text.lecturaRegistros,"ax",%progbits
+  47              		.align	2
+  48              		.global	lecturaRegistros
+  49              		.thumb
+  50              		.thumb_func
+  51              		.type	lecturaRegistros, %function
+  52              	lecturaRegistros:
+  53              	.LFB64:
+  23:main.c        **** 
+  24:main.c        ****     for(;;)
+  25:main.c        ****     {
+  26:main.c        ****         
+  27:main.c        ****     }
+  28:main.c        **** }
+  29:main.c        **** 
+  30:main.c        **** //Este dependerá de cada dispostivo I2C y de como funcione
+  31:main.c        **** void lecturaRegistros(uint8 addr_slave, uint8 reg, uint8 cadena, uint8* retorno){
+  54              		.loc 1 31 0
+  55              		.cfi_startproc
+  56              		@ args = 0, pretend = 0, frame = 0
+  57              		@ frame_needed = 0, uses_anonymous_args = 0
+  58              	.LVL0:
+  59 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  60              		.cfi_def_cfa_offset 24
+  61              		.cfi_offset 3, -24
+  62              		.cfi_offset 4, -20
+  63              		.cfi_offset 5, -16
+  64              		.cfi_offset 6, -12
+  65              		.cfi_offset 7, -8
+  66              		.cfi_offset 14, -4
+  67 0002 0746     		mov	r7, r0
+  68 0004 0C46     		mov	r4, r1
+  69 0006 1546     		mov	r5, r2
+  70 0008 1E46     		mov	r6, r3
+  32:main.c        ****     uint8 estado;
+  33:main.c        **** 
+  34:main.c        ****     //Escritura
+  35:main.c        ****     estado= I2C_MasterSendStart(addr_slave, I2C_WRITE_XFER_MODE);
+  71              		.loc 1 35 0
+  72 000a 0021     		movs	r1, #0
+  73              	.LVL1:
+  74 000c FFF7FEFF 		bl	I2C_MasterSendStart
+  75              	.LVL2:
+  36:main.c        ****     if(I2C_MSTR_NO_ERROR ==estado){
+  76              		.loc 1 36 0
+  77 0010 20B9     		cbnz	r0, .L4
+  78              	.L5:
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cchN8wde.s 			page 3
+
+
+  37:main.c        ****         for(;;){
+  38:main.c        ****             estado= I2C_MasterWriteByte(reg);
+  79              		.loc 1 38 0
+  80 0012 2046     		mov	r0, r4
+  81              	.LVL3:
+  82 0014 FFF7FEFF 		bl	I2C_MasterWriteByte
+  83              	.LVL4:
+  39:main.c        ****             if(estado != I2C_MSTR_NO_ERROR){ 
+  84              		.loc 1 39 0
+  85 0018 0028     		cmp	r0, #0
+  86 001a FAD0     		beq	.L5
+  87              	.L4:
+  40:main.c        ****                 break;
+  41:main.c        ****             }
+  42:main.c        ****         }
+  43:main.c        ****     }
+  44:main.c        ****     I2C_MasterSendStop(); 
+  88              		.loc 1 44 0
+  89 001c FFF7FEFF 		bl	I2C_MasterSendStop
+  90              	.LVL5:
+  45:main.c        **** 
+  46:main.c        ****     //Lectura
+  47:main.c        ****     estado= I2C_MasterSendStart(addr_slave, I2C_READ_XFER_MODE);
+  91              		.loc 1 47 0
+  92 0020 0121     		movs	r1, #1
+  93 0022 3846     		mov	r0, r7
+  94 0024 FFF7FEFF 		bl	I2C_MasterSendStart
+  95              	.LVL6:
+  48:main.c        ****     if(I2C_MSTR_NO_ERROR==estado){
+  96              		.loc 1 48 0
+  97 0028 78B1     		cbz	r0, .L11
+  98              	.LBB2:
+  99 002a 11E0     		b	.L7
+ 100              	.LVL7:
+ 101              	.L10:
+  49:main.c        ****         for(uint8 i=0; i<cadena;i++){
+  50:main.c        ****             if(i<cadena-1){
+ 102              		.loc 1 50 0
+ 103 002c 6B1E     		subs	r3, r5, #1
+ 104 002e 9C42     		cmp	r4, r3
+ 105 0030 04DA     		bge	.L8
+  51:main.c        ****                 retorno[i]= I2C_MasterReadByte(I2C_ACK_DATA);
+ 106              		.loc 1 51 0
+ 107 0032 0120     		movs	r0, #1
+ 108 0034 FFF7FEFF 		bl	I2C_MasterReadByte
+ 109              	.LVL8:
+ 110 0038 3055     		strb	r0, [r6, r4]
+ 111 003a 03E0     		b	.L9
+ 112              	.L8:
+  52:main.c        ****             }else{
+  53:main.c        ****                 retorno[i]= I2C_MasterReadByte(I2C_NAK_DATA);
+ 113              		.loc 1 53 0
+ 114 003c 0020     		movs	r0, #0
+ 115 003e FFF7FEFF 		bl	I2C_MasterReadByte
+ 116              	.LVL9:
+ 117 0042 3055     		strb	r0, [r6, r4]
+ 118              	.L9:
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cchN8wde.s 			page 4
+
+
+  49:main.c        ****             if(i<cadena-1){
+ 119              		.loc 1 49 0 discriminator 2
+ 120 0044 0134     		adds	r4, r4, #1
+ 121              	.LVL10:
+ 122 0046 E4B2     		uxtb	r4, r4
+ 123              	.LVL11:
+ 124 0048 00E0     		b	.L6
+ 125              	.LVL12:
+ 126              	.L11:
+ 127              	.LBE2:
+ 128 004a 0024     		movs	r4, #0
+ 129              	.LVL13:
+ 130              	.L6:
+ 131              	.LBB3:
+  49:main.c        ****             if(i<cadena-1){
+ 132              		.loc 1 49 0 is_stmt 0 discriminator 1
+ 133 004c AC42     		cmp	r4, r5
+ 134 004e EDD3     		bcc	.L10
+ 135              	.LVL14:
+ 136              	.L7:
+ 137              	.LBE3:
+  54:main.c        ****             }
+  55:main.c        ****         }
+  56:main.c        ****     }
+  57:main.c        ****     I2C_MasterSendStop();
+ 138              		.loc 1 57 0 is_stmt 1
+ 139 0050 FFF7FEFF 		bl	I2C_MasterSendStop
+ 140              	.LVL15:
+ 141 0054 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 142              		.cfi_endproc
+ 143              	.LFE64:
+ 144              		.size	lecturaRegistros, .-lecturaRegistros
+ 145 0056 00BF     		.text
+ 146              	.Letext0:
+ 147              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 148              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 149              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 150              		.file 5 "Generated_Source\\PSoC5/I2C.h"
+ 151              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
+ 152              		.section	.debug_info,"",%progbits
+ 153              	.Ldebug_info0:
+ 154 0000 F7010000 		.4byte	0x1f7
+ 155 0004 0400     		.2byte	0x4
+ 156 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 157 000a 04       		.byte	0x4
+ 158 000b 01       		.uleb128 0x1
+ 159 000c 88000000 		.4byte	.LASF25
+ 160 0010 0C       		.byte	0xc
+ 161 0011 D6010000 		.4byte	.LASF26
+ 162 0015 37000000 		.4byte	.LASF27
+ 163 0019 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 164 001d 00000000 		.4byte	0
+ 165 0021 00000000 		.4byte	.Ldebug_line0
+ 166 0025 02       		.uleb128 0x2
+ 167 0026 01       		.byte	0x1
+ 168 0027 06       		.byte	0x6
+ 169 0028 1A020000 		.4byte	.LASF0
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cchN8wde.s 			page 5
+
+
+ 170 002c 02       		.uleb128 0x2
+ 171 002d 01       		.byte	0x1
+ 172 002e 08       		.byte	0x8
+ 173 002f 7A000000 		.4byte	.LASF1
+ 174 0033 02       		.uleb128 0x2
+ 175 0034 02       		.byte	0x2
+ 176 0035 05       		.byte	0x5
+ 177 0036 F5010000 		.4byte	.LASF2
+ 178 003a 02       		.uleb128 0x2
+ 179 003b 02       		.byte	0x2
+ 180 003c 07       		.byte	0x7
+ 181 003d 39010000 		.4byte	.LASF3
+ 182 0041 03       		.uleb128 0x3
+ 183 0042 13000000 		.4byte	.LASF9
+ 184 0046 02       		.byte	0x2
+ 185 0047 3F       		.byte	0x3f
+ 186 0048 4C000000 		.4byte	0x4c
+ 187 004c 02       		.uleb128 0x2
+ 188 004d 04       		.byte	0x4
+ 189 004e 05       		.byte	0x5
+ 190 004f 05020000 		.4byte	.LASF4
+ 191 0053 02       		.uleb128 0x2
+ 192 0054 04       		.byte	0x4
+ 193 0055 07       		.byte	0x7
+ 194 0056 27010000 		.4byte	.LASF5
+ 195 005a 02       		.uleb128 0x2
+ 196 005b 08       		.byte	0x8
+ 197 005c 05       		.byte	0x5
+ 198 005d C8010000 		.4byte	.LASF6
+ 199 0061 02       		.uleb128 0x2
+ 200 0062 08       		.byte	0x8
+ 201 0063 07       		.byte	0x7
+ 202 0064 A0010000 		.4byte	.LASF7
+ 203 0068 04       		.uleb128 0x4
+ 204 0069 04       		.byte	0x4
+ 205 006a 05       		.byte	0x5
+ 206 006b 696E7400 		.ascii	"int\000"
+ 207 006f 02       		.uleb128 0x2
+ 208 0070 04       		.byte	0x4
+ 209 0071 07       		.byte	0x7
+ 210 0072 93010000 		.4byte	.LASF8
+ 211 0076 03       		.uleb128 0x3
+ 212 0077 B7010000 		.4byte	.LASF10
+ 213 007b 03       		.byte	0x3
+ 214 007c 2C       		.byte	0x2c
+ 215 007d 41000000 		.4byte	0x41
+ 216 0081 05       		.uleb128 0x5
+ 217 0082 FF010000 		.4byte	.LASF11
+ 218 0086 04       		.byte	0x4
+ 219 0087 E801     		.2byte	0x1e8
+ 220 0089 2C000000 		.4byte	0x2c
+ 221 008d 02       		.uleb128 0x2
+ 222 008e 04       		.byte	0x4
+ 223 008f 04       		.byte	0x4
+ 224 0090 31000000 		.4byte	.LASF12
+ 225 0094 02       		.uleb128 0x2
+ 226 0095 08       		.byte	0x8
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cchN8wde.s 			page 6
+
+
+ 227 0096 04       		.byte	0x4
+ 228 0097 75010000 		.4byte	.LASF13
+ 229 009b 02       		.uleb128 0x2
+ 230 009c 01       		.byte	0x1
+ 231 009d 08       		.byte	0x8
+ 232 009e DD010000 		.4byte	.LASF14
+ 233 00a2 02       		.uleb128 0x2
+ 234 00a3 08       		.byte	0x8
+ 235 00a4 04       		.byte	0x4
+ 236 00a5 0E020000 		.4byte	.LASF15
+ 237 00a9 02       		.uleb128 0x2
+ 238 00aa 04       		.byte	0x4
+ 239 00ab 07       		.byte	0x7
+ 240 00ac BF010000 		.4byte	.LASF16
+ 241 00b0 06       		.uleb128 0x6
+ 242 00b1 83010000 		.4byte	.LASF28
+ 243 00b5 01       		.byte	0x1
+ 244 00b6 14       		.byte	0x14
+ 245 00b7 68000000 		.4byte	0x68
+ 246 00bb 00000000 		.4byte	.LFB63
+ 247 00bf 04000000 		.4byte	.LFE63-.LFB63
+ 248 00c3 01       		.uleb128 0x1
+ 249 00c4 9C       		.byte	0x9c
+ 250 00c5 07       		.uleb128 0x7
+ 251 00c6 16010000 		.4byte	.LASF29
+ 252 00ca 01       		.byte	0x1
+ 253 00cb 1F       		.byte	0x1f
+ 254 00cc 00000000 		.4byte	.LFB64
+ 255 00d0 56000000 		.4byte	.LFE64-.LFB64
+ 256 00d4 01       		.uleb128 0x1
+ 257 00d5 9C       		.byte	0x9c
+ 258 00d6 B7010000 		.4byte	0x1b7
+ 259 00da 08       		.uleb128 0x8
+ 260 00db 88010000 		.4byte	.LASF17
+ 261 00df 01       		.byte	0x1
+ 262 00e0 1F       		.byte	0x1f
+ 263 00e1 81000000 		.4byte	0x81
+ 264 00e5 00000000 		.4byte	.LLST0
+ 265 00e9 09       		.uleb128 0x9
+ 266 00ea 72656700 		.ascii	"reg\000"
+ 267 00ee 01       		.byte	0x1
+ 268 00ef 1F       		.byte	0x1f
+ 269 00f0 81000000 		.4byte	0x81
+ 270 00f4 21000000 		.4byte	.LLST1
+ 271 00f8 08       		.uleb128 0x8
+ 272 00f9 7C010000 		.4byte	.LASF18
+ 273 00fd 01       		.byte	0x1
+ 274 00fe 1F       		.byte	0x1f
+ 275 00ff 81000000 		.4byte	0x81
+ 276 0103 42000000 		.4byte	.LLST2
+ 277 0107 08       		.uleb128 0x8
+ 278 0108 60010000 		.4byte	.LASF19
+ 279 010c 01       		.byte	0x1
+ 280 010d 1F       		.byte	0x1f
+ 281 010e B7010000 		.4byte	0x1b7
+ 282 0112 63000000 		.4byte	.LLST3
+ 283 0116 0A       		.uleb128 0xa
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cchN8wde.s 			page 7
+
+
+ 284 0117 26020000 		.4byte	.LASF20
+ 285 011b 01       		.byte	0x1
+ 286 011c 20       		.byte	0x20
+ 287 011d 81000000 		.4byte	0x81
+ 288 0121 81000000 		.4byte	.LLST4
+ 289 0125 0B       		.uleb128 0xb
+ 290 0126 00000000 		.4byte	.Ldebug_ranges0+0
+ 291 012a 5E010000 		.4byte	0x15e
+ 292 012e 0C       		.uleb128 0xc
+ 293 012f 6900     		.ascii	"i\000"
+ 294 0131 01       		.byte	0x1
+ 295 0132 31       		.byte	0x31
+ 296 0133 81000000 		.4byte	0x81
+ 297 0137 B5000000 		.4byte	.LLST5
+ 298 013b 0D       		.uleb128 0xd
+ 299 013c 38000000 		.4byte	.LVL8
+ 300 0140 CE010000 		.4byte	0x1ce
+ 301 0144 4E010000 		.4byte	0x14e
+ 302 0148 0E       		.uleb128 0xe
+ 303 0149 01       		.uleb128 0x1
+ 304 014a 50       		.byte	0x50
+ 305 014b 01       		.uleb128 0x1
+ 306 014c 31       		.byte	0x31
+ 307 014d 00       		.byte	0
+ 308 014e 0F       		.uleb128 0xf
+ 309 014f 42000000 		.4byte	.LVL9
+ 310 0153 CE010000 		.4byte	0x1ce
+ 311 0157 0E       		.uleb128 0xe
+ 312 0158 01       		.uleb128 0x1
+ 313 0159 50       		.byte	0x50
+ 314 015a 01       		.uleb128 0x1
+ 315 015b 30       		.byte	0x30
+ 316 015c 00       		.byte	0
+ 317 015d 00       		.byte	0
+ 318 015e 0D       		.uleb128 0xd
+ 319 015f 10000000 		.4byte	.LVL2
+ 320 0163 D9010000 		.4byte	0x1d9
+ 321 0167 77010000 		.4byte	0x177
+ 322 016b 0E       		.uleb128 0xe
+ 323 016c 01       		.uleb128 0x1
+ 324 016d 50       		.byte	0x50
+ 325 016e 02       		.uleb128 0x2
+ 326 016f 77       		.byte	0x77
+ 327 0170 00       		.sleb128 0
+ 328 0171 0E       		.uleb128 0xe
+ 329 0172 01       		.uleb128 0x1
+ 330 0173 51       		.byte	0x51
+ 331 0174 01       		.uleb128 0x1
+ 332 0175 30       		.byte	0x30
+ 333 0176 00       		.byte	0
+ 334 0177 0D       		.uleb128 0xd
+ 335 0178 18000000 		.4byte	.LVL4
+ 336 017c E4010000 		.4byte	0x1e4
+ 337 0180 8B010000 		.4byte	0x18b
+ 338 0184 0E       		.uleb128 0xe
+ 339 0185 01       		.uleb128 0x1
+ 340 0186 50       		.byte	0x50
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cchN8wde.s 			page 8
+
+
+ 341 0187 02       		.uleb128 0x2
+ 342 0188 74       		.byte	0x74
+ 343 0189 00       		.sleb128 0
+ 344 018a 00       		.byte	0
+ 345 018b 10       		.uleb128 0x10
+ 346 018c 20000000 		.4byte	.LVL5
+ 347 0190 EF010000 		.4byte	0x1ef
+ 348 0194 0D       		.uleb128 0xd
+ 349 0195 28000000 		.4byte	.LVL6
+ 350 0199 D9010000 		.4byte	0x1d9
+ 351 019d AD010000 		.4byte	0x1ad
+ 352 01a1 0E       		.uleb128 0xe
+ 353 01a2 01       		.uleb128 0x1
+ 354 01a3 50       		.byte	0x50
+ 355 01a4 02       		.uleb128 0x2
+ 356 01a5 77       		.byte	0x77
+ 357 01a6 00       		.sleb128 0
+ 358 01a7 0E       		.uleb128 0xe
+ 359 01a8 01       		.uleb128 0x1
+ 360 01a9 51       		.byte	0x51
+ 361 01aa 01       		.uleb128 0x1
+ 362 01ab 31       		.byte	0x31
+ 363 01ac 00       		.byte	0
+ 364 01ad 10       		.uleb128 0x10
+ 365 01ae 54000000 		.4byte	.LVL15
+ 366 01b2 EF010000 		.4byte	0x1ef
+ 367 01b6 00       		.byte	0
+ 368 01b7 11       		.uleb128 0x11
+ 369 01b8 04       		.byte	0x4
+ 370 01b9 81000000 		.4byte	0x81
+ 371 01bd 12       		.uleb128 0x12
+ 372 01be 68010000 		.4byte	.LASF30
+ 373 01c2 06       		.byte	0x6
+ 374 01c3 1207     		.2byte	0x712
+ 375 01c5 C9010000 		.4byte	0x1c9
+ 376 01c9 13       		.uleb128 0x13
+ 377 01ca 76000000 		.4byte	0x76
+ 378 01ce 14       		.uleb128 0x14
+ 379 01cf E2010000 		.4byte	.LASF21
+ 380 01d3 E2010000 		.4byte	.LASF21
+ 381 01d7 05       		.byte	0x5
+ 382 01d8 B7       		.byte	0xb7
+ 383 01d9 14       		.uleb128 0x14
+ 384 01da 4C010000 		.4byte	.LASF22
+ 385 01de 4C010000 		.4byte	.LASF22
+ 386 01e2 05       		.byte	0x5
+ 387 01e3 B1       		.byte	0xb1
+ 388 01e4 14       		.uleb128 0x14
+ 389 01e5 1D000000 		.4byte	.LASF23
+ 390 01e9 1D000000 		.4byte	.LASF23
+ 391 01ed 05       		.byte	0x5
+ 392 01ee B6       		.byte	0xb6
+ 393 01ef 14       		.uleb128 0x14
+ 394 01f0 00000000 		.4byte	.LASF24
+ 395 01f4 00000000 		.4byte	.LASF24
+ 396 01f8 05       		.byte	0x5
+ 397 01f9 B5       		.byte	0xb5
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cchN8wde.s 			page 9
+
+
+ 398 01fa 00       		.byte	0
+ 399              		.section	.debug_abbrev,"",%progbits
+ 400              	.Ldebug_abbrev0:
+ 401 0000 01       		.uleb128 0x1
+ 402 0001 11       		.uleb128 0x11
+ 403 0002 01       		.byte	0x1
+ 404 0003 25       		.uleb128 0x25
+ 405 0004 0E       		.uleb128 0xe
+ 406 0005 13       		.uleb128 0x13
+ 407 0006 0B       		.uleb128 0xb
+ 408 0007 03       		.uleb128 0x3
+ 409 0008 0E       		.uleb128 0xe
+ 410 0009 1B       		.uleb128 0x1b
+ 411 000a 0E       		.uleb128 0xe
+ 412 000b 55       		.uleb128 0x55
+ 413 000c 17       		.uleb128 0x17
+ 414 000d 11       		.uleb128 0x11
+ 415 000e 01       		.uleb128 0x1
+ 416 000f 10       		.uleb128 0x10
+ 417 0010 17       		.uleb128 0x17
+ 418 0011 00       		.byte	0
+ 419 0012 00       		.byte	0
+ 420 0013 02       		.uleb128 0x2
+ 421 0014 24       		.uleb128 0x24
+ 422 0015 00       		.byte	0
+ 423 0016 0B       		.uleb128 0xb
+ 424 0017 0B       		.uleb128 0xb
+ 425 0018 3E       		.uleb128 0x3e
+ 426 0019 0B       		.uleb128 0xb
+ 427 001a 03       		.uleb128 0x3
+ 428 001b 0E       		.uleb128 0xe
+ 429 001c 00       		.byte	0
+ 430 001d 00       		.byte	0
+ 431 001e 03       		.uleb128 0x3
+ 432 001f 16       		.uleb128 0x16
+ 433 0020 00       		.byte	0
+ 434 0021 03       		.uleb128 0x3
+ 435 0022 0E       		.uleb128 0xe
+ 436 0023 3A       		.uleb128 0x3a
+ 437 0024 0B       		.uleb128 0xb
+ 438 0025 3B       		.uleb128 0x3b
+ 439 0026 0B       		.uleb128 0xb
+ 440 0027 49       		.uleb128 0x49
+ 441 0028 13       		.uleb128 0x13
+ 442 0029 00       		.byte	0
+ 443 002a 00       		.byte	0
+ 444 002b 04       		.uleb128 0x4
+ 445 002c 24       		.uleb128 0x24
+ 446 002d 00       		.byte	0
+ 447 002e 0B       		.uleb128 0xb
+ 448 002f 0B       		.uleb128 0xb
+ 449 0030 3E       		.uleb128 0x3e
+ 450 0031 0B       		.uleb128 0xb
+ 451 0032 03       		.uleb128 0x3
+ 452 0033 08       		.uleb128 0x8
+ 453 0034 00       		.byte	0
+ 454 0035 00       		.byte	0
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cchN8wde.s 			page 10
+
+
+ 455 0036 05       		.uleb128 0x5
+ 456 0037 16       		.uleb128 0x16
+ 457 0038 00       		.byte	0
+ 458 0039 03       		.uleb128 0x3
+ 459 003a 0E       		.uleb128 0xe
+ 460 003b 3A       		.uleb128 0x3a
+ 461 003c 0B       		.uleb128 0xb
+ 462 003d 3B       		.uleb128 0x3b
+ 463 003e 05       		.uleb128 0x5
+ 464 003f 49       		.uleb128 0x49
+ 465 0040 13       		.uleb128 0x13
+ 466 0041 00       		.byte	0
+ 467 0042 00       		.byte	0
+ 468 0043 06       		.uleb128 0x6
+ 469 0044 2E       		.uleb128 0x2e
+ 470 0045 00       		.byte	0
+ 471 0046 3F       		.uleb128 0x3f
+ 472 0047 19       		.uleb128 0x19
+ 473 0048 03       		.uleb128 0x3
+ 474 0049 0E       		.uleb128 0xe
+ 475 004a 3A       		.uleb128 0x3a
+ 476 004b 0B       		.uleb128 0xb
+ 477 004c 3B       		.uleb128 0x3b
+ 478 004d 0B       		.uleb128 0xb
+ 479 004e 27       		.uleb128 0x27
+ 480 004f 19       		.uleb128 0x19
+ 481 0050 49       		.uleb128 0x49
+ 482 0051 13       		.uleb128 0x13
+ 483 0052 8701     		.uleb128 0x87
+ 484 0054 19       		.uleb128 0x19
+ 485 0055 11       		.uleb128 0x11
+ 486 0056 01       		.uleb128 0x1
+ 487 0057 12       		.uleb128 0x12
+ 488 0058 06       		.uleb128 0x6
+ 489 0059 40       		.uleb128 0x40
+ 490 005a 18       		.uleb128 0x18
+ 491 005b 9742     		.uleb128 0x2117
+ 492 005d 19       		.uleb128 0x19
+ 493 005e 00       		.byte	0
+ 494 005f 00       		.byte	0
+ 495 0060 07       		.uleb128 0x7
+ 496 0061 2E       		.uleb128 0x2e
+ 497 0062 01       		.byte	0x1
+ 498 0063 3F       		.uleb128 0x3f
+ 499 0064 19       		.uleb128 0x19
+ 500 0065 03       		.uleb128 0x3
+ 501 0066 0E       		.uleb128 0xe
+ 502 0067 3A       		.uleb128 0x3a
+ 503 0068 0B       		.uleb128 0xb
+ 504 0069 3B       		.uleb128 0x3b
+ 505 006a 0B       		.uleb128 0xb
+ 506 006b 27       		.uleb128 0x27
+ 507 006c 19       		.uleb128 0x19
+ 508 006d 11       		.uleb128 0x11
+ 509 006e 01       		.uleb128 0x1
+ 510 006f 12       		.uleb128 0x12
+ 511 0070 06       		.uleb128 0x6
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cchN8wde.s 			page 11
+
+
+ 512 0071 40       		.uleb128 0x40
+ 513 0072 18       		.uleb128 0x18
+ 514 0073 9742     		.uleb128 0x2117
+ 515 0075 19       		.uleb128 0x19
+ 516 0076 01       		.uleb128 0x1
+ 517 0077 13       		.uleb128 0x13
+ 518 0078 00       		.byte	0
+ 519 0079 00       		.byte	0
+ 520 007a 08       		.uleb128 0x8
+ 521 007b 05       		.uleb128 0x5
+ 522 007c 00       		.byte	0
+ 523 007d 03       		.uleb128 0x3
+ 524 007e 0E       		.uleb128 0xe
+ 525 007f 3A       		.uleb128 0x3a
+ 526 0080 0B       		.uleb128 0xb
+ 527 0081 3B       		.uleb128 0x3b
+ 528 0082 0B       		.uleb128 0xb
+ 529 0083 49       		.uleb128 0x49
+ 530 0084 13       		.uleb128 0x13
+ 531 0085 02       		.uleb128 0x2
+ 532 0086 17       		.uleb128 0x17
+ 533 0087 00       		.byte	0
+ 534 0088 00       		.byte	0
+ 535 0089 09       		.uleb128 0x9
+ 536 008a 05       		.uleb128 0x5
+ 537 008b 00       		.byte	0
+ 538 008c 03       		.uleb128 0x3
+ 539 008d 08       		.uleb128 0x8
+ 540 008e 3A       		.uleb128 0x3a
+ 541 008f 0B       		.uleb128 0xb
+ 542 0090 3B       		.uleb128 0x3b
+ 543 0091 0B       		.uleb128 0xb
+ 544 0092 49       		.uleb128 0x49
+ 545 0093 13       		.uleb128 0x13
+ 546 0094 02       		.uleb128 0x2
+ 547 0095 17       		.uleb128 0x17
+ 548 0096 00       		.byte	0
+ 549 0097 00       		.byte	0
+ 550 0098 0A       		.uleb128 0xa
+ 551 0099 34       		.uleb128 0x34
+ 552 009a 00       		.byte	0
+ 553 009b 03       		.uleb128 0x3
+ 554 009c 0E       		.uleb128 0xe
+ 555 009d 3A       		.uleb128 0x3a
+ 556 009e 0B       		.uleb128 0xb
+ 557 009f 3B       		.uleb128 0x3b
+ 558 00a0 0B       		.uleb128 0xb
+ 559 00a1 49       		.uleb128 0x49
+ 560 00a2 13       		.uleb128 0x13
+ 561 00a3 02       		.uleb128 0x2
+ 562 00a4 17       		.uleb128 0x17
+ 563 00a5 00       		.byte	0
+ 564 00a6 00       		.byte	0
+ 565 00a7 0B       		.uleb128 0xb
+ 566 00a8 0B       		.uleb128 0xb
+ 567 00a9 01       		.byte	0x1
+ 568 00aa 55       		.uleb128 0x55
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cchN8wde.s 			page 12
+
+
+ 569 00ab 17       		.uleb128 0x17
+ 570 00ac 01       		.uleb128 0x1
+ 571 00ad 13       		.uleb128 0x13
+ 572 00ae 00       		.byte	0
+ 573 00af 00       		.byte	0
+ 574 00b0 0C       		.uleb128 0xc
+ 575 00b1 34       		.uleb128 0x34
+ 576 00b2 00       		.byte	0
+ 577 00b3 03       		.uleb128 0x3
+ 578 00b4 08       		.uleb128 0x8
+ 579 00b5 3A       		.uleb128 0x3a
+ 580 00b6 0B       		.uleb128 0xb
+ 581 00b7 3B       		.uleb128 0x3b
+ 582 00b8 0B       		.uleb128 0xb
+ 583 00b9 49       		.uleb128 0x49
+ 584 00ba 13       		.uleb128 0x13
+ 585 00bb 02       		.uleb128 0x2
+ 586 00bc 17       		.uleb128 0x17
+ 587 00bd 00       		.byte	0
+ 588 00be 00       		.byte	0
+ 589 00bf 0D       		.uleb128 0xd
+ 590 00c0 898201   		.uleb128 0x4109
+ 591 00c3 01       		.byte	0x1
+ 592 00c4 11       		.uleb128 0x11
+ 593 00c5 01       		.uleb128 0x1
+ 594 00c6 31       		.uleb128 0x31
+ 595 00c7 13       		.uleb128 0x13
+ 596 00c8 01       		.uleb128 0x1
+ 597 00c9 13       		.uleb128 0x13
+ 598 00ca 00       		.byte	0
+ 599 00cb 00       		.byte	0
+ 600 00cc 0E       		.uleb128 0xe
+ 601 00cd 8A8201   		.uleb128 0x410a
+ 602 00d0 00       		.byte	0
+ 603 00d1 02       		.uleb128 0x2
+ 604 00d2 18       		.uleb128 0x18
+ 605 00d3 9142     		.uleb128 0x2111
+ 606 00d5 18       		.uleb128 0x18
+ 607 00d6 00       		.byte	0
+ 608 00d7 00       		.byte	0
+ 609 00d8 0F       		.uleb128 0xf
+ 610 00d9 898201   		.uleb128 0x4109
+ 611 00dc 01       		.byte	0x1
+ 612 00dd 11       		.uleb128 0x11
+ 613 00de 01       		.uleb128 0x1
+ 614 00df 31       		.uleb128 0x31
+ 615 00e0 13       		.uleb128 0x13
+ 616 00e1 00       		.byte	0
+ 617 00e2 00       		.byte	0
+ 618 00e3 10       		.uleb128 0x10
+ 619 00e4 898201   		.uleb128 0x4109
+ 620 00e7 00       		.byte	0
+ 621 00e8 11       		.uleb128 0x11
+ 622 00e9 01       		.uleb128 0x1
+ 623 00ea 31       		.uleb128 0x31
+ 624 00eb 13       		.uleb128 0x13
+ 625 00ec 00       		.byte	0
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cchN8wde.s 			page 13
+
+
+ 626 00ed 00       		.byte	0
+ 627 00ee 11       		.uleb128 0x11
+ 628 00ef 0F       		.uleb128 0xf
+ 629 00f0 00       		.byte	0
+ 630 00f1 0B       		.uleb128 0xb
+ 631 00f2 0B       		.uleb128 0xb
+ 632 00f3 49       		.uleb128 0x49
+ 633 00f4 13       		.uleb128 0x13
+ 634 00f5 00       		.byte	0
+ 635 00f6 00       		.byte	0
+ 636 00f7 12       		.uleb128 0x12
+ 637 00f8 34       		.uleb128 0x34
+ 638 00f9 00       		.byte	0
+ 639 00fa 03       		.uleb128 0x3
+ 640 00fb 0E       		.uleb128 0xe
+ 641 00fc 3A       		.uleb128 0x3a
+ 642 00fd 0B       		.uleb128 0xb
+ 643 00fe 3B       		.uleb128 0x3b
+ 644 00ff 05       		.uleb128 0x5
+ 645 0100 49       		.uleb128 0x49
+ 646 0101 13       		.uleb128 0x13
+ 647 0102 3F       		.uleb128 0x3f
+ 648 0103 19       		.uleb128 0x19
+ 649 0104 3C       		.uleb128 0x3c
+ 650 0105 19       		.uleb128 0x19
+ 651 0106 00       		.byte	0
+ 652 0107 00       		.byte	0
+ 653 0108 13       		.uleb128 0x13
+ 654 0109 35       		.uleb128 0x35
+ 655 010a 00       		.byte	0
+ 656 010b 49       		.uleb128 0x49
+ 657 010c 13       		.uleb128 0x13
+ 658 010d 00       		.byte	0
+ 659 010e 00       		.byte	0
+ 660 010f 14       		.uleb128 0x14
+ 661 0110 2E       		.uleb128 0x2e
+ 662 0111 00       		.byte	0
+ 663 0112 3F       		.uleb128 0x3f
+ 664 0113 19       		.uleb128 0x19
+ 665 0114 3C       		.uleb128 0x3c
+ 666 0115 19       		.uleb128 0x19
+ 667 0116 6E       		.uleb128 0x6e
+ 668 0117 0E       		.uleb128 0xe
+ 669 0118 03       		.uleb128 0x3
+ 670 0119 0E       		.uleb128 0xe
+ 671 011a 3A       		.uleb128 0x3a
+ 672 011b 0B       		.uleb128 0xb
+ 673 011c 3B       		.uleb128 0x3b
+ 674 011d 0B       		.uleb128 0xb
+ 675 011e 00       		.byte	0
+ 676 011f 00       		.byte	0
+ 677 0120 00       		.byte	0
+ 678              		.section	.debug_loc,"",%progbits
+ 679              	.Ldebug_loc0:
+ 680              	.LLST0:
+ 681 0000 00000000 		.4byte	.LVL0
+ 682 0004 0F000000 		.4byte	.LVL2-1
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cchN8wde.s 			page 14
+
+
+ 683 0008 0100     		.2byte	0x1
+ 684 000a 50       		.byte	0x50
+ 685 000b 0F000000 		.4byte	.LVL2-1
+ 686 000f 56000000 		.4byte	.LFE64
+ 687 0013 0400     		.2byte	0x4
+ 688 0015 F3       		.byte	0xf3
+ 689 0016 01       		.uleb128 0x1
+ 690 0017 50       		.byte	0x50
+ 691 0018 9F       		.byte	0x9f
+ 692 0019 00000000 		.4byte	0
+ 693 001d 00000000 		.4byte	0
+ 694              	.LLST1:
+ 695 0021 00000000 		.4byte	.LVL0
+ 696 0025 0C000000 		.4byte	.LVL1
+ 697 0029 0100     		.2byte	0x1
+ 698 002b 51       		.byte	0x51
+ 699 002c 0C000000 		.4byte	.LVL1
+ 700 0030 56000000 		.4byte	.LFE64
+ 701 0034 0400     		.2byte	0x4
+ 702 0036 F3       		.byte	0xf3
+ 703 0037 01       		.uleb128 0x1
+ 704 0038 51       		.byte	0x51
+ 705 0039 9F       		.byte	0x9f
+ 706 003a 00000000 		.4byte	0
+ 707 003e 00000000 		.4byte	0
+ 708              	.LLST2:
+ 709 0042 00000000 		.4byte	.LVL0
+ 710 0046 0F000000 		.4byte	.LVL2-1
+ 711 004a 0100     		.2byte	0x1
+ 712 004c 52       		.byte	0x52
+ 713 004d 0F000000 		.4byte	.LVL2-1
+ 714 0051 56000000 		.4byte	.LFE64
+ 715 0055 0400     		.2byte	0x4
+ 716 0057 F3       		.byte	0xf3
+ 717 0058 01       		.uleb128 0x1
+ 718 0059 52       		.byte	0x52
+ 719 005a 9F       		.byte	0x9f
+ 720 005b 00000000 		.4byte	0
+ 721 005f 00000000 		.4byte	0
+ 722              	.LLST3:
+ 723 0063 00000000 		.4byte	.LVL0
+ 724 0067 0F000000 		.4byte	.LVL2-1
+ 725 006b 0100     		.2byte	0x1
+ 726 006d 53       		.byte	0x53
+ 727 006e 0F000000 		.4byte	.LVL2-1
+ 728 0072 56000000 		.4byte	.LFE64
+ 729 0076 0100     		.2byte	0x1
+ 730 0078 56       		.byte	0x56
+ 731 0079 00000000 		.4byte	0
+ 732 007d 00000000 		.4byte	0
+ 733              	.LLST4:
+ 734 0081 10000000 		.4byte	.LVL2
+ 735 0085 14000000 		.4byte	.LVL3
+ 736 0089 0100     		.2byte	0x1
+ 737 008b 50       		.byte	0x50
+ 738 008c 18000000 		.4byte	.LVL4
+ 739 0090 1F000000 		.4byte	.LVL5-1
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cchN8wde.s 			page 15
+
+
+ 740 0094 0100     		.2byte	0x1
+ 741 0096 50       		.byte	0x50
+ 742 0097 28000000 		.4byte	.LVL6
+ 743 009b 2C000000 		.4byte	.LVL7
+ 744 009f 0100     		.2byte	0x1
+ 745 00a1 50       		.byte	0x50
+ 746 00a2 4A000000 		.4byte	.LVL12
+ 747 00a6 4C000000 		.4byte	.LVL13
+ 748 00aa 0100     		.2byte	0x1
+ 749 00ac 50       		.byte	0x50
+ 750 00ad 00000000 		.4byte	0
+ 751 00b1 00000000 		.4byte	0
+ 752              	.LLST5:
+ 753 00b5 2C000000 		.4byte	.LVL7
+ 754 00b9 46000000 		.4byte	.LVL10
+ 755 00bd 0100     		.2byte	0x1
+ 756 00bf 54       		.byte	0x54
+ 757 00c0 48000000 		.4byte	.LVL11
+ 758 00c4 4A000000 		.4byte	.LVL12
+ 759 00c8 0100     		.2byte	0x1
+ 760 00ca 54       		.byte	0x54
+ 761 00cb 4C000000 		.4byte	.LVL13
+ 762 00cf 50000000 		.4byte	.LVL14
+ 763 00d3 0100     		.2byte	0x1
+ 764 00d5 54       		.byte	0x54
+ 765 00d6 00000000 		.4byte	0
+ 766 00da 00000000 		.4byte	0
+ 767              		.section	.debug_aranges,"",%progbits
+ 768 0000 24000000 		.4byte	0x24
+ 769 0004 0200     		.2byte	0x2
+ 770 0006 00000000 		.4byte	.Ldebug_info0
+ 771 000a 04       		.byte	0x4
+ 772 000b 00       		.byte	0
+ 773 000c 0000     		.2byte	0
+ 774 000e 0000     		.2byte	0
+ 775 0010 00000000 		.4byte	.LFB63
+ 776 0014 04000000 		.4byte	.LFE63-.LFB63
+ 777 0018 00000000 		.4byte	.LFB64
+ 778 001c 56000000 		.4byte	.LFE64-.LFB64
+ 779 0020 00000000 		.4byte	0
+ 780 0024 00000000 		.4byte	0
+ 781              		.section	.debug_ranges,"",%progbits
+ 782              	.Ldebug_ranges0:
+ 783 0000 2A000000 		.4byte	.LBB2
+ 784 0004 4A000000 		.4byte	.LBE2
+ 785 0008 4C000000 		.4byte	.LBB3
+ 786 000c 50000000 		.4byte	.LBE3
+ 787 0010 00000000 		.4byte	0
+ 788 0014 00000000 		.4byte	0
+ 789 0018 00000000 		.4byte	.LFB63
+ 790 001c 04000000 		.4byte	.LFE63
+ 791 0020 00000000 		.4byte	.LFB64
+ 792 0024 56000000 		.4byte	.LFE64
+ 793 0028 00000000 		.4byte	0
+ 794 002c 00000000 		.4byte	0
+ 795              		.section	.debug_line,"",%progbits
+ 796              	.Ldebug_line0:
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cchN8wde.s 			page 16
+
+
+ 797 0000 91010000 		.section	.debug_str,"MS",%progbits,1
+ 797      02005501 
+ 797      00000201 
+ 797      FB0E0D00 
+ 797      01010101 
+ 798              	.LASF24:
+ 799 0000 4932435F 		.ascii	"I2C_MasterSendStop\000"
+ 799      4D617374 
+ 799      65725365 
+ 799      6E645374 
+ 799      6F7000
+ 800              	.LASF9:
+ 801 0013 5F5F696E 		.ascii	"__int32_t\000"
+ 801      7433325F 
+ 801      7400
+ 802              	.LASF23:
+ 803 001d 4932435F 		.ascii	"I2C_MasterWriteByte\000"
+ 803      4D617374 
+ 803      65725772 
+ 803      69746542 
+ 803      79746500 
+ 804              	.LASF12:
+ 805 0031 666C6F61 		.ascii	"float\000"
+ 805      7400
+ 806              	.LASF27:
+ 807 0037 433A5C55 		.ascii	"C:\\Users\\PYBL\\Documents\\PSoC Creator\\Entregas_"
+ 807      73657273 
+ 807      5C505942 
+ 807      4C5C446F 
+ 807      63756D65 
+ 808 0065 4932435C 		.ascii	"I2C\\I2C_Manual.cydsn\000"
+ 808      4932435F 
+ 808      4D616E75 
+ 808      616C2E63 
+ 808      7964736E 
+ 809              	.LASF1:
+ 810 007a 756E7369 		.ascii	"unsigned char\000"
+ 810      676E6564 
+ 810      20636861 
+ 810      7200
+ 811              	.LASF25:
+ 812 0088 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 812      43313120 
+ 812      352E342E 
+ 812      31203230 
+ 812      31363036 
+ 813 00bb 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 813      20726576 
+ 813      6973696F 
+ 813      6E203233 
+ 813      37373135 
+ 814 00ee 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 814      66756E63 
+ 814      74696F6E 
+ 814      2D736563 
+ 814      74696F6E 
+ 815              	.LASF29:
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cchN8wde.s 			page 17
+
+
+ 816 0116 6C656374 		.ascii	"lecturaRegistros\000"
+ 816      75726152 
+ 816      65676973 
+ 816      74726F73 
+ 816      00
+ 817              	.LASF5:
+ 818 0127 6C6F6E67 		.ascii	"long unsigned int\000"
+ 818      20756E73 
+ 818      69676E65 
+ 818      6420696E 
+ 818      7400
+ 819              	.LASF3:
+ 820 0139 73686F72 		.ascii	"short unsigned int\000"
+ 820      7420756E 
+ 820      7369676E 
+ 820      65642069 
+ 820      6E7400
+ 821              	.LASF22:
+ 822 014c 4932435F 		.ascii	"I2C_MasterSendStart\000"
+ 822      4D617374 
+ 822      65725365 
+ 822      6E645374 
+ 822      61727400 
+ 823              	.LASF19:
+ 824 0160 7265746F 		.ascii	"retorno\000"
+ 824      726E6F00 
+ 825              	.LASF30:
+ 826 0168 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 826      52784275 
+ 826      66666572 
+ 826      00
+ 827              	.LASF13:
+ 828 0175 646F7562 		.ascii	"double\000"
+ 828      6C6500
+ 829              	.LASF18:
+ 830 017c 63616465 		.ascii	"cadena\000"
+ 830      6E6100
+ 831              	.LASF28:
+ 832 0183 6D61696E 		.ascii	"main\000"
+ 832      00
+ 833              	.LASF17:
+ 834 0188 61646472 		.ascii	"addr_slave\000"
+ 834      5F736C61 
+ 834      766500
+ 835              	.LASF8:
+ 836 0193 756E7369 		.ascii	"unsigned int\000"
+ 836      676E6564 
+ 836      20696E74 
+ 836      00
+ 837              	.LASF7:
+ 838 01a0 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 838      206C6F6E 
+ 838      6720756E 
+ 838      7369676E 
+ 838      65642069 
+ 839              	.LASF10:
+ 840 01b7 696E7433 		.ascii	"int32_t\000"
+ARM GAS  C:\Users\PYBL\AppData\Local\Temp\cchN8wde.s 			page 18
+
+
+ 840      325F7400 
+ 841              	.LASF16:
+ 842 01bf 73697A65 		.ascii	"sizetype\000"
+ 842      74797065 
+ 842      00
+ 843              	.LASF6:
+ 844 01c8 6C6F6E67 		.ascii	"long long int\000"
+ 844      206C6F6E 
+ 844      6720696E 
+ 844      7400
+ 845              	.LASF26:
+ 846 01d6 6D61696E 		.ascii	"main.c\000"
+ 846      2E6300
+ 847              	.LASF14:
+ 848 01dd 63686172 		.ascii	"char\000"
+ 848      00
+ 849              	.LASF21:
+ 850 01e2 4932435F 		.ascii	"I2C_MasterReadByte\000"
+ 850      4D617374 
+ 850      65725265 
+ 850      61644279 
+ 850      746500
+ 851              	.LASF2:
+ 852 01f5 73686F72 		.ascii	"short int\000"
+ 852      7420696E 
+ 852      7400
+ 853              	.LASF11:
+ 854 01ff 75696E74 		.ascii	"uint8\000"
+ 854      3800
+ 855              	.LASF4:
+ 856 0205 6C6F6E67 		.ascii	"long int\000"
+ 856      20696E74 
+ 856      00
+ 857              	.LASF15:
+ 858 020e 6C6F6E67 		.ascii	"long double\000"
+ 858      20646F75 
+ 858      626C6500 
+ 859              	.LASF0:
+ 860 021a 7369676E 		.ascii	"signed char\000"
+ 860      65642063 
+ 860      68617200 
+ 861              	.LASF20:
+ 862 0226 65737461 		.ascii	"estado\000"
+ 862      646F00
+ 863              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
